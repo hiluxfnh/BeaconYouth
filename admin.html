@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin — Beacon Youth Collective</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="assets/logo_initials.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .admin-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+      .admin-chip {
+        padding: 6px 10px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: #fff;
+        font-size: 12px;
+      }
+      .table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+      }
+      .table th {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--ink-70);
+        text-align: left;
+        padding: 0 8px;
+      }
+      .table td {
+        background: #fff;
+        border: 1px solid var(--border);
+        padding: 10px 12px;
+      }
+      .table tr td:first-child {
+        border-radius: 10px 0 0 10px;
+      }
+      .table tr td:last-child {
+        border-radius: 0 10px 10px 0;
+      }
+      .status-pill {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: var(--mint-50);
+        font-size: 12px;
+      }
+      .toolbar {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .input {
+        padding: 10px 12px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+      }
+      .select {
+        padding: 8px 10px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+      }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="navbar-inner container">
+        <a class="brand" href="index.html">
+          <img src="assets/logo.png" alt="BYC" />
+          <strong>Beacon Youth Collective</strong>
+        </a>
+        <nav>
+          <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+          <ul class="nav-links" id="nav-links">
+            <!-- populated by script.js -->
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="section">
+      <div class="container stack">
+        <div class="admin-bar">
+          <div class="stack" style="gap: 4px">
+            <div class="kicker">Admin</div>
+            <h1 class="h2" style="margin: 0">Submissions Dashboard</h1>
+          </div>
+          <div class="toolbar">
+            <span id="authInfo" class="admin-chip">Not signed in</span>
+            <button id="signInBtn" class="btn">Sign in with Google</button>
+            <button id="signOutBtn" class="btn ghost" style="display: none">
+              Sign out
+            </button>
+          </div>
+        </div>
+
+        <div class="alert alert-info" id="adminNote">
+          Access is restricted to BYC admins. Sign in to view data.
+        </div>
+
+        <section class="card" id="inquiriesCard" style="display: none">
+          <div class="admin-bar">
+            <h3 style="margin: 0">Inquiries (Get Involved)</h3>
+            <div class="toolbar">
+              <input
+                id="inqFilter"
+                class="input"
+                placeholder="Filter by name/email/type..."
+              />
+              <button id="reloadInq" class="btn">Reload</button>
+            </div>
+          </div>
+          <div style="overflow: auto">
+            <table class="table" id="inquiriesTable">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Type</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Org</th>
+                  <th>Location</th>
+                  <th>Message</th>
+                  <th>Status</th>
+                  <th>Doc ID</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card" id="contactsCard" style="display: none">
+          <div class="admin-bar">
+            <h3 style="margin: 0">Contact Messages</h3>
+            <div class="toolbar">
+              <input
+                id="conFilter"
+                class="input"
+                placeholder="Filter by name/email/subject..."
+              />
+              <button id="reloadCon" class="btn">Reload</button>
+            </div>
+          </div>
+          <div style="overflow: auto">
+            <table class="table" id="contactsTable">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Subject</th>
+                  <th>Message</th>
+                  <th>Status</th>
+                  <th>Doc ID</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="BYC" />
+          <div>
+            <strong>Beacon Youth Collective</strong><br /><span class="muted"
+              >Bertoua, Cameroon</span
+            >
+          </div>
+        </div>
+        <div class="footer-cols">
+          <div>
+            <p class="muted">Youth-led. Evidence-driven. Community-rooted.</p>
+          </div>
+          <div>
+            <strong>Programs</strong>
+            <div class="stack" style="margin-top: 8px">
+              <a href="education.html">Education</a
+              ><a href="climate.html">Climate</a><a href="tech.html">Tech</a
+              ><a href="gbv.html">Gender & GBV</a>
+            </div>
+          </div>
+          <div>
+            <strong>Connect</strong>
+            <div class="stack" style="margin-top: 8px">
+              <a href="get-involved.html">Get Involved</a
+              ><a href="news.html">News</a><a href="contact.html">Contact</a
+              ><a href="donate.html">Donate</a>
+            </div>
+          </div>
+        </div>
+        <p class="muted" style="margin-top: 14px">
+          © 2025 Beacon Youth Collective
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script type="module">
+      import {
+        signInWithGoogle,
+        signOutCurrent,
+        onAuthChange,
+        fetchInquiries,
+        fetchContacts,
+        updateSubmissionStatus,
+      } from "./firebase.js";
+
+      const authInfo = document.getElementById("authInfo");
+      const signInBtn = document.getElementById("signInBtn");
+      const signOutBtn = document.getElementById("signOutBtn");
+      const adminNote = document.getElementById("adminNote");
+      const inquiriesCard = document.getElementById("inquiriesCard");
+      const contactsCard = document.getElementById("contactsCard");
+      const inqTableBody = document.querySelector("#inquiriesTable tbody");
+      const conTableBody = document.querySelector("#contactsTable tbody");
+
+      function fmt(ts) {
+        try {
+          return ts?.toDate?.().toLocaleString?.() || "";
+        } catch {
+          return "";
+        }
+      }
+      function esc(s) {
+        return (s || "")
+          .toString()
+          .replace(
+            /[&<>"]/g,
+            (c) =>
+              ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])
+          );
+      }
+      function renderStatusSelect(kind, id, current) {
+        const opts = ["received", "reviewing", "responded", "closed"];
+        return `<select data-kind="${kind}" data-id="${id}" class="select">${opts
+          .map(
+            (o) =>
+              `<option ${
+                o === current ? "selected" : ""
+              } value="${o}">${o}</option>`
+          )
+          .join("")}</select>`;
+      }
+
+      async function loadInquiries() {
+        const rows = await fetchInquiries(100);
+        const filter = document.getElementById("inqFilter").value.toLowerCase();
+        inqTableBody.innerHTML = rows
+          .filter((r) => {
+            const hay = `${r.type || ""} ${r.name || ""} ${r.email || ""} ${
+              r.org || ""
+            }`.toLowerCase();
+            return hay.includes(filter);
+          })
+          .map(
+            (r) => `
+          <tr>
+            <td>${esc(fmt(r.createdAt))}</td>
+            <td>${esc(r.type)}</td>
+            <td>${esc(r.name)}</td>
+            <td class="mono">${esc(r.email)}</td>
+            <td>${esc(r.org || "")}</td>
+            <td>${esc(r.location || "")}</td>
+            <td title="${esc(r.message)}">${esc(
+              (r.message || "").slice(0, 80)
+            )}${(r.message || "").length > 80 ? "…" : ""}</td>
+            <td>${`<span class="status-pill">${esc(r.status)}</span>`}</td>
+            <td class="mono">${esc(r.id)}</td>
+            <td>${renderStatusSelect("inquiries", r.id, r.status)}</td>
+          </tr>
+        `
+          )
+          .join("");
+      }
+      async function loadContacts() {
+        const rows = await fetchContacts(100);
+        const filter = document.getElementById("conFilter").value.toLowerCase();
+        conTableBody.innerHTML = rows
+          .filter((r) => {
+            const hay = `${r.name || ""} ${r.email || ""} ${
+              r.subject || ""
+            }`.toLowerCase();
+            return hay.includes(filter);
+          })
+          .map(
+            (r) => `
+          <tr>
+            <td>${esc(fmt(r.createdAt))}</td>
+            <td>${esc(r.name)}</td>
+            <td class="mono">${esc(r.email)}</td>
+            <td>${esc(r.subject || "")}</td>
+            <td title="${esc(r.message)}">${esc(
+              (r.message || "").slice(0, 80)
+            )}${(r.message || "").length > 80 ? "…" : ""}</td>
+            <td>${`<span class="status-pill">${esc(r.status)}</span>`}</td>
+            <td class="mono">${esc(r.id)}</td>
+            <td>${renderStatusSelect("contacts", r.id, r.status)}</td>
+          </tr>
+        `
+          )
+          .join("");
+      }
+
+      document
+        .getElementById("inqFilter")
+        .addEventListener("input", loadInquiries);
+      document
+        .getElementById("conFilter")
+        .addEventListener("input", loadContacts);
+      document
+        .getElementById("reloadInq")
+        .addEventListener("click", loadInquiries);
+      document
+        .getElementById("reloadCon")
+        .addEventListener("click", loadContacts);
+
+      document.addEventListener("change", async (e) => {
+        const sel = e.target.closest("select[data-id]");
+        if (!sel) return;
+        const kind = sel.getAttribute("data-kind");
+        const id = sel.getAttribute("data-id");
+        const status = sel.value;
+        sel.disabled = true;
+        try {
+          await updateSubmissionStatus(kind, id, status);
+          await (kind === "inquiries" ? loadInquiries() : loadContacts());
+        } catch (err) {
+          console.error(err);
+          alert("Failed to update status.");
+        } finally {
+          sel.disabled = false;
+        }
+      });
+
+      signInBtn.addEventListener("click", () => signInWithGoogle());
+      signOutBtn.addEventListener("click", () => signOutCurrent());
+
+      onAuthChange(async (user) => {
+        if (user) {
+          authInfo.textContent = `Signed in as ${user.email}`;
+          signInBtn.style.display = "none";
+          signOutBtn.style.display = "";
+          adminNote.style.display = "none";
+          inquiriesCard.style.display = "";
+          contactsCard.style.display = "";
+          await loadInquiries();
+          await loadContacts();
+        } else {
+          authInfo.textContent = "Not signed in";
+          signInBtn.style.display = "";
+          signOutBtn.style.display = "none";
+          adminNote.style.display = "";
+          inquiriesCard.style.display = "none";
+          contactsCard.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>

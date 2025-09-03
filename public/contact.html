@@ -1,55 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact — Beacon Youth Collective</title>
-  <link rel="stylesheet" href="styles.css"/><link rel="icon" href="assets/logo_initials.png"/>
-</head>
-<body>
-<header class="navbar">
-  <div class="navbar-inner container">
-    <a class="brand" href="index.html"><img src="assets/logo.png" alt="BYC"/><strong>Beacon Youth Collective</strong></a>
-    <nav><button class="menu-toggle" onclick="toggleMenu()">☰</button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="team.html">Team</a></li><li><a href="get-involved.html">Get Involved</a></li><li><a href="news.html">News</a></li><li><a href="contact.html" aria-current="page">Contact</a></li>
-      </ul></nav>
-  </div>
-</header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact — Beacon Youth Collective</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="assets/logo_initials.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="navbar-inner container">
+        <a class="brand" href="index.html">
+          <img src="assets/logo.png" alt="BYC" />
+          <strong>Beacon Youth Collective</strong>
+        </a>
+        <nav>
+          <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+          <ul class="nav-links" id="nav-links">
+            <!-- Navigation populated by script.js -->
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-<main class="section">
-  <div class="container grid grid-lg-2">
-    <div class="card">
-      <h3>Write to us</h3>
-      <p class="muted">Partnerships, programs, or media—send us a message.</p>
-      <form class="stack" onsubmit="event.preventDefault(); alert('Thanks! We will reply via email.');">
-        <input style="padding:12px;border:1px solid var(--border);border-radius:10px" placeholder="Your name" required/>
-        <input type="email" style="padding:12px;border:1px solid var(--border);border-radius:10px" placeholder="you@example.org" required/>
-        <textarea rows="5" style="padding:12px;border:1px solid var(--border);border-radius:10px" placeholder="How can we help?" required></textarea>
-        <button class="btn primary" type="submit">Send</button>
-      </form>
-    </div>
-    <div class="card">
-      <h3>Contact Details</h3>
-      <p>Bertoua, Cameroon</p>
-      <p>Email: <strong>info@beaconyouth.org</strong> (placeholder)</p>
-      <p>Socials: Facebook • Instagram • LinkedIn (to be added)</p>
-      <p class="hr"></p>
-      <a class="btn alt" href="donate.html">Contribute to BYC</a>
-    </div>
-  </div>
-</main>
+    <main class="section">
+      <div class="container stack">
+        <div>
+          <div class="kicker">Contact</div>
+          <h1 class="h2">We’d love to hear from you</h1>
+          <p class="lead">
+            Partnerships, programs, volunteers, or media—send us a message and
+            we’ll get back within a few days.
+          </p>
+        </div>
 
-<footer>
-  <div class="container footer-inner">
-    <div class="footer-brand"><img src="assets/logo.png" alt="BYC"/><div><strong>Beacon Youth Collective</strong><br/><span class="muted">Bertoua, Cameroon</span></div></div>
-    <div class="footer-cols"><div><p class="muted">Youth-led. Evidence-driven. Community-rooted.</p></div>
-      <div><strong>Programs</strong><div class="stack" style="margin-top:8px"><a href="education.html">Education</a><a href="climate.html">Climate</a><a href="tech.html">Tech</a><a href="gbv.html">Gender & GBV</a></div></div>
-      <div><strong>Connect</strong><div class="stack" style="margin-top:8px"><a href="get-involved.html">Get Involved</a><a href="news.html">News</a><a href="contact.html">Contact</a><a href="donate.html">Donate</a></div></div>
-    </div>
-    <p class="muted" style="margin-top:14px">© 2025 Beacon Youth Collective</p>
-  </div>
-</footer>
-<script src="script.js"></script>
-</body>
+        <div class="form-grid">
+          <section class="form-container">
+            <h2 class="h2" style="margin:0 0 8px">Send a Message</h2>
+            <p class="muted" style="margin:0 0 16px">We read every message.</p>
+            <form id="contact-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="name">Full name</label>
+                  <input id="name" name="name" class="form-input" autocomplete="name" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="email">Email</label>
+                  <input id="email" name="email" type="email" class="form-input" autocomplete="email" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="subject">Subject (optional)</label>
+                <input id="subject" name="subject" class="form-input" placeholder="Topic or reason for contacting" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="message">Message</label>
+                <textarea id="message" name="message" class="form-textarea" placeholder="How can we help?" required></textarea>
+              </div>
+
+              <div class="form-group">
+                <label style="display:flex;gap:8px;align-items:flex-start">
+                  <input type="checkbox" id="consent" required />
+                  <span>I agree to be contacted by BYC regarding my message.</span>
+                </label>
+              </div>
+
+              <div id="contact-alert" style="display:none"></div>
+              <button id="contactSubmit" class="form-submit" type="submit">Send</button>
+            </form>
+          </section>
+
+          <aside class="form-container">
+            <h2 class="h2" style="margin:0 0 8px">Contact Details</h2>
+            <div class="stack" style="margin-top:8px">
+              <p><strong>Location:</strong> Bertoua, Cameroon</p>
+              <p>
+                <strong>Email:</strong> <span class="muted">info@beaconyouth.org</span>
+                <span class="muted">(placeholder)</span>
+              </p>
+              <p class="muted">Follow our updates on the News and Get Involved pages.</p>
+              <a class="btn" href="get-involved.html">Get Involved</a>
+              <a class="btn alt" href="donate.html">Contribute to BYC</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="BYC" />
+          <div>
+            <strong>Beacon Youth Collective</strong><br />
+            <span class="muted">Bertoua, Cameroon</span>
+          </div>
+        </div>
+        <div class="footer-cols">
+          <div>
+            <p class="muted">Youth-led. Evidence-driven. Community-rooted.</p>
+          </div>
+          <div>
+            <strong>Programs</strong>
+            <div class="stack" style="margin-top: 8px">
+              <a href="education.html">Education</a>
+              <a href="climate.html">Climate</a>
+              <a href="tech.html">Tech</a>
+              <a href="gbv.html">Gender & GBV</a>
+            </div>
+          </div>
+          <div>
+            <strong>Connect</strong>
+            <div class="stack" style="margin-top: 8px">
+              <a href="get-involved.html">Get Involved</a>
+              <a href="news.html">News</a>
+              <a href="contact.html" aria-current="page">Contact</a>
+              <a href="donate.html">Donate</a>
+            </div>
+          </div>
+        </div>
+        <p class="muted" style="margin-top: 14px">© 2025 Beacon Youth Collective</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script type="module">
+      import { submitContact } from './firebase.js';
+
+      const form = document.getElementById('contact-form');
+      const alertBox = document.getElementById('contact-alert');
+      const submitBtn = document.getElementById('contactSubmit');
+
+      function showAlert(kind, message){
+        alertBox.className = `alert alert-${kind}`;
+        alertBox.textContent = message;
+        alertBox.style.display = 'block';
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        alertBox.style.display = 'none';
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="loading-spinner" aria-hidden="true"></span> Sending...';
+
+        const data = {
+          name: form.name.value,
+          email: form.email.value,
+          subject: form.subject.value || null,
+          message: form.message.value,
+          consent: document.getElementById('consent').checked,
+          source: window.location.pathname,
+          userAgent: navigator.userAgent
+        };
+
+        try{
+          const id = await submitContact(data);
+          showAlert('success', `Thanks! Your message was sent. Reference: ${id}. We'll reply by email.`);
+          form.reset();
+        }catch(err){
+          console.error(err);
+          showAlert('error', 'Sorry, something went wrong. Please try again later.');
+        }finally{
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send';
+        }
+      });
+    </script>
+  </body>
 </html>

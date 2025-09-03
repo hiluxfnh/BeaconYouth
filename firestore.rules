@@ -32,8 +32,33 @@ service cloud.firestore {
 				(request.resource.data.source == null || request.resource.data.source is string) &&
 				(request.resource.data.userAgent == null || request.resource.data.userAgent is string);
 
-			// Do not allow clients to read or modify inquiries.
-			allow read, update, delete: if false;
+					// Read/update/delete restricted to admins
+							allow read, update, delete: if request.auth != null &&
+								request.auth.token.email in [
+									'hiluxfokou33@gmail.com',
+									'beaconyouthcollective@gmail.com'
+								];
+		}
+
+		// Public submission endpoint for Contact form
+		match /contacts/{docId} {
+			allow create: if
+				request.resource.data.keys().hasAll(['name','email','message','consent','status','createdAt']) &&
+				request.resource.data.keys().hasOnly(['name','email','subject','message','consent','source','userAgent','status','createdAt']) &&
+				nonEmptyString(request.resource.data.name, 100) &&
+				nonEmptyString(request.resource.data.email, 320) &&
+				nonEmptyString(request.resource.data.message, 2000) &&
+				(request.resource.data.subject == null || nonEmptyString(request.resource.data.subject, 140)) &&
+				request.resource.data.consent == true &&
+				request.resource.data.status == 'received' &&
+				(request.resource.data.source == null || request.resource.data.source is string) &&
+				(request.resource.data.userAgent == null || request.resource.data.userAgent is string);
+
+			allow read, update, delete: if request.auth != null &&
+			  request.auth.token.email in [
+			    'hiluxfokou33@gmail.com',
+			    'beaconyouthcollective@gmail.com'
+			  ];
 		}
 	}
 }

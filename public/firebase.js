@@ -41,3 +41,14 @@ export async function submitInquiry(data) {
   });
   return docRef.id;
 }
+
+// Submit a contact message to Firestore
+// data shape: { name, email, subject?, message, consent, source, userAgent, status, createdAt }
+export async function submitContact(data) {
+  const docRef = await addDoc(collection(db, "contacts"), {
+    ...data,
+    status: "received",
+    createdAt: serverTimestamp(),
+  });
+  return docRef.id;
+}
