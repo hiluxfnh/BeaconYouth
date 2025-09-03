@@ -1,0 +1,34 @@
+name: Deploy to Firebase Hosting
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare public folder
+        shell: bash
+        run: |
+          set -e
+          rm -rf public
+          mkdir -p public
+          shopt -s nullglob
+          cp -a *.html public/ || true
+          cp -a *.css public/ || true
+          cp -a *.js public/ || true
+          cp -a assets public/ || true
+
+      - name: Deploy to Firebase Hosting (live)
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          projectId: byc-website-3ee13
+          siteId: beaconyouth
+          channelId: live
