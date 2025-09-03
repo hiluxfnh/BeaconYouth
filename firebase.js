@@ -19,6 +19,7 @@ import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
+  signInWithRedirect,
   onAuthStateChanged,
   signOut,
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
@@ -69,8 +70,20 @@ export async function submitContact(data) {
 }
 
 // Auth helpers for admin page
-export function signInWithGoogle() {
-  return signInWithPopup(auth, provider);
+export async function signInWithGoogle() {
+  try {
+    return await signInWithPopup(auth, provider);
+  } catch (e) {
+    // Fallback to redirect in cases like popup blocked or not supported
+    if (
+      e?.code === "auth/popup-blocked" ||
+      e?.code === "auth/popup-closed-by-user" ||
+      e?.code === "auth/operation-not-supported-in-this-environment"
+    ) {
+      return signInWithRedirect(auth, provider);
+    }
+    throw e;
+  }
 }
 export function signOutCurrent() {
   return signOut(auth);

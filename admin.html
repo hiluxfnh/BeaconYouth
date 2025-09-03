@@ -356,7 +356,14 @@
         }
       });
 
-      signInBtn.addEventListener("click", () => signInWithGoogle());
+      signInBtn.addEventListener("click", async () => {
+        try {
+          await signInWithGoogle();
+        } catch (e) {
+          console.error(e);
+          alert(`Sign-in failed: ${e?.code || e?.message || "unknown error"}`);
+        }
+      });
       signOutBtn.addEventListener("click", () => signOutCurrent());
 
       onAuthChange(async (user) => {
