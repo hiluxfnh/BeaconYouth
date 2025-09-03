@@ -1,0 +1,40 @@
+rules_version = '2';
+service cloud.firestore {
+	match /databases/{database}/documents {
+		// Helper validators
+		function nonEmptyString(field, max) {
+			return field is string && field.size() > 0 && field.size() <= max;
+		}
+		function optionalString(field, max) {
+			return field == null || (field is string && field.size() > 0 && field.size() <= max);
+		}
+
+		// Public submission endpoint for Get Involved form
+		match /inquiries/{docId} {
+			// Allow creating a new inquiry document with strict validation.
+			allow create: if
+				// Required and allowed fields only
+				request.resource.data.keys().hasAll(['type', 'name', 'email', 'message', 'consent', 'status', 'createdAt']) &&
+				request.resource.data.keys().hasOnly(['type', 'org', 'name', 'email', 'phone', 'location', 'message', 'consent', 'source', 'userAgent', 'status', 'createdAt']) &&
+
+				// Enum and field validations
+				request.resource.data.type in ['Membership', 'Volunteer', 'Partnership', 'Internship'] &&
+				nonEmptyString(request.resource.data.name, 100) &&
+				nonEmptyString(request.resource.data.email, 320) &&
+				nonEmptyString(request.resource.data.message, 2000) &&
+			request.resource.data.consent == true &&
+			request.resource.data.status == 'received' &&
+
+				// Optional fields (when present) must be reasonable strings
+				optionalString(request.resource.data.org, 120) &&
+				optionalString(request.resource.data.phone, 40) &&
+				optionalString(request.resource.data.location, 120) &&
+				(request.resource.data.source == null || request.resource.data.source is string) &&
+				(request.resource.data.userAgent == null || request.resource.data.userAgent is string);
+
+			// Do not allow clients to read or modify inquiries.
+			allow read, update, delete: if false;
+		}
+	}
+}
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Beacon Youth Collective</title>
+  <link rel="stylesheet" href="styles.css"/><link rel="icon" href="assets/logo_initials.png"/>
+</head>
+<body>
+<header class="navbar">
+  <div class="navbar-inner container">
+    <a class="brand" href="index.html"><img src="assets/logo.png" alt="BYC"/><strong>Beacon Youth Collective</strong></a>
+    <nav><button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="team.html">Team</a></li><li><a href="get-involved.html">Get Involved</a></li><li><a href="news.html">News</a></li><li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul></nav>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container grid grid-lg-2">
+    <div class="card">
+      <h3>Write to us</h3>
+      <p class="muted">Partnerships, programs, or media—send us a message.</p>
+      <form class="stack" onsubmit="event.preventDefault(); alert('Thanks! We will reply via email.');">
+        <input style="padding:12px;border:1px solid var(--border);border-radius:10px" placeholder="Your name" required/>
+        <input type="email" style="padding:12px;border:1px solid var(--border);border-radius:10px" placeholder="you@example.org" required/>
+        <textarea rows="5" style="padding:12px;border:1px solid var(--border);border-radius:10px" placeholder="How can we help?" required></textarea>
+        <button class="btn primary" type="submit">Send</button>
+      </form>
+    </div>
+    <div class="card">
+      <h3>Contact Details</h3>
+      <p>Bertoua, Cameroon</p>
+      <p>Email: <strong>info@beaconyouth.org</strong> (placeholder)</p>
+      <p>Socials: Facebook • Instagram • LinkedIn (to be added)</p>
+      <p class="hr"></p>
+      <a class="btn alt" href="donate.html">Contribute to BYC</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand"><img src="assets/logo.png" alt="BYC"/><div><strong>Beacon Youth Collective</strong><br/><span class="muted">Bertoua, Cameroon</span></div></div>
+    <div class="footer-cols"><div><p class="muted">Youth-led. Evidence-driven. Community-rooted.</p></div>
+      <div><strong>Programs</strong><div class="stack" style="margin-top:8px"><a href="education.html">Education</a><a href="climate.html">Climate</a><a href="tech.html">Tech</a><a href="gbv.html">Gender & GBV</a></div></div>
+      <div><strong>Connect</strong><div class="stack" style="margin-top:8px"><a href="get-involved.html">Get Involved</a><a href="news.html">News</a><a href="contact.html">Contact</a><a href="donate.html">Donate</a></div></div>
+    </div>
+    <p class="muted" style="margin-top:14px">© 2025 Beacon Youth Collective</p>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

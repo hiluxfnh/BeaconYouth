@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get Involved — Beacon Youth Collective</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="assets/logo_initials.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="navbar-inner container">
+        <a class="brand" href="index.html">
+          <img src="assets/logo.png" alt="BYC" />
+          <strong>Beacon Youth Collective</strong>
+        </a>
+        <nav>
+          <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+          <ul class="nav-links" id="nav-links">
+            <!-- Navigation populated by script.js -->
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="section">
+      <div class="container stack">
+        <div>
+          <div class="kicker">Join</div>
+          <h1 class="h2">Get Involved</h1>
+          <p class="lead">
+            We review submissions weekly and respond promptly. Submit your
+            interest below and you'll get an on‑screen confirmation right away.
+          </p>
+          <div class="alert alert-info">
+            We reply weekly; check your email. For urgent questions, use the
+            Contact page.
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <!-- Membership / Volunteer / Partnership unified request form -->
+          <section class="form-container">
+            <h2 class="h2" style="margin: 0 0 8px">Express Interest</h2>
+            <p class="muted" style="margin: 0 0 16px">
+              Choose a path and tell us a bit more.
+            </p>
+            <form id="involved-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="type">I'm interested in</label>
+                  <select id="type" name="type" class="form-select" required>
+                    <option value="Membership">Membership</option>
+                    <option value="Volunteer">Volunteer</option>
+                    <option value="Partnership">Partnership</option>
+                    <option value="Internship">Internship</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="org"
+                    >Organization (optional)</label
+                  >
+                  <input
+                    id="org"
+                    name="org"
+                    class="form-input"
+                    placeholder="School, NGO, company"
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="name">Full name</label>
+                  <input
+                    id="name"
+                    name="name"
+                    class="form-input"
+                    autocomplete="name"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="email">Email</label>
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    class="form-input"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="phone">Phone (optional)</label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    class="form-input"
+                    autocomplete="tel"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="location"
+                    >Location (City/Country)</label
+                  >
+                  <input id="location" name="location" class="form-input" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="message">Tell us more</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  class="form-textarea"
+                  placeholder="Share your interests, skills, ideas, or proposal"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label style="display: flex; gap: 8px; align-items: flex-start">
+                  <input type="checkbox" id="consent" required />
+                  <span
+                    >I agree to be contacted by BYC regarding my submission. We
+                    review submissions weekly and respond as soon as
+                    possible.</span
+                  >
+                </label>
+              </div>
+
+              <div id="form-alert" style="display: none"></div>
+
+              <button id="submitBtn" class="form-submit" type="submit">
+                Submit
+              </button>
+            </form>
+          </section>
+
+          <!-- Program-specific quick links -->
+          <section class="form-container">
+            <h2 class="h2" style="margin: 0 0 8px">Program Interests</h2>
+            <p class="muted" style="margin: 0 0 16px">
+              Optionally also tell us which program you want to engage with
+              most.
+            </p>
+            <div class="grid grid-lg-2">
+              <a class="btn" href="education.html">Education</a>
+              <a class="btn" href="climate.html">Climate Action</a>
+              <a class="btn" href="tech.html">Tech for Good</a>
+              <a class="btn" href="gbv.html">Gender & GBV</a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="BYC" />
+          <div>
+            <strong>Beacon Youth Collective</strong><br />
+            <span class="muted">Bertoua, Cameroon</span>
+          </div>
+        </div>
+        <div class="footer-cols">
+          <div>
+            <p class="muted">Youth-led. Evidence-driven. Community-rooted.</p>
+          </div>
+          <div>
+            <strong>Programs</strong>
+            <div class="stack" style="margin-top: 8px">
+              <a href="education.html">Education</a>
+              <a href="climate.html">Climate</a>
+              <a href="tech.html">Tech</a>
+              <a href="gbv.html">Gender & GBV</a>
+            </div>
+          </div>
+          <div>
+            <strong>Connect</strong>
+            <div class="stack" style="margin-top: 8px">
+              <a href="get-involved.html">Get Involved</a>
+              <a href="news.html">News</a>
+              <a href="contact.html">Contact</a>
+              <a href="donate.html">Donate</a>
+            </div>
+          </div>
+        </div>
+        <p class="muted" style="margin-top: 14px">
+          © 2025 Beacon Youth Collective
+        </p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script type="module">
+      import { submitInquiry } from "./firebase.js";
+
+      const form = document.getElementById("involved-form");
+      const alertBox = document.getElementById("form-alert");
+      const submitBtn = document.getElementById("submitBtn");
+
+      function showAlert(kind, message) {
+        alertBox.className = `alert alert-${kind}`;
+        alertBox.textContent = message;
+        alertBox.style.display = "block";
+      }
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        alertBox.style.display = "none";
+        submitBtn.disabled = true;
+        submitBtn.innerHTML =
+          '<span class="loading-spinner" aria-hidden="true"></span> Submitting...';
+
+        const data = {
+          type: form.type.value,
+          org: form.org.value || null,
+          name: form.name.value,
+          email: form.email.value,
+          phone: form.phone.value || null,
+          location: form.location.value || null,
+          message: form.message.value,
+          consent: document.getElementById("consent").checked,
+          source: window.location.pathname,
+          userAgent: navigator.userAgent,
+        };
+
+        try {
+          const id = await submitInquiry(data);
+          showAlert(
+            "success",
+            `Thanks! Your request was received. Reference: ${id}. We review weekly and will respond by email.`
+          );
+          form.reset();
+        } catch (err) {
+          console.error(err);
+          showAlert(
+            "error",
+            "Sorry, something went wrong. Please try again later or reach us via the Contact page."
+          );
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Submit";
+        }
+      });
+    </script>
+  </body>
+</html>
