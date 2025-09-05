@@ -47,13 +47,7 @@ function openMenu() {
   if (!list) return;
   list.classList.add("show");
   document.body.classList.add("nav-open");
-  if (btn) {
-    btn.setAttribute("aria-expanded", "true");
-    // Change burger to X
-    btn.dataset.icon = btn.textContent;
-    btn.textContent = "✕";
-    btn.title = "Close menu";
-  }
+  if (btn) btn.setAttribute('aria-expanded', 'true');
 }
 
 function closeMenu() {
@@ -62,12 +56,7 @@ function closeMenu() {
   if (!list) return;
   list.classList.remove("show");
   document.body.classList.remove("nav-open");
-  if (btn) {
-    btn.setAttribute("aria-expanded", "false");
-    // Restore burger icon
-    btn.textContent = btn.dataset.icon || "☰";
-    btn.title = "Open menu";
-  }
+  if (btn) btn.setAttribute('aria-expanded', 'false');
 }
 
 function toggleMenu() {
