@@ -110,9 +110,9 @@ img, video, svg{
   position:sticky;
   top:0;
   z-index:40;
-  background:var(--green-700);
+  background:linear-gradient(180deg, var(--green-700) 0%, #25624a 100%);
   color:#fff;
-  border-bottom:1px solid var(--border);
+  border-bottom:1px solid rgba(255,255,255,0.08);
   backdrop-filter:saturate(1.2) blur(6px);
   box-shadow:0 2px 12px rgba(0,0,0,0.1);
 }
@@ -124,6 +124,14 @@ img, video, svg{
   gap:12px;
   padding:12px 20px;
   min-height:64px;
+}
+
+/* Let the nav area take remaining space */
+.navbar-inner nav{
+  flex:1 1 auto;
+  display:flex;
+  justify-content:flex-end;
+  min-width:0;
 }
 
 .brand{
@@ -153,64 +161,91 @@ img, video, svg{
   font-size:18px;
 }
 
-@media (min-width:768px){
-  .brand strong{
-    display:block;
-  }
+/* Show long brand text later so links have room */
+@media (min-width:1280px){
+  .brand strong{ display:block; }
+}
+
+/* On mid-width desktops, slightly reduce brand logo height to free space */
+@media (min-width:980px) and (max-width:1279px){
+  .brand img{ height:36px; padding:3px; }
 }
 
 .menu-toggle{
   appearance:none;
   border:none;
   background:transparent;
-  color:#fff;
+  color:transparent; /* hide text, use ::before for icon */
   font-size:24px;
   line-height:1;
   cursor:pointer;
   padding:8px;
   border-radius:6px;
   transition:var(--transition);
+  position:relative;
 }
 
 .menu-toggle:hover{
   background:rgba(255,255,255,0.1);
 }
 
+/* Use pseudo-element for icon so JS doesn't need to swap text */
+.menu-toggle::before{
+  content:"☰";
+  color:#fff;
+  font-size:24px;
+  line-height:1;
+}
+
+.menu-toggle[aria-expanded="true"]::before{
+  content:"✕";
+}
+
+/* Mobile: slide-in drawer */
 .nav-links{
   list-style:none;
   margin:0;
-  padding:0;
-  display:none;
+  padding:16px;
+  display:flex;
   flex-direction:column;
-  position:absolute;
-  right:16px;
-  top:68px;
-  background:var(--green-700);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:12px;
-  width:min(92vw, 320px);
-  max-width:92vw;
-  box-shadow:var(--hover-shadow);
-  overflow:hidden;
+  position:fixed;
+  top:0; right:0; bottom:0;
+  width:min(86vw, 360px);
+  /* Frosted panel: semi-transparent with backdrop blur */
+  background:rgba(45,106,79,0.82); /* based on --green-700 */
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  backdrop-filter: blur(10px) saturate(1.1);
+  border-left:1px solid rgba(255,255,255,0.12);
+  box-shadow: -16px 0 40px rgba(0,0,0,0.25);
+  transform:translateX(100%);
+  opacity:0;
+  pointer-events:none;
+  transition: transform .25s ease, opacity .25s ease;
+  z-index:1001;
 }
 
 .nav-links.show{
-  display:flex;
+  transform:translateX(0);
+  opacity:1;
+  pointer-events:auto;
 }
 
 .nav-links a{
   display:block;
-  padding:14px 18px;
+  padding:14px 16px;
   color:#fff;
   text-decoration:none;
   font-weight:600;
   transition:var(--transition);
-  border-bottom:1px solid rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.3);
+  background:rgba(0,0,0,0.6); /* even darker for high contrast on mobile */
+  border-radius:12px;
+  margin:6px 0;
 }
 
 .nav-links a:hover{
-  background:rgba(255,255,255,0.1);
-  padding-left:22px;
+  background:rgba(0,0,0,0.75);
+  padding-left:16px;
 }
 
 .nav-links li:last-child a{
@@ -226,22 +261,89 @@ img, video, svg{
     display:flex;
     position:static;
     flex-direction:row;
+    flex-wrap:nowrap; /* keep on one line */
     background:transparent;
     border:none;
     box-shadow:none;
     min-width:auto;
+    transform:none;
+    opacity:1;
+    pointer-events:auto;
+    padding:0;
+    gap:6px;
   }
   
   .nav-links a{
-    padding:10px 14px;
+    padding:8px 12px; /* desktop pill */
     border-radius:8px;
-    border-bottom:none;
+  border-bottom:none;
+  white-space:nowrap; /* keep each item on one line */
+    font-size:15px; /* slightly smaller nav text */
+    position:relative;
+  /* Desktop: subtle pill background for each item */
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.18);
+  margin:0;
   }
   
   .nav-links a:hover{
     background:rgba(255,255,255,0.15);
-    padding-left:14px;
+    padding-left:12px;
   }
+
+  /* Active link indicator */
+  .nav-links a[aria-current="page"]{
+    background:rgba(255,255,255,0.22);
+    border-color:rgba(255,255,255,0.3);
+    color:#fff;
+  }
+  .nav-links a[aria-current="page"]::after{
+    content:"";
+    position:absolute;
+    left:10px; right:10px; bottom:-6px;
+    height:3px;
+    background:linear-gradient(90deg,#fff,rgba(255,255,255,0.6));
+    border-radius:3px;
+  }
+}
+
+/* Backdrop behind mobile drawer */
+/* Backdrop removed per request */
+.nav-backdrop{ display:none !important; }
+
+/* Lock background scrolling when nav is open */
+body.nav-open{
+  overflow:hidden;
+}
+
+/* Hide backdrop on desktop entirely */
+@media (min-width:980px){
+  .nav-backdrop{ display:none !important; }
+}
+
+/* Mobile drawer header close button */
+.nav-close{
+  display:flex;
+  justify-content:flex-end;
+  margin-bottom:8px;
+}
+
+.nav-close-btn{
+  appearance:none;
+  border:none;
+  background:rgba(255,255,255,0.12);
+  color:#fff;
+  padding:8px 12px;
+  border-radius:8px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.nav-close-btn:hover{ background:rgba(255,255,255,0.18); }
+
+/* Ensure the injected close button list item is hidden on desktop */
+@media (min-width:980px){
+  .nav-close-li{ display:none; }
 }
 
 /* =========
