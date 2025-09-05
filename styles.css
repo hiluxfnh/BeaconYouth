@@ -56,7 +56,7 @@ img, video, svg{
    Layout
 ========= */
 .container{
-  max-width:1280px;
+  max-width:1200px;
   margin:0 auto;
   padding:0 20px;
 }
@@ -110,9 +110,9 @@ img, video, svg{
   position:sticky;
   top:0;
   z-index:40;
-  background:var(--green-700);
+  background:linear-gradient(180deg, var(--green-700) 0%, #25624a 100%);
   color:#fff;
-  border-bottom:1px solid var(--border);
+  border-bottom:1px solid rgba(255,255,255,0.08);
   backdrop-filter:saturate(1.2) blur(6px);
   box-shadow:0 2px 12px rgba(0,0,0,0.1);
 }
@@ -130,7 +130,7 @@ img, video, svg{
 .navbar-inner nav{
   flex:1 1 auto;
   display:flex;
-  justify-content:flex-end; /* align right, we'll nudge with margin */
+  justify-content:flex-end;
   min-width:0;
 }
 
@@ -167,12 +167,9 @@ img, video, svg{
 }
 
 /* On mid-width desktops, slightly reduce brand logo height to free space */
-@media (min-width:980px) and (max-width:1399px){
-  .brand img{ height:38px; padding:4px; }
+@media (min-width:980px) and (max-width:1279px){
+  .brand img{ height:36px; padding:3px; }
 }
-
-/* Between 1200–1399px, make nav items a bit more compact */
-/* remove extra-tight step to keep nav readable */
 
 .menu-toggle{
   appearance:none;
@@ -191,26 +188,29 @@ img, video, svg{
   background:rgba(255,255,255,0.1);
 }
 
+/* Mobile: slide-in drawer */
 .nav-links{
   list-style:none;
   margin:0;
-  padding:0;
-  display:none;
+  padding:16px;
+  display:flex;
   flex-direction:column;
-  position:absolute;
-  right:16px;
-  top:68px;
+  position:fixed;
+  top:0; right:0; bottom:0;
+  width:min(86vw, 360px);
   background:var(--green-700);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:12px;
-  width:min(94vw, 360px);
-  max-width:94vw;
-  box-shadow:var(--hover-shadow);
-  overflow:hidden;
+  border-left:1px solid rgba(255,255,255,0.12);
+  box-shadow: -16px 0 40px rgba(0,0,0,0.25);
+  transform:translateX(100%);
+  opacity:0;
+  pointer-events:none;
+  transition: transform .25s ease, opacity .25s ease;
 }
 
 .nav-links.show{
-  display:flex;
+  transform:translateX(0);
+  opacity:1;
+  pointer-events:auto;
 }
 
 .nav-links a{
@@ -232,7 +232,7 @@ img, video, svg{
   border-bottom:none;
 }
 
-@media (min-width:1200px){
+@media (min-width:980px){
   .menu-toggle{
     display:none;
   }
@@ -241,44 +241,58 @@ img, video, svg{
     display:flex;
     position:static;
     flex-direction:row;
-  flex-wrap:nowrap; /* keep on one line */
+    flex-wrap:nowrap; /* keep on one line */
     background:transparent;
     border:none;
     box-shadow:none;
     min-width:auto;
-  gap:0;
-  margin-right:12px; /* slight left nudge to reveal last item */
+    transform:none;
+    opacity:1;
+    pointer-events:auto;
+    padding:0;
+    gap:6px;
   }
   
   .nav-links a{
-    padding:10px 14px; /* restore comfortable size */
+    padding:8px 12px; /* desktop pill */
     border-radius:8px;
     border-bottom:none;
-    white-space:nowrap; /* keep each item on one line */
-    font-size:16px; /* restore larger text */
+  white-space:nowrap; /* keep each item on one line */
+    font-size:15px; /* slightly smaller nav text */
+    position:relative;
   }
   
   .nav-links a:hover{
-  background:rgba(255,255,255,0.15);
-  padding-left:10px;
+    background:rgba(255,255,255,0.15);
+    padding-left:12px;
+  }
+
+  /* Active link indicator */
+  .nav-links a[aria-current="page"]{
+    background:rgba(255,255,255,0.14);
+    color:#fff;
+  }
+  .nav-links a[aria-current="page"]::after{
+    content:"";
+    position:absolute;
+    left:10px; right:10px; bottom:-6px;
+    height:3px;
+    background:linear-gradient(90deg,#fff,rgba(255,255,255,0.6));
+    border-radius:3px;
   }
 }
 
-/* Slightly reduce navbar inner padding on desktop to reclaim space */
-@media (min-width:1200px){
-  .navbar-inner{ padding:10px 16px; }
+/* Backdrop behind mobile drawer */
+.nav-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.35);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .25s ease;
 }
 
-/* Nudge desktop nav slightly left without changing text size */
-@media (min-width:1200px){
-  .navbar-inner{ padding-right:8px; }
-  .navbar-inner nav{ transform:translateX(-14px); }
-}
-
-/* Ensure no clipping of nav on desktop */
-@media (min-width:1200px){
-  .navbar, .navbar-inner{ overflow:visible; }
-}
+body.nav-open .nav-backdrop{ opacity:1; pointer-events:auto; }
 
 /* =========
    Hero
