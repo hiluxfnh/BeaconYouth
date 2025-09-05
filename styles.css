@@ -218,7 +218,7 @@ img, video, svg{
   opacity:0;
   pointer-events:none;
   transition: transform .25s ease, opacity .25s ease;
-  z-index:11000;
+  z-index:1001;
 }
 
 .nav-links.show{
@@ -277,9 +277,9 @@ img, video, svg{
   white-space:nowrap; /* keep each item on one line */
     font-size:15px; /* slightly smaller nav text */
     position:relative;
-  /* Desktop: transparent base so row stays compact */
-  background:transparent;
-  border:none;
+  /* Desktop: subtle pill background for each item */
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.18);
   margin:0;
   }
   
@@ -290,7 +290,8 @@ img, video, svg{
 
   /* Active link indicator */
   .nav-links a[aria-current="page"]{
-    background:rgba(255,255,255,0.14);
+    background:rgba(255,255,255,0.22);
+    border-color:rgba(255,255,255,0.3);
     color:#fff;
   }
   .nav-links a[aria-current="page"]::after{
@@ -304,24 +305,8 @@ img, video, svg{
 }
 
 /* Backdrop behind mobile drawer */
-/* Backdrop overlay (mobile only): dark + blurred */
-.nav-backdrop{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.55);
-  backdrop-filter: blur(8px) saturate(1.1);
-  -webkit-backdrop-filter: blur(8px) saturate(1.1);
-  opacity:0;
-  pointer-events:none;
-  transition:opacity .25s ease;
-  z-index:10990; /* under the drawer (11000) */
-}
-
-body.nav-open .nav-backdrop{ opacity:1; pointer-events:auto; }
-
-@media (min-width:980px){
-  .nav-backdrop{ display:none !important; }
-}
+/* Backdrop removed per request */
+.nav-backdrop{ display:none !important; }
 
 /* Lock background scrolling when nav is open */
 body.nav-open{
