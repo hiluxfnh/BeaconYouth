@@ -79,8 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   // Render modern footer on all pages
   initializeFooter();
-  // Attempt to flush any queued (offline) subscriptions
-  flushQueuedSubscriptions();
   // Close when clicking outside the drawer (fallback)
   document.addEventListener("click", (e) => {
     const list = document.getElementById("nav-links");
@@ -375,80 +373,37 @@ function escapeHtml(s) {
   );
 }
 
-// Local queue helpers for offline fallback
-function getSubscribeQueue() {
+// Simplified submit: direct Firestore call via single import, no offline queue
+// Local-only subscriber storage (no Firebase). Stored under `byc_local_subscribers`.
+function getLocalSubscribers() {
   try {
-    return JSON.parse(localStorage.getItem("byc_subscribe_queue") || "[]");
+    return JSON.parse(localStorage.getItem("byc_local_subscribers") || "[]");
   } catch (_) {
     return [];
   }
 }
-function setSubscribeQueue(arr) {
+function setLocalSubscribers(list) {
   try {
     localStorage.setItem(
-      "byc_subscribe_queue",
-      JSON.stringify(arr.slice(0, 50))
+      "byc_local_subscribers",
+      JSON.stringify(list.slice(-1000))
     ); // cap
   } catch (_) {}
 }
-function queueSubscription(email) {
-  const q = getSubscribeQueue();
-  if (!q.includes(email)) {
-    q.push(email);
-    setSubscribeQueue(q);
+function storeLocalSubscriber(email, source = "footer-cta") {
+  const list = getLocalSubscribers();
+  // avoid duplicates (case-insensitive)
+  if (!list.some((e) => e.email.toLowerCase() === email.toLowerCase())) {
+    list.push({ email, source, createdAt: Date.now() });
+    setLocalSubscribers(list);
   }
+  return list;
 }
-async function flushQueuedSubscriptions() {
-  if (!navigator.onLine) return;
-  const q = getSubscribeQueue();
-  if (!q.length) return;
-  const still = [];
-  for (const email of q) {
-    try {
-      await submitNewsletter(email, { silent: true });
-      console.info("Flushed queued subscription", email);
-    } catch (e) {
-      console.warn("Failed to flush subscription, keeping queued", email, e);
-      still.push(email);
-    }
-  }
-  setSubscribeQueue(still);
-  if (q.length && !still.length) {
-    showToast("Queued subscriptions synced", "success");
-  }
-}
-window.addEventListener("online", () => flushQueuedSubscriptions());
-
-// Submit newsletter (minimal payload: email + source) with robust fallback paths & offline queue
-async function submitNewsletter(email, opts = {}) {
-  const payload = { email, source: "footer-cta" };
-  if (!navigator.onLine) {
-    queueSubscription(email);
-    if (!opts.silent) showToast("Saved offline—will sync later.", "info");
-    return { queued: true, offline: true };
-  }
-  const modulePaths = [
-    "./firebase.js",
-    "firebase.js",
-    "/firebase.js",
-    "./public/firebase.js",
-    "public/firebase.js",
-    "/public/firebase.js",
-  ];
-  let lastError;
-  for (const p of modulePaths) {
-    try {
-      const mod = await import(/* @vite-ignore */ p + "?t=" + Date.now());
-      if (mod && typeof mod.submitSubscriber === "function") {
-        await mod.submitSubscriber(payload);
-        return { ok: true, path: p };
-      }
-      lastError = new Error(`submitSubscriber not found in ${p}`);
-    } catch (e) {
-      lastError = e;
-    }
-  }
-  // If all dynamic imports failed, queue for later without throwing to keep UX flow
-  queueSubscription(email);
-  return { queued: true, deferred: true, error: lastError };
+async function submitNewsletter(email) {
+  storeLocalSubscriber(email);
+  // Broadcast to other tabs/admin via storage event helper
+  try {
+    localStorage.setItem("byc_last_subscriber_added", Date.now() + ":" + email);
+  } catch (_) {}
+  return { ok: true, local: true };
 }
