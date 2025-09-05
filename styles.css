@@ -218,7 +218,7 @@ img, video, svg{
   opacity:0;
   pointer-events:none;
   transition: transform .25s ease, opacity .25s ease;
-  z-index:1001;
+  z-index:11000;
 }
 
 .nav-links.show{
@@ -314,7 +314,7 @@ img, video, svg{
   opacity:0;
   pointer-events:none;
   transition:opacity .25s ease;
-  z-index:1000; /* under the drawer (1001) */
+  z-index:10990; /* under the drawer (11000) */
 }
 
 body.nav-open .nav-backdrop{ opacity:1; pointer-events:auto; }
