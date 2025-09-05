@@ -24,13 +24,23 @@ function generateNavigation() {
 function initializeNavigation() {
   const navLinksContainer = document.getElementById("nav-links");
   if (navLinksContainer) {
-  // Inject a close button row first (mobile drawer)
-  const closeRow = `<li class="nav-close-li"><button type="button" class="nav-close-btn" aria-label="Close navigation" onclick="closeMenu()">Close ✕</button></li>`;
-  navLinksContainer.innerHTML = closeRow + generateNavigation();
+    // Inject a close button row first (mobile drawer)
+    const closeRow = `<li class="nav-close-li"><button type="button" class="nav-close-btn" aria-label="Close navigation" onclick="closeMenu()">Close ✕</button></li>`;
+    navLinksContainer.innerHTML = closeRow + generateNavigation();
   }
 }
 
 // Toggle mobile menu
+function ensureBackdrop() {
+  let el = document.querySelector('.nav-backdrop');
+  if (!el) {
+    el = document.createElement('div');
+    el.className = 'nav-backdrop';
+    document.body.appendChild(el);
+  }
+  return el;
+}
+
 function ensureBackdrop() {
   let backdrop = document.querySelector(".nav-backdrop");
   if (!backdrop) {
@@ -47,9 +57,10 @@ function openMenu() {
   const list = document.getElementById("nav-links");
   const btn = document.querySelector(".menu-toggle");
   if (!list) return;
+  ensureBackdrop();
   list.classList.add("show");
   document.body.classList.add("nav-open");
-  if (btn) btn.setAttribute('aria-expanded', 'true');
+  if (btn) btn.setAttribute("aria-expanded", "true");
 }
 
 function closeMenu() {
@@ -58,7 +69,7 @@ function closeMenu() {
   if (!list) return;
   list.classList.remove("show");
   document.body.classList.remove("nav-open");
-  if (btn) btn.setAttribute('aria-expanded', 'false');
+  if (btn) btn.setAttribute("aria-expanded", "false");
 }
 
 function toggleMenu() {
@@ -77,6 +88,9 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.setAttribute("aria-controls", "nav-links");
     btn.setAttribute("aria-expanded", "false");
   }
+  // Backdrop click closes menu
+  const backdrop = ensureBackdrop();
+  backdrop.addEventListener('click', closeMenu);
   // Close when clicking outside the drawer (fallback)
   document.addEventListener("click", (e) => {
     const list = document.getElementById("nav-links");
@@ -102,5 +116,5 @@ document.addEventListener("DOMContentLoaded", () => {
   const onResize = () => {
     if (window.innerWidth >= 980) closeMenu();
   };
-  window.addEventListener('resize', onResize);
+  window.addEventListener("resize", onResize);
 });

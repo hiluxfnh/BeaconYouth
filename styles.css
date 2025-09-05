@@ -304,8 +304,24 @@ img, video, svg{
 }
 
 /* Backdrop behind mobile drawer */
-/* Backdrop removed per request */
-.nav-backdrop{ display:none !important; }
+/* Backdrop overlay (mobile only): dark + blurred */
+.nav-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.55);
+  backdrop-filter: blur(8px) saturate(1.1);
+  -webkit-backdrop-filter: blur(8px) saturate(1.1);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .25s ease;
+  z-index:1000; /* under the drawer (1001) */
+}
+
+body.nav-open .nav-backdrop{ opacity:1; pointer-events:auto; }
+
+@media (min-width:980px){
+  .nav-backdrop{ display:none !important; }
+}
 
 /* Lock background scrolling when nav is open */
 body.nav-open{
