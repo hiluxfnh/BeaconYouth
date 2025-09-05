@@ -7,6 +7,11 @@ import {
   getFirestore,
   collection,
   addDoc,
+  getCountFromServer,
+  getDocs,
+  query,
+  orderBy,
+  limit as qLimit,
   serverTimestamp,
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
@@ -51,4 +56,29 @@ export async function submitContact(data) {
     createdAt: serverTimestamp(),
   });
   return docRef.id;
+}
+
+// Newsletter
+export async function submitSubscriber(data) {
+  const docRef = await addDoc(collection(db, "subscribers"), {
+    ...data,
+    createdAt: serverTimestamp(),
+  });
+  return docRef.id;
+}
+
+export async function fetchSubscribers(max = 500) {
+  const q = query(
+    collection(db, "subscribers"),
+    orderBy("createdAt", "desc"),
+    qLimit(max)
+  );
+  const snap = await getDocs(q);
+  return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+}
+
+export async function getSubscribersCount() {
+  const coll = collection(db, "subscribers");
+  const snapshot = await getCountFromServer(coll);
+  return snapshot.data().count || 0;
 }

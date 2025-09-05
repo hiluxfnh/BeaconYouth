@@ -178,6 +178,32 @@
             </table>
           </div>
         </section>
+
+        <section class="card" id="subsCard" style="display: none">
+          <div class="admin-bar">
+            <h3 style="margin: 0">Newsletter Subscribers</h3>
+            <div class="toolbar">
+              <span id="subsCount" class="admin-chip">0 subscribers</span>
+              <input
+                id="subsFilter"
+                class="input"
+                placeholder="Filter by email..."
+              />
+              <button id="reloadSubs" class="btn">Reload</button>
+            </div>
+          </div>
+          <div style="overflow: auto">
+            <table class="table" id="subsTable">
+              <thead>
+                <tr>
+                  <th>Email</th>
+                  <th>Doc ID</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
       </div>
     </main>
 
@@ -228,6 +254,7 @@
         fetchContacts,
         updateSubmissionStatus,
       } from "./firebase.js";
+      import { getSubscribersCount, fetchSubscribers } from "./firebase.js";
 
       const authInfo = document.getElementById("authInfo");
       const signInBtn = document.getElementById("signInBtn");
@@ -235,8 +262,11 @@
       const adminNote = document.getElementById("adminNote");
       const inquiriesCard = document.getElementById("inquiriesCard");
       const contactsCard = document.getElementById("contactsCard");
+      const subsCard = document.getElementById("subsCard");
       const inqTableBody = document.querySelector("#inquiriesTable tbody");
       const conTableBody = document.querySelector("#contactsTable tbody");
+      const subsTableBody = document.querySelector("#subsTable tbody");
+      const subsCount = document.getElementById("subsCount");
 
       function fmt(ts) {
         try {
@@ -325,6 +355,29 @@
           .join("");
       }
 
+      async function loadSubscribers() {
+        const rows = await fetchSubscribers(500);
+        const filterVal = document
+          .getElementById("subsFilter")
+          .value.toLowerCase();
+        const filtered = rows.filter((r) =>
+          (r.email || "").toLowerCase().includes(filterVal)
+        );
+        subsCount.textContent = `${rows.length} subscriber${
+          rows.length === 1 ? "" : "s"
+        }`;
+        subsTableBody.innerHTML = filtered
+          .map(
+            (r) => `
+          <tr>
+            <td class="mono">${esc(r.email)}</td>
+            <td class="mono" title="${esc(r.id)}">${esc(r.id)}</td>
+          </tr>
+        `
+          )
+          .join("");
+      }
+
       document
         .getElementById("inqFilter")
         .addEventListener("input", loadInquiries);
@@ -332,11 +385,17 @@
         .getElementById("conFilter")
         .addEventListener("input", loadContacts);
       document
+        .getElementById("subsFilter")
+        .addEventListener("input", loadSubscribers);
+      document
         .getElementById("reloadInq")
         .addEventListener("click", loadInquiries);
       document
         .getElementById("reloadCon")
         .addEventListener("click", loadContacts);
+      document
+        .getElementById("reloadSubs")
+        .addEventListener("click", loadSubscribers);
 
       document.addEventListener("change", async (e) => {
         const sel = e.target.closest("select[data-id]");
@@ -374,8 +433,10 @@
           adminNote.style.display = "none";
           inquiriesCard.style.display = "";
           contactsCard.style.display = "";
+          subsCard.style.display = "";
           await loadInquiries();
           await loadContacts();
+          await loadSubscribers();
         } else {
           authInfo.textContent = "Not signed in";
           signInBtn.style.display = "";
@@ -383,6 +444,7 @@
           adminNote.style.display = "";
           inquiriesCard.style.display = "none";
           contactsCard.style.display = "none";
+          subsCard.style.display = "none";
         }
       });
     </script>

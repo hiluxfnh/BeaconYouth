@@ -35,7 +35,6 @@ service cloud.firestore {
 					// Read/update/delete restricted to admins
 							allow read, update, delete: if request.auth != null &&
 								request.auth.token.email in [
-									'hiluxfokou33@gmail.com',
 									'beaconyouthcollective@gmail.com'
 								];
 		}
@@ -56,9 +55,26 @@ service cloud.firestore {
 
 			allow read, update, delete: if request.auth != null &&
 			  request.auth.token.email in [
-			    'hiluxfokou33@gmail.com',
 			    'beaconyouthcollective@gmail.com'
 			  ];
+		}
+
+		// Newsletter subscribers (email only, minimal data)
+		match /subscribers/{docId} {
+			// Anyone can create a subscriber doc with limited fields
+			allow create: if
+				request.resource.data.keys().hasOnly(['email','source','createdAt']) &&
+				request.resource.data.keys().hasAll(['email','createdAt']) &&
+				nonEmptyString(request.resource.data.email, 320) &&
+				(request.resource.data.source == null || request.resource.data.source is string);
+
+			// Only admin can read list
+			allow read: if request.auth != null && request.auth.token.email in [
+				'beaconyouthcollective@gmail.com'
+			];
+
+			// No public update/delete (could add admin if needed)
+			allow update, delete: if false;
 		}
 	}
 }

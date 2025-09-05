@@ -8,12 +8,14 @@ import {
   collection,
   addDoc,
   getDocs,
+  getCountFromServer,
   query,
   orderBy,
   limit as qLimit,
   updateDoc,
   doc,
   serverTimestamp,
+  onSnapshot,
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 import {
   getAuth,
@@ -114,4 +116,50 @@ export async function fetchContacts(max = 100) {
 export async function updateSubmissionStatus(kind, id, status) {
   const ref = doc(db, kind, id);
   await updateDoc(ref, { status });
+}
+
+// Newsletter subscribers
+// data shape: { email, locale, timezone, userAgent, source, page, referrer, location?: {lat, lon, accuracy}, createdAt }
+export async function submitSubscriber(data) {
+  const docRef = await addDoc(collection(db, "subscribers"), {
+    ...data,
+    createdAt: serverTimestamp(),
+  });
+  return docRef.id;
+}
+
+export async function fetchSubscribers(max = 500) {
+  const q = query(
+    collection(db, "subscribers"),
+    orderBy("createdAt", "desc"),
+    qLimit(max)
+  );
+  const snap = await getDocs(q);
+  return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+}
+
+export async function getSubscribersCount() {
+  const coll = collection(db, "subscribers");
+  const snapshot = await getCountFromServer(coll);
+  return snapshot.data().count || 0;
+}
+
+// Real-time subscription to subscribers collection
+// callback receives (arrayOfSubscribers) each time there's a change
+export function subscribeToSubscribers(cb, max = 500) {
+  const q = query(
+    collection(db, "subscribers"),
+    orderBy("createdAt", "desc"),
+    qLimit(max)
+  );
+  return onSnapshot(
+    q,
+    (snap) => {
+      const data = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+      cb(data);
+    },
+    (err) => {
+      console.error("subscribeToSubscribers error", err);
+    }
+  );
 }
