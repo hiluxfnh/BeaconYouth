@@ -77,8 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.setAttribute("aria-controls", "nav-links");
     btn.setAttribute("aria-expanded", "false");
   }
-  const backdrop = ensureBackdrop();
-  backdrop.addEventListener("click", closeMenu);
   // Close when clicking outside the drawer (fallback)
   document.addEventListener("click", (e) => {
     const list = document.getElementById("nav-links");

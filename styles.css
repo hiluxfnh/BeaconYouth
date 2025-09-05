@@ -297,17 +297,8 @@ img, video, svg{
 }
 
 /* Backdrop behind mobile drawer */
-.nav-backdrop{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.6); /* darker backdrop */
-  opacity:0;
-  pointer-events:none;
-  transition:opacity .25s ease;
-  z-index:1000;
-}
-
-body.nav-open .nav-backdrop{ opacity:1; pointer-events:auto; }
+/* Backdrop removed per request */
+.nav-backdrop{ display:none !important; }
 
 /* Lock background scrolling when nav is open */
 body.nav-open{
