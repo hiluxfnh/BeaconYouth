@@ -162,13 +162,21 @@ img, video, svg{
 }
 
 /* Show long brand text later so links have room */
-@media (min-width:1280px){
+@media (min-width:1400px){
   .brand strong{ display:block; }
 }
 
 /* On mid-width desktops, slightly reduce brand logo height to free space */
-@media (min-width:980px) and (max-width:1279px){
-  .brand img{ height:36px; padding:3px; }
+@media (min-width:980px) and (max-width:1399px){
+  .brand img{ height:34px; padding:3px; }
+}
+
+/* Between 1200–1399px, make nav items a bit more compact */
+@media (min-width:1200px) and (max-width:1399px){
+  .nav-links a{
+    padding:6px 8px;
+    font-size:14px;
+  }
 }
 
 .menu-toggle{
