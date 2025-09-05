@@ -24,7 +24,9 @@ function generateNavigation() {
 function initializeNavigation() {
   const navLinksContainer = document.getElementById("nav-links");
   if (navLinksContainer) {
-    navLinksContainer.innerHTML = generateNavigation();
+  // Inject a close button row first (mobile drawer)
+  const closeRow = `<li class="nav-close-li"><button type="button" class="nav-close-btn" aria-label="Close navigation" onclick="closeMenu()">Close ✕</button></li>`;
+  navLinksContainer.innerHTML = closeRow + generateNavigation();
   }
 }
 
@@ -97,4 +99,10 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeMenu();
   });
+
+  // Close the drawer automatically when switching to desktop
+  const onResize = () => {
+    if (window.innerWidth >= 980) closeMenu();
+  };
+  window.addEventListener('resize', onResize);
 });

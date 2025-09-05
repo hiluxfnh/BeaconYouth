@@ -218,7 +218,7 @@ img, video, svg{
   opacity:0;
   pointer-events:none;
   transition: transform .25s ease, opacity .25s ease;
-  z-index:60;
+  z-index:1001;
 }
 
 .nav-links.show{
@@ -304,7 +304,7 @@ img, video, svg{
   opacity:0;
   pointer-events:none;
   transition:opacity .25s ease;
-  z-index:50;
+  z-index:1000;
 }
 
 body.nav-open .nav-backdrop{ opacity:1; pointer-events:auto; }
@@ -312,6 +312,36 @@ body.nav-open .nav-backdrop{ opacity:1; pointer-events:auto; }
 /* Lock background scrolling when nav is open */
 body.nav-open{
   overflow:hidden;
+}
+
+/* Hide backdrop on desktop entirely */
+@media (min-width:980px){
+  .nav-backdrop{ display:none !important; }
+}
+
+/* Mobile drawer header close button */
+.nav-close{
+  display:flex;
+  justify-content:flex-end;
+  margin-bottom:8px;
+}
+
+.nav-close-btn{
+  appearance:none;
+  border:none;
+  background:rgba(255,255,255,0.12);
+  color:#fff;
+  padding:8px 12px;
+  border-radius:8px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.nav-close-btn:hover{ background:rgba(255,255,255,0.18); }
+
+/* Ensure the injected close button list item is hidden on desktop */
+@media (min-width:980px){
+  .nav-close-li{ display:none; }
 }
 
 /* =========
