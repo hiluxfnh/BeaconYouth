@@ -229,17 +229,20 @@ img, video, svg{
 
 .nav-links a{
   display:block;
-  padding:14px 18px;
+  padding:14px 16px;
   color:#fff;
   text-decoration:none;
   font-weight:600;
   transition:var(--transition);
-  border-bottom:1px solid rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.12);
+  background:rgba(255,255,255,0.08);
+  border-radius:12px;
+  margin:6px 0;
 }
 
 .nav-links a:hover{
-  background:rgba(255,255,255,0.1);
-  padding-left:22px;
+  background:rgba(255,255,255,0.16);
+  padding-left:16px;
 }
 
 .nav-links li:last-child a{
@@ -270,10 +273,14 @@ img, video, svg{
   .nav-links a{
     padding:8px 12px; /* desktop pill */
     border-radius:8px;
-    border-bottom:none;
+  border-bottom:none;
   white-space:nowrap; /* keep each item on one line */
     font-size:15px; /* slightly smaller nav text */
     position:relative;
+  /* Desktop: transparent base so row stays compact */
+  background:transparent;
+  border:none;
+  margin:0;
   }
   
   .nav-links a:hover{
