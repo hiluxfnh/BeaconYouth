@@ -130,7 +130,7 @@ img, video, svg{
 .navbar-inner nav{
   flex:1 1 auto;
   display:flex;
-  justify-content:flex-end;
+  justify-content:flex-end; /* align right, we'll nudge with margin */
   min-width:0;
 }
 
@@ -162,22 +162,17 @@ img, video, svg{
 }
 
 /* Show long brand text later so links have room */
-@media (min-width:1400px){
+@media (min-width:1280px){
   .brand strong{ display:block; }
 }
 
 /* On mid-width desktops, slightly reduce brand logo height to free space */
 @media (min-width:980px) and (max-width:1399px){
-  .brand img{ height:34px; padding:3px; }
+  .brand img{ height:38px; padding:4px; }
 }
 
 /* Between 1200–1399px, make nav items a bit more compact */
-@media (min-width:1200px) and (max-width:1399px){
-  .nav-links a{
-    padding:6px 8px;
-    font-size:14px;
-  }
-}
+/* remove extra-tight step to keep nav readable */
 
 .menu-toggle{
   appearance:none;
@@ -252,14 +247,15 @@ img, video, svg{
     box-shadow:none;
     min-width:auto;
   gap:0;
+  margin-right:12px; /* slight left nudge to reveal last item */
   }
   
   .nav-links a{
-  padding:6px 10px; /* tighter to fit more items */
+    padding:10px 14px; /* restore comfortable size */
     border-radius:8px;
     border-bottom:none;
-  white-space:nowrap; /* keep each item on one line */
-  font-size:15px; /* slightly smaller nav text */
+    white-space:nowrap; /* keep each item on one line */
+    font-size:16px; /* restore larger text */
   }
   
   .nav-links a:hover{
@@ -273,9 +269,15 @@ img, video, svg{
   .navbar-inner{ padding:10px 16px; }
 }
 
-/* Extra-tight step for narrower desktops so last item doesn’t clip */
-@media (min-width:1200px) and (max-width:1299px){
-  .nav-links a{ font-size:13px; padding:6px 8px; }
+/* Nudge desktop nav slightly left without changing text size */
+@media (min-width:1200px){
+  .navbar-inner{ padding-right:8px; }
+  .navbar-inner nav{ transform:translateX(-14px); }
+}
+
+/* Ensure no clipping of nav on desktop */
+@media (min-width:1200px){
+  .navbar, .navbar-inner{ overflow:visible; }
 }
 
 /* =========
