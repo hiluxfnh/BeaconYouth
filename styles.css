@@ -200,8 +200,8 @@ img, video, svg{
   background:var(--green-700);
   border:1px solid rgba(255,255,255,0.1);
   border-radius:12px;
-  width:min(92vw, 320px);
-  max-width:92vw;
+  width:min(94vw, 360px);
+  max-width:94vw;
   box-shadow:var(--hover-shadow);
   overflow:hidden;
 }
@@ -229,7 +229,7 @@ img, video, svg{
   border-bottom:none;
 }
 
-@media (min-width:980px){
+@media (min-width:1200px){
   .menu-toggle{
     display:none;
   }
