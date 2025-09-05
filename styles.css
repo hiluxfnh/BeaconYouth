@@ -161,9 +161,14 @@ img, video, svg{
   font-size:18px;
 }
 
-/* Show long brand text a bit later to keep room for links on medium screens */
-@media (min-width:1100px){
+/* Show long brand text later so links have room */
+@media (min-width:1280px){
   .brand strong{ display:block; }
+}
+
+/* On mid-width desktops, slightly reduce brand logo height to free space */
+@media (min-width:980px) and (max-width:1279px){
+  .brand img{ height:36px; padding:3px; }
 }
 
 .menu-toggle{
@@ -233,23 +238,25 @@ img, video, svg{
     display:flex;
     position:static;
     flex-direction:row;
-  flex-wrap:wrap; /* allow wrapping instead of overflowing */
+  flex-wrap:nowrap; /* keep on one line */
     background:transparent;
     border:none;
     box-shadow:none;
     min-width:auto;
+  gap:0;
   }
   
   .nav-links a{
-  padding:8px 12px; /* slightly tighter to fit more items */
+  padding:6px 10px; /* tighter to fit more items */
     border-radius:8px;
     border-bottom:none;
   white-space:nowrap; /* keep each item on one line */
+  font-size:15px; /* slightly smaller nav text */
   }
   
   .nav-links a:hover{
   background:rgba(255,255,255,0.15);
-  padding-left:12px;
+  padding-left:10px;
   }
 }
 
