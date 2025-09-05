@@ -2,7 +2,7 @@
 const navigationConfig = [
   { href: "about.html", text: "About" },
   { href: "team.html", text: "Team" },
-  { href: "get-involved.html", text: "Get Involved" },
+  { href: "get-involved.html", text: "Get&nbsp;Involved" },
   { href: "news.html", text: "News" },
   { href: "contact.html", text: "Contact" },
 ];
