@@ -205,6 +205,7 @@ img, video, svg{
   opacity:0;
   pointer-events:none;
   transition: transform .25s ease, opacity .25s ease;
+  z-index:60;
 }
 
 .nav-links.show{
@@ -290,9 +291,15 @@ img, video, svg{
   opacity:0;
   pointer-events:none;
   transition:opacity .25s ease;
+  z-index:50;
 }
 
 body.nav-open .nav-backdrop{ opacity:1; pointer-events:auto; }
+
+/* Lock background scrolling when nav is open */
+body.nav-open{
+  overflow:hidden;
+}
 
 /* =========
    Hero

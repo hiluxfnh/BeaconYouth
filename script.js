@@ -30,49 +30,82 @@ function initializeNavigation() {
 
 // Toggle mobile menu
 function ensureBackdrop() {
-  let backdrop = document.querySelector('.nav-backdrop');
+  let backdrop = document.querySelector(".nav-backdrop");
   if (!backdrop) {
-    backdrop = document.createElement('div');
-    backdrop.className = 'nav-backdrop';
+    backdrop = document.createElement("div");
+    backdrop.className = "nav-backdrop";
     document.body.appendChild(backdrop);
   }
+  // Ensure it's not hidden by the hidden attribute
+  backdrop.removeAttribute("hidden");
   return backdrop;
 }
 
 function openMenu() {
-  const list = document.getElementById('nav-links');
-  const btn = document.querySelector('.menu-toggle');
+  const list = document.getElementById("nav-links");
+  const btn = document.querySelector(".menu-toggle");
   if (!list) return;
-  list.classList.add('show');
-  document.body.classList.add('nav-open');
-  if (btn) btn.setAttribute('aria-expanded', 'true');
+  list.classList.add("show");
+  document.body.classList.add("nav-open");
+  if (btn) {
+    btn.setAttribute("aria-expanded", "true");
+    // Change burger to X
+    btn.dataset.icon = btn.textContent;
+    btn.textContent = "✕";
+    btn.title = "Close menu";
+  }
 }
 
 function closeMenu() {
-  const list = document.getElementById('nav-links');
-  const btn = document.querySelector('.menu-toggle');
+  const list = document.getElementById("nav-links");
+  const btn = document.querySelector(".menu-toggle");
   if (!list) return;
-  list.classList.remove('show');
-  document.body.classList.remove('nav-open');
-  if (btn) btn.setAttribute('aria-expanded', 'false');
+  list.classList.remove("show");
+  document.body.classList.remove("nav-open");
+  if (btn) {
+    btn.setAttribute("aria-expanded", "false");
+    // Restore burger icon
+    btn.textContent = btn.dataset.icon || "☰";
+    btn.title = "Open menu";
+  }
 }
 
 function toggleMenu() {
-  const isOpen = document.getElementById('nav-links')?.classList.contains('show');
-  if (isOpen) closeMenu(); else openMenu();
+  const isOpen = document
+    .getElementById("nav-links")
+    ?.classList.contains("show");
+  if (isOpen) closeMenu();
+  else openMenu();
 }
 
 // Initialize navigation when page loads
 document.addEventListener("DOMContentLoaded", () => {
   initializeNavigation();
-  const btn = document.querySelector('.menu-toggle');
+  const btn = document.querySelector(".menu-toggle");
   if (btn) {
-    btn.setAttribute('aria-controls', 'nav-links');
-    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute("aria-controls", "nav-links");
+    btn.setAttribute("aria-expanded", "false");
   }
   const backdrop = ensureBackdrop();
-  backdrop.addEventListener('click', closeMenu);
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeMenu();
+  backdrop.addEventListener("click", closeMenu);
+  // Close when clicking outside the drawer (fallback)
+  document.addEventListener("click", (e) => {
+    const list = document.getElementById("nav-links");
+    const btn2 = document.querySelector(".menu-toggle");
+    if (!document.body.classList.contains("nav-open")) return;
+    if (list && list.contains(e.target)) return;
+    if (btn2 && btn2.contains(e.target)) return;
+    closeMenu();
+  });
+  // Close on link click inside the drawer
+  const list = document.getElementById("nav-links");
+  if (list) {
+    list.addEventListener("click", (e) => {
+      const t = e.target;
+      if (t && t.tagName === "A") closeMenu();
+    });
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMenu();
   });
 });
