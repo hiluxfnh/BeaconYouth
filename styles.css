@@ -126,6 +126,14 @@ img, video, svg{
   min-height:64px;
 }
 
+/* Let the nav area take remaining space */
+.navbar-inner nav{
+  flex:1 1 auto;
+  display:flex;
+  justify-content:flex-end;
+  min-width:0;
+}
+
 .brand{
   display:flex;
   align-items:center;
@@ -153,10 +161,9 @@ img, video, svg{
   font-size:18px;
 }
 
-@media (min-width:768px){
-  .brand strong{
-    display:block;
-  }
+/* Show long brand text a bit later to keep room for links on medium screens */
+@media (min-width:1100px){
+  .brand strong{ display:block; }
 }
 
 .menu-toggle{
@@ -226,6 +233,7 @@ img, video, svg{
     display:flex;
     position:static;
     flex-direction:row;
+  flex-wrap:wrap; /* allow wrapping instead of overflowing */
     background:transparent;
     border:none;
     box-shadow:none;
@@ -233,14 +241,15 @@ img, video, svg{
   }
   
   .nav-links a{
-    padding:10px 14px;
+  padding:8px 12px; /* slightly tighter to fit more items */
     border-radius:8px;
     border-bottom:none;
+  white-space:nowrap; /* keep each item on one line */
   }
   
   .nav-links a:hover{
-    background:rgba(255,255,255,0.15);
-    padding-left:14px;
+  background:rgba(255,255,255,0.15);
+  padding-left:12px;
   }
 }
 
