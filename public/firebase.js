@@ -24,17 +24,7 @@ import {
   onAuthStateChanged,
   signOut,
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
-
-// Your Firebase config (provided)
-export const firebaseConfig = {
-  apiKey: "AIzaSyBPdyPCIlRQjw2MjSPinQYhV8shfypSHCM",
-  authDomain: "byc-website-3ee13.firebaseapp.com",
-  projectId: "byc-website-3ee13",
-  storageBucket: "byc-website-3ee13.firebasestorage.app",
-  messagingSenderId: "1706290118",
-  appId: "1:1706290118:web:9539232b5cb5df531360c7",
-  measurementId: "G-2YZ4B6YB6Z",
-};
+import { firebaseConfig } from "./config.js";
 
 // Initialize
 const app = initializeApp(firebaseConfig);
