@@ -3,14 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Team — Beacon Youth Collective</title>
+    <title>Team - Beacon Youth Collective</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/png" href="assets/logo_initials.png" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <!-- Font Awesome for social media icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -24,10 +23,8 @@
           <strong>Beacon Youth Collective</strong>
         </a>
         <nav>
-          <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-          <ul class="nav-links" id="nav-links">
-            <!-- Navigation will be populated by script.js -->
-          </ul>
+          <button class="menu-toggle" onclick="toggleMenu()">Menu</button>
+          <ul class="nav-links" id="nav-links"></ul>
         </nav>
       </div>
     </header>
@@ -36,28 +33,21 @@
       <div class="container stack">
         <div>
           <div class="kicker">Our Team</div>
-          <h1 class="h2">Leadership & Youth Advisory</h1>
+          <h1 class="h2">Leadership and program leads</h1>
           <p class="lead">
-            BYC is led by passionate young leaders committed to driving change
-            across Education, Climate, Technology, and Gender Equality. Meet the
-            team making it happen.
+            BYC is led by young organizers, educators, and community builders
+            committed to practical youth leadership across education, climate,
+            technology, and gender equality.
           </p>
         </div>
 
-        <!-- Executive Leadership -->
-        <div>
-          <h2
-            style="
-              font-size: 24px;
-              color: var(--green-700);
-              margin-bottom: 24px;
-            "
-          >
-            Executive Leadership
+        <section class="stack">
+          <h2 style="font-size: 24px; color: var(--green-700); margin: 0">
+            Executive leadership
           </h2>
+
           <div class="team-grid">
-            <!-- Founder & Executive Director -->
-            <div class="team-card">
+            <article class="team-card">
               <img
                 src="assets/images/team/hilux.jpg"
                 alt="Hilux Fokou Ngoumo"
@@ -67,11 +57,11 @@
               />
               <div class="team-content">
                 <h3 class="team-name">Hilux Fokou Ngoumo</h3>
-                <p class="team-title">Founder & Executive Director</p>
+                <p class="team-title">Founder and Executive Director</p>
                 <p class="team-description">
-                  Visionary leader representing youth in global forums (CSW,
-                  COP). Drives strategy across programs and partnerships,
-                  ensuring BYC's impact reaches communities across Cameroon.
+                  Leads strategy, partnerships, and external representation for
+                  BYC, with a strong focus on youth policy engagement, climate
+                  action, and international advocacy.
                 </p>
                 <div class="social-links">
                   <a
@@ -88,7 +78,7 @@
                     target="_blank"
                     rel="noopener"
                     class="social-link"
-                    title="X (Twitter)"
+                    title="X"
                   >
                     <i class="fab fa-twitter"></i>
                   </a>
@@ -103,10 +93,9 @@
                   </a>
                 </div>
               </div>
-            </div>
+            </article>
 
-            <!-- Secretary & Education Lead -->
-            <div class="team-card">
+            <article class="team-card">
               <img
                 src="assets/images/team/audrey.jpg"
                 alt="Baakeut Dourmani Audrey Lydie"
@@ -116,11 +105,11 @@
               />
               <div class="team-content">
                 <h3 class="team-name">Baakeut Dourmani Audrey Lydie</h3>
-                <p class="team-title">Secretary & Education Lead</p>
+                <p class="team-title">Secretary and Education Lead</p>
                 <p class="team-description">
-                  Oversees organizational documentation and communications while
-                  leading our Education initiatives. Passionate about digital
-                  literacy and youth empowerment through education.
+                  Oversees documentation, communications, and education
+                  programming, with a focus on digital literacy and youth
+                  empowerment through learning.
                 </p>
                 <div class="social-links">
                   <a
@@ -143,49 +132,33 @@
                   </a>
                 </div>
               </div>
-            </div>
+            </article>
 
-            <!-- Treasurer -->
-            <div class="team-card">
-              <div class="team-photo placeholder-photo">TR</div>
+            <article class="team-card">
+              <div class="team-photo placeholder-photo">TC</div>
               <div class="team-content">
                 <h3 class="team-name">Tsiaguh Mbwame Carine</h3>
                 <p class="team-title">Advisory Board Member</p>
                 <p class="team-description">
-                Provides strategic guidance and mentorship, supporting program quality,
-      accountability, and ethical leadership. Brings experience in education
-      and youth development to strengthen decision-making and community impact.
+                  Provides strategic guidance and mentorship, helping BYC
+                  strengthen accountability, program quality, and ethical
+                  leadership across its work.
                 </p>
-                <div class="social-links">
-                  <a href="#" class="social-link" title="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                  </a>
-                  <a href="#" class="social-link" title="Twitter/X">
-                    <i class="fab fa-twitter"></i>
-                  </a>
-                  <a href="#" class="social-link" title="Instagram">
-                    <i class="fab fa-instagram"></i>
-                  </a>
-                </div>
+                <p class="muted" style="margin: 16px 0 0">
+                  Social links coming soon.
+                </p>
               </div>
-            </div>
+            </article>
           </div>
-        </div>
+        </section>
 
-        <!-- Program Leadership -->
-        <div>
-          <h2
-            style="
-              font-size: 24px;
-              color: var(--green-700);
-              margin-bottom: 24px;
-            "
-          >
-            Program Leadership
+        <section class="stack">
+          <h2 style="font-size: 24px; color: var(--green-700); margin: 0">
+            Program leadership
           </h2>
+
           <div class="team-grid">
-            <!-- Climate Lead -->
-            <div class="team-card">
+            <article class="team-card">
               <img
                 src="assets/images/team/hilux.jpg"
                 alt="Hilux Fokou Ngoumo"
@@ -195,48 +168,17 @@
               />
               <div class="team-content">
                 <h3 class="team-name">Hilux Fokou Ngoumo</h3>
-                <p class="team-title">Climate Action & Sustainability</p>
+                <p class="team-title">Climate Action and Sustainability</p>
                 <p class="team-description">
-                  Leads climate clubs, adaptation demonstrations, nature-based
-                  solutions, and youth engagement in UNFCCC processes for
-                  climate justice, while steering strategic climate partnerships
-                  and youth-led advocacy.
+                  Leads climate clubs, adaptation demonstrations, and youth-led
+                  climate advocacy that connects local action with wider policy
+                  conversations.
                 </p>
-                <div class="social-links">
-                  <a
-                    href="https://www.linkedin.com/in/fokou/"
-                    target="_blank"
-                    rel="noopener"
-                    class="social-link"
-                    title="LinkedIn"
-                  >
-                    <i class="fab fa-linkedin-in"></i>
-                  </a>
-                  <a
-                    href="https://x.com/fokouhilux1"
-                    target="_blank"
-                    rel="noopener"
-                    class="social-link"
-                    title="Twitter/X"
-                  >
-                    <i class="fab fa-twitter"></i>
-                  </a>
-                  <a
-                    href="https://instagram.com/hilux.me"
-                    target="_blank"
-                    rel="noopener"
-                    class="social-link"
-                    title="Instagram"
-                  >
-                    <i class="fab fa-instagram"></i>
-                  </a>
-                </div>
               </div>
-            </div>
+            </article>
 
-            <!-- Tech Lead -->
-            <div class="team-card">
-                 <img
+            <article class="team-card">
+              <img
                 src="assets/images/team/audrey.jpg"
                 alt="Baakeut Dourmani Audrey Lydie"
                 class="team-photo"
@@ -245,53 +187,34 @@
               />
               <div class="team-content">
                 <h3 class="team-name">Baakeut Dourmani Audrey Lydie</h3>
-                <p class="team-title">Education & Innovation</p>
+                <p class="team-title">Education and Innovation</p>
                 <p class="team-description">
-                  Responsible for leading our Education initiatives. Passionate about digital literacy and youth empowerment through education, Audrey designs and implements programs that equip young people with the skills and knowledge they need to thrive in the digital age.  
+                  Designs and delivers learning programs that equip young people
+                  with practical digital, leadership, and problem-solving
+                  skills.
                 </p>
-                <div class="social-links">
-                  <a
-                    href="https://www.linkedin.com/in/baakeut-audrey-lydie-6388252a2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
-                    target="_blank"
-                    rel="noopener"
-                    class="social-link"
-                    title="LinkedIn"
-                  >
-                    <i class="fab fa-linkedin-in"></i>
-                  </a>
-                  <a
-                    href="https://www.instagram.com/crazy_litzy1?igsh=YXpienI4aHF0cDZy&utm_source=qr"
-                    target="_blank"
-                    rel="noopener"
-                    class="social-link"
-                    title="Instagram"
-                  >
-                    <i class="fab fa-instagram"></i>
-                  </a>
-                </div>
               </div>
-            </div>
+            </article>
 
-            <!-- Gender & GBV Lead -->
-            <div class="team-card">
+            <article class="team-card">
               <img
                 src="assets/images/team/mopa.png?v=20260326"
-                alt="MOPA DJONGMO Raphaël"
+                alt="MOPA DJONGMO Raphael"
                 class="team-photo"
                 loading="lazy"
                 decoding="async"
               />
               <div class="team-content">
-                <h3 class="team-name">MOPA DJONGMO Raphaël</h3>
-                <p class="team-title">Gender Equality & Protection</p>
+                <h3 class="team-name">MOPA DJONGMO Rapha&euml;l</h3>
+                <p class="team-title">Gender Equality and Protection</p>
                 <p class="team-description">
-                  Champions gender equality through prevention curricula, SRHR
-                  education, survivor-centered support, and allyship programs
-                  for safer communities.
+                  Champions gender equality through prevention education,
+                  survivor-centered support, and community allyship for safer
+                  environments.
                 </p>
                 <div class="social-links">
                   <a
-                    href="https://www.linkedin.com/in/mopa-djongmo-raphaël-aa620a296?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+                    href="https://www.linkedin.com/in/mopa-djongmo-rapha%C3%ABl-aa620a296?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
                     target="_blank"
                     rel="noopener"
                     class="social-link"
@@ -304,7 +227,7 @@
                     target="_blank"
                     rel="noopener"
                     class="social-link"
-                    title="Twitter/X"
+                    title="X"
                   >
                     <i class="fab fa-twitter"></i>
                   </a>
@@ -319,34 +242,22 @@
                   </a>
                 </div>
               </div>
-            </div>
+            </article>
           </div>
-        </div>
+        </section>
 
-        <!-- Youth Advisory Council -->
-        <div
+        <section
           class="card"
           style="
             background: linear-gradient(135deg, var(--mint-50), #e8f5e8);
             border: 2px dashed var(--green-600);
           "
         >
-          <h3
-            style="
-              color: var(--green-700);
-              display: flex;
-              align-items: center;
-              gap: 8px;
-            "
-          >
-            <i class="fas fa-users"></i>
-            Youth Advisory Council
-          </h3>
+          <h3 style="color: var(--green-700)">Youth Advisory Council</h3>
           <p>
-            Our Youth Advisory Council comprises diverse young leaders from
-            different regions and sectors, ensuring our programs remain
-            youth-led and community-rooted.
-            <strong>Initial cohort members will be announced soon!</strong>
+            We are building a broader advisory circle of young leaders from
+            different regions and sectors so our work stays youth-led and
+            community-rooted as we grow.
           </p>
           <a
             href="get-involved.html"
@@ -358,55 +269,13 @@
               border-color: var(--green-600);
             "
           >
-            Join Our Team <i class="fas fa-arrow-right"></i>
+            Join our team
           </a>
-        </div>
+        </section>
       </div>
     </main>
 
-    <footer>
-      <div class="container footer-inner">
-        <div class="footer-brand">
-          <img src="assets/logo.png" alt="BYC Logo full" />
-          <div>
-            <strong>Beacon Youth Collective</strong><br />
-            <span class="muted">Bertoua, Cameroon</span>
-          </div>
-        </div>
-        <div class="footer-cols">
-          <div>
-            <p class="muted">Youth-led. Evidence-driven. Community-rooted.</p>
-            <div class="banner" style="margin-top: 8px">
-              Prefer English for now; French version coming soon.
-            </div>
-          </div>
-          <div>
-            <strong>Programs</strong>
-            <div class="stack" style="margin-top: 8px">
-              <a href="education.html">Education</a>
-              <a href="climate.html">Climate Action</a>
-              <a href="tech.html">Tech for Good</a>
-              <a href="gbv.html">Gender & GBV</a>
-            </div>
-          </div>
-          <div>
-            <strong>Connect</strong>
-            <div class="stack" style="margin-top: 8px">
-              <a href="get-involved.html">Get Involved</a>
-              <a href="news.html">News</a>
-              <a href="contact.html">Contact</a>
-              <a href="donate.html">Donate</a>
-            </div>
-          </div>
-        </div>
-        <div class="footer-actions">
-          <a href="admin.html" class="btn soft small" title="Admin">Admin</a>
-        </div>
-        <p class="muted" style="margin-top: 10px">
-          © 2025 Beacon Youth Collective
-        </p>
-      </div>
-    </footer>
+    <footer></footer>
 
     <script src="script.js"></script>
   </body>

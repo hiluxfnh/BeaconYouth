@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact — Beacon Youth Collective</title>
+    <title>Contact - Beacon Youth Collective</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="assets/logo_initials.png" />
     <link
@@ -19,10 +19,8 @@
           <strong>Beacon Youth Collective</strong>
         </a>
         <nav>
-          <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-          <ul class="nav-links" id="nav-links">
-            <!-- Navigation populated by script.js -->
-          </ul>
+          <button class="menu-toggle" onclick="toggleMenu()">Menu</button>
+          <ul class="nav-links" id="nav-links"></ul>
         </nav>
       </div>
     </header>
@@ -31,17 +29,21 @@
       <div class="container stack">
         <div>
           <div class="kicker">Contact</div>
-          <h1 class="h2">We’d love to hear from you</h1>
+          <h1 class="h2">We'd love to hear from you</h1>
           <p class="lead">
-            Partnerships, programs, volunteers, or media—send us a message and
-            we’ll get back within a few days.
+            Partnerships, programs, volunteers, media, or general questions:
+            send us a message and we will get back to you as soon as we can.
           </p>
         </div>
 
         <div class="form-grid">
           <section class="form-container">
-            <h2 class="h2" style="margin: 0 0 8px">Send a Message</h2>
-            <p class="muted" style="margin: 0 0 16px">We read every message.</p>
+            <h2 class="h2" style="margin: 0 0 8px">Send a message</h2>
+            <p class="muted" style="margin: 0 0 16px">
+              We read every message and typically reply within a few business
+              days.
+            </p>
+
             <form id="contact-form">
               <div class="form-row">
                 <div class="form-group">
@@ -61,19 +63,14 @@
                     name="email"
                     type="email"
                     class="form-input"
-          <div class="footer-actions">
-            <a href="admin.html" class="btn soft small" title="Admin">Admin</a>
-          </div>
-          <p class="muted" style="margin-top: 10px">© 2025 Beacon Youth Collective</p>
+                    autocomplete="email"
                     required
                   />
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="subject"
-                  >Subject (optional)</label
-                >
+                <label class="form-label" for="subject">Subject (optional)</label>
                 <input
                   id="subject"
                   name="subject"
@@ -96,13 +93,12 @@
               <div class="form-group">
                 <label style="display: flex; gap: 8px; align-items: flex-start">
                   <input type="checkbox" id="consent" required />
-                  <span
-                    >I agree to be contacted by BYC regarding my message.</span
-                  >
+                  <span>I agree to be contacted by BYC regarding my message.</span>
                 </label>
               </div>
 
               <div id="contact-alert" style="display: none"></div>
+
               <button id="contactSubmit" class="form-submit" type="submit">
                 Send
               </button>
@@ -110,62 +106,28 @@
           </section>
 
           <aside class="form-container">
-            <h2 class="h2" style="margin: 0 0 8px">Contact Details</h2>
+            <h2 class="h2" style="margin: 0 0 8px">Contact details</h2>
             <div class="stack" style="margin-top: 8px">
               <p><strong>Location:</strong> Bertoua, Cameroon</p>
               <p>
                 <strong>Email:</strong>
-                <span class="muted">info@beaconyouth.org</span>
-                <span class="muted">(placeholder)</span>
+                <a href="mailto:beaconyouthcollective@gmail.com"
+                  >beaconyouthcollective@gmail.com</a
+                >
               </p>
               <p class="muted">
-                Follow our updates on the News and Get&nbsp;Involved pages.
+                If your request is about volunteering or partnerships, you can
+                also use the Get Involved page for a more detailed submission.
               </p>
               <a class="btn" href="get-involved.html">Get Involved</a>
-              <a class="btn alt" href="donate.html">Contribute to BYC</a>
+              <a class="btn alt" href="donate.html">Support BYC</a>
             </div>
           </aside>
         </div>
       </div>
     </main>
 
-    <footer>
-      <div class="container footer-inner">
-        <div class="footer-brand">
-          <img src="assets/logo.png" alt="BYC" />
-          <div>
-            <strong>Beacon Youth Collective</strong><br />
-            <span class="muted">Bertoua, Cameroon</span>
-          </div>
-        </div>
-        <div class="footer-cols">
-          <div>
-            <p class="muted">Youth-led. Evidence-driven. Community-rooted.</p>
-          </div>
-          <div>
-            <strong>Programs</strong>
-            <div class="stack" style="margin-top: 8px">
-              <a href="education.html">Education</a>
-              <a href="climate.html">Climate</a>
-              <a href="tech.html">Tech</a>
-              <a href="gbv.html">Gender & GBV</a>
-            </div>
-          </div>
-          <div>
-            <strong>Connect</strong>
-            <div class="stack" style="margin-top: 8px">
-              <a href="get-involved.html">Get Involved</a>
-              <a href="news.html">News</a>
-              <a href="contact.html" aria-current="page">Contact</a>
-              <a href="donate.html">Donate</a>
-            </div>
-          </div>
-        </div>
-        <p class="muted" style="margin-top: 14px">
-          © 2025 Beacon Youth Collective
-        </p>
-      </div>
-    </footer>
+    <footer></footer>
 
     <script src="script.js"></script>
     <script type="module">
@@ -181,8 +143,8 @@
         alertBox.style.display = "block";
       }
 
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
         alertBox.style.display = "none";
         submitBtn.disabled = true;
         submitBtn.innerHTML =
@@ -202,7 +164,7 @@
           const id = await submitContact(data);
           showAlert(
             "success",
-            `Thanks! Your message was sent. Reference: ${id}. We'll reply by email.`
+            `Thanks. Your message was sent with reference ${id}. We will reply by email.`
           );
           form.reset();
         } catch (err) {

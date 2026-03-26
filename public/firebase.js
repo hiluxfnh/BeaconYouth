@@ -1,5 +1,5 @@
-// Firebase initialization and helpers (shared by all pages)
-// Using Firebase v12 modular SDK from gstatic CDN
+// Firebase initialization and shared helpers for the public site.
+// Uses the browser SDK directly from the Firebase CDN.
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
@@ -15,6 +15,7 @@ import {
   updateDoc,
   doc,
   serverTimestamp,
+  connectFirestoreEmulator,
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 import {
   getAuth,
@@ -24,22 +25,48 @@ import {
   onAuthStateChanged,
   signOut,
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
-import { firebaseConfig } from "./config.js";
 
-// Initialize
+export const firebaseConfig = {
+  apiKey: "AIzaSyBPdyPCIlRQjw2MjSPinQYhV8shfypSHCM",
+  authDomain: "byc-website-3ee13.firebaseapp.com",
+  projectId: "byc-website-3ee13",
+  storageBucket: "byc-website-3ee13.firebasestorage.app",
+  messagingSenderId: "1706290118",
+  appId: "1:1706290118:web:9539232b5cb5df531360c7",
+  measurementId: "G-2YZ4B6YB6Z",
+};
+
+export const PUBLIC_ADMIN_EMAILS = ["beaconyouthcollective@gmail.com"];
+
+function shouldUseFirestoreEmulator() {
+  const isLocalHost =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1";
+  if (!isLocalHost) return false;
+  const params = new URLSearchParams(window.location.search);
+  return params.get("useEmulators") === "1";
+}
+
+export function isAllowedAdminEmail(email) {
+  return PUBLIC_ADMIN_EMAILS.includes((email || "").trim().toLowerCase());
+}
+
 const app = initializeApp(firebaseConfig);
-// Analytics can throw on some environments (e.g., http localhost without gtag); make it safe.
+
 try {
-  getAnalytics(app);
+  if (!shouldUseFirestoreEmulator()) {
+    getAnalytics(app);
+  }
 } catch (_) {}
 
-// Firestore
 const db = getFirestore(app);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
-// Submit an inquiry/request to Firestore
-// data shape: { type, name, email, phone?, org?, message, consent, source, userAgent, status, createdAt }
+if (shouldUseFirestoreEmulator()) {
+  connectFirestoreEmulator(db, "127.0.0.1", 8080);
+}
+
 export async function submitInquiry(data) {
   const docRef = await addDoc(collection(db, "inquiries"), {
     ...data,
@@ -49,8 +76,6 @@ export async function submitInquiry(data) {
   return docRef.id;
 }
 
-// Submit a contact message to Firestore
-// data shape: { name, email, subject?, message, consent, source, userAgent, status, createdAt }
 export async function submitContact(data) {
   const docRef = await addDoc(collection(db, "contacts"), {
     ...data,
@@ -60,12 +85,10 @@ export async function submitContact(data) {
   return docRef.id;
 }
 
-// Auth helpers for admin page
 export async function signInWithGoogle() {
   try {
     return await signInWithPopup(auth, provider);
   } catch (e) {
-    // Fallback to redirect for environments where popups are blocked.
     if (
       e?.code === "auth/popup-blocked" ||
       e?.code === "auth/popup-closed-by-user" ||
@@ -85,7 +108,6 @@ export function onAuthChange(cb) {
   return onAuthStateChanged(auth, cb);
 }
 
-// Admin data helpers
 export async function fetchInquiries(max = 100) {
   const q = query(
     collection(db, "inquiries"),
@@ -111,10 +133,10 @@ export async function updateSubmissionStatus(kind, id, status) {
   await updateDoc(ref, { status });
 }
 
-// Newsletter
 export async function submitSubscriber(data) {
   const docRef = await addDoc(collection(db, "subscribers"), {
-    ...data,
+    email: (data?.email || "").trim(),
+    source: data?.source || window.location.pathname,
     createdAt: serverTimestamp(),
   });
   return docRef.id;

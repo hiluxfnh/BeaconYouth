@@ -1,4 +1,5 @@
-// Navigation configuration - UPDATE ONLY HERE to change navigation everywhere
+// Shared navigation and footer behavior for all public pages.
+
 const navigationConfig = [
   { href: "about.html", text: "About" },
   { href: "team.html", text: "Team" },
@@ -7,7 +8,17 @@ const navigationConfig = [
   { href: "contact.html", text: "Contact" },
 ];
 
-// Function to generate navigation HTML
+const SUBSCRIBED_EMAILS_KEY = "byc_subscribed_emails";
+const SUBSCRIBER_QUEUE_KEY = "byc_subscriber_queue";
+let firebaseModulePromise;
+
+function getFirebaseModule() {
+  if (!firebaseModulePromise) {
+    firebaseModulePromise = import("./firebase.js");
+  }
+  return firebaseModulePromise;
+}
+
 function generateNavigation() {
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
@@ -20,105 +31,56 @@ function generateNavigation() {
     .join("");
 }
 
-// Function to initialize navigation on page load
 function initializeNavigation() {
   const navLinksContainer = document.getElementById("nav-links");
-  if (navLinksContainer) {
-    // Inject a close button row first (mobile drawer)
-    const closeRow = `<li class="nav-close-li"><button type="button" class="nav-close-btn" aria-label="Close navigation" onclick="closeMenu()">Close ✕</button></li>`;
-    navLinksContainer.innerHTML = closeRow + generateNavigation();
-  }
-}
+  if (!navLinksContainer) return;
 
-// Toggle mobile menu
-function ensureBackdrop() {
-  let backdrop = document.querySelector(".nav-backdrop");
-  if (!backdrop) {
-    backdrop = document.createElement("div");
-    backdrop.className = "nav-backdrop";
-    document.body.appendChild(backdrop);
-  }
-  // Ensure it's not hidden by the hidden attribute
-  backdrop.removeAttribute("hidden");
-  return backdrop;
+  const closeRow =
+    '<li class="nav-close-li"><button type="button" class="nav-close-btn" aria-label="Close navigation" onclick="closeMenu()">Close &times;</button></li>';
+
+  navLinksContainer.innerHTML = closeRow + generateNavigation();
 }
 
 function openMenu() {
   const list = document.getElementById("nav-links");
-  const btn = document.querySelector(".menu-toggle");
+  const button = document.querySelector(".menu-toggle");
   if (!list) return;
   list.classList.add("show");
   document.body.classList.add("nav-open");
-  if (btn) btn.setAttribute("aria-expanded", "true");
+  if (button) button.setAttribute("aria-expanded", "true");
 }
 
 function closeMenu() {
   const list = document.getElementById("nav-links");
-  const btn = document.querySelector(".menu-toggle");
+  const button = document.querySelector(".menu-toggle");
   if (!list) return;
   list.classList.remove("show");
   document.body.classList.remove("nav-open");
-  if (btn) btn.setAttribute("aria-expanded", "false");
+  if (button) button.setAttribute("aria-expanded", "false");
 }
 
 function toggleMenu() {
   const isOpen = document
     .getElementById("nav-links")
     ?.classList.contains("show");
+
   if (isOpen) closeMenu();
   else openMenu();
 }
 
-// Initialize navigation when page loads
-document.addEventListener("DOMContentLoaded", () => {
-  initializeNavigation();
-  const btn = document.querySelector(".menu-toggle");
-  if (btn) {
-    btn.setAttribute("aria-controls", "nav-links");
-    btn.setAttribute("aria-expanded", "false");
-  }
-  // Render modern footer on all pages
-  initializeFooter();
-  // Close when clicking outside the drawer (fallback)
-  document.addEventListener("click", (e) => {
-    const list = document.getElementById("nav-links");
-    const btn2 = document.querySelector(".menu-toggle");
-    if (!document.body.classList.contains("nav-open")) return;
-    if (list && list.contains(e.target)) return;
-    if (btn2 && btn2.contains(e.target)) return;
-    closeMenu();
-  });
-  // Close on link click inside the drawer
-  const list = document.getElementById("nav-links");
-  if (list) {
-    list.addEventListener("click", (e) => {
-      const t = e.target;
-      if (t && t.tagName === "A") closeMenu();
-    });
-  }
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeMenu();
-  });
+window.toggleMenu = toggleMenu;
+window.closeMenu = closeMenu;
 
-  // Close the drawer automatically when switching to desktop
-  const onResize = () => {
-    if (window.innerWidth >= 980) closeMenu();
-  };
-  window.addEventListener("resize", onResize);
-});
-
-// ===============
-// Footer Renderer
-// ===============
 function renderFooterHTML() {
   const year = new Date().getFullYear();
+
   return `
     <div class="container footer-wrap">
       <section class="footer-top cardish">
         <div class="footer-cta">
           <div class="cta-text">
             <h3 class="cta-title">Stay in the loop</h3>
-            <p class="cta-sub">News, programs, and ways to get involved—no spam.</p>
+            <p class="cta-sub">News, programs, and ways to get involved. No spam.</p>
           </div>
           <form class="cta-form" id="footer-subscribe" aria-label="Subscribe to updates">
             <label class="visually-hidden" for="footer-email">Email</label>
@@ -146,17 +108,11 @@ function renderFooterHTML() {
             <a aria-label="Twitter" href="https://x.com/beaconyouths" target="_blank" rel="noopener noreferrer" title="Twitter" class="soc">${svgIcon(
               "twitter"
             )}</a>
-            <a aria-label="Facebook" href="#" title="Facebook" class="soc">${svgIcon(
-              "facebook"
-            )}</a>
             <a aria-label="Instagram" href="https://www.instagram.com/beaconyouths" target="_blank" rel="noopener noreferrer" title="Instagram" class="soc">${svgIcon(
               "instagram"
             )}</a>
-            <a aria-label="LinkedIn" href="#" title="LinkedIn" class="soc">${svgIcon(
-              "linkedin"
-            )}</a>
-            <a aria-label="YouTube" href="#" title="YouTube" class="soc">${svgIcon(
-              "youtube"
+            <a aria-label="Contact" href="contact.html" title="Contact" class="soc">${svgIcon(
+              "mail"
             )}</a>
           </nav>
         </div>
@@ -192,7 +148,7 @@ function renderFooterHTML() {
       </section>
 
       <section class="footer-bottom">
-        <p>© ${year} Beacon Youth Collective</p>
+        <p>&copy; ${year} Beacon Youth Collective</p>
         <ul class="bottom-links">
           <li><a href="privacy.html">Privacy</a></li>
           <li><a href="terms.html">Terms</a></li>
@@ -207,135 +163,153 @@ function initializeFooter() {
     footer = document.createElement("footer");
     document.body.appendChild(footer);
   }
+
   footer.classList.add("site-footer");
   footer.innerHTML = renderFooterHTML();
 
   const form = footer.querySelector("#footer-subscribe");
+  if (!form) return;
 
-  if (form) {
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      clearFormError(form);
-      const input = form.querySelector('input[type="email"]');
-      const btn = form.querySelector('button[type="submit"]');
-      const email = input?.value?.trim();
-      if (!isValidEmail(email)) {
-        showFormError(form, "Please enter a valid email address.");
-        input?.focus();
-        return;
-      }
-      setLoading(btn, true, "Subscribing…");
-
-      try {
-        const result = await submitNewsletter(email);
-        localStorage.setItem("byc_subscribed_email", email);
-        replaceFormWithSuccess(form, email);
-        if (result?.queued && result?.deferred) {
-          showToast("Saved & will sync soon.", "info");
-        } else if (result?.queued) {
-          showToast("Queued offline—will sync when online.", "info");
-        } else {
-          showToast("You're subscribed. Welcome!", "success");
-        }
-      } catch (err) {
-        console.error("Subscription critical failure", err);
-        showFormError(form, "Subscription failed. Please try again.");
-      } finally {
-        setLoading(btn, false);
-      }
-    });
+  const emailInput = form.querySelector('input[type="email"]');
+  const remembered = getRememberedSubscribers();
+  const lastRemembered = remembered[remembered.length - 1];
+  if (emailInput && lastRemembered) {
+    emailInput.value = lastRemembered;
   }
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    clearFormError(form);
+
+    const input = form.querySelector('input[type="email"]');
+    const button = form.querySelector('button[type="submit"]');
+    const email = input?.value?.trim();
+
+    if (!isValidEmail(email)) {
+      showFormError(form, "Please enter a valid email address.");
+      input?.focus();
+      return;
+    }
+
+    if (hasRememberedSubscriber(email)) {
+      replaceFormWithSuccess(form, email, true);
+      showToast("This email is already on the list.", "info");
+      return;
+    }
+
+    setLoading(button, true, "Subscribing...");
+
+    try {
+      const result = await submitNewsletter(email);
+      rememberSubscriber(email);
+      replaceFormWithSuccess(form, email, false);
+
+      if (result?.queued) {
+        showToast("Saved offline. We will sync it when the connection is back.", "info");
+      } else {
+        showToast("You're subscribed. Welcome!", "success");
+      }
+    } catch (err) {
+      console.error("Subscription failed", err);
+      showFormError(form, "Subscription failed. Please try again.");
+    } finally {
+      setLoading(button, false);
+    }
+  });
 }
 
 function svgIcon(name) {
   const common =
     'width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"';
+
   switch (name) {
     case "twitter":
       return `<svg ${common}><path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.27 4.27 0 0 0 1.88-2.36 8.54 8.54 0 0 1-2.71 1.05 4.26 4.26 0 0 0-7.35 3.89A12.08 12.08 0 0 1 3.15 4.6a4.25 4.25 0 0 0 1.32 5.68 4.22 4.22 0 0 1-1.93-.53v.05a4.26 4.26 0 0 0 3.42 4.18 4.3 4.3 0 0 1-1.92.07 4.26 4.26 0 0 0 3.98 2.96A8.54 8.54 0 0 1 2 19.54a12.06 12.06 0 0 0 6.53 1.91c7.84 0 12.13-6.49 12.13-12.12 0-.18 0-.37-.01-.55A8.65 8.65 0 0 0 22.46 6z"/></svg>`;
-    case "facebook":
-      return `<svg ${common}><path d="M22 12.07C22 6.48 17.52 2 11.93 2S1.86 6.48 1.86 12.07C1.86 17.09 5.62 21.2 10.38 22v-7.03H7.9v-2.9h2.48V9.41c0-2.45 1.46-3.8 3.7-3.8 1.07 0 2.2.19 2.2.19v2.42h-1.24c-1.22 0-1.6.76-1.6 1.54v1.85h2.72l-.43 2.9h-2.29V22c4.76-.8 8.52-4.91 8.52-9.93z"/></svg>`;
     case "instagram":
       return `<svg ${common}><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.51 5.51 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zM18 6.2a1.2 1.2 0 1 1-1.2 1.2A1.2 1.2 0 0 1 18 6.2z"/></svg>`;
-    case "linkedin":
-      return `<svg ${common}><path d="M20.45 20.45h-3.56v-5.16c0-1.23-.02-2.8-1.71-2.8-1.71 0-1.97 1.34-1.97 2.72v5.24H9.65V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.36-1.85c3.6 0 4.26 2.37 4.26 5.45v6.29zM6.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM8.12 20.45H4.56V9h3.56v11.45z"/></svg>`;
-    case "youtube":
-      return `<svg ${common}><path d="M23.5 7.5a3 3 0 0 0-2.1-2.1C19.5 5 12 5 12 5s-7.5 0-9.4.4A3 3 0 0 0 .5 7.5 31.2 31.2 0 0 0 .1 12a31.2 31.2 0 0 0 .4 4.5 3 3 0 0 0 2.1 2.1C4.5 19 12 19 12 19s7.5 0 9.4-.4a3 3 0 0 0 2.1-2.1 31.2 31.2 0 0 0 .4-4.5 31.2 31.2 0 0 0-.4-4.5zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>`;
+    case "mail":
+      return `<svg ${common}><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm0 2v.24l9 6.35 9-6.35V7l-9 6.35L3 7z"/></svg>`;
     default:
       return "";
   }
 }
 
-// =====================
-// Subscribe UX helpers
-// =====================
-function isValidEmail(v) {
-  if (!v) return false;
-  // Simple robust regex without being too strict
-  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+function isValidEmail(value) {
+  if (!value) return false;
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
 }
 
-function setLoading(btn, isLoading, label) {
-  if (!btn) return;
+function setLoading(button, isLoading, label) {
+  if (!button) return;
+
   if (isLoading) {
-    btn.dataset.originalText = btn.textContent;
-    if (label) btn.textContent = label;
-    btn.classList.add("loading");
-    btn.setAttribute("disabled", "true");
-  } else {
-    if (btn.dataset.originalText) btn.textContent = btn.dataset.originalText;
-    btn.classList.remove("loading");
-    btn.removeAttribute("disabled");
+    button.dataset.originalText = button.textContent;
+    if (label) button.textContent = label;
+    button.classList.add("loading");
+    button.setAttribute("disabled", "true");
+    return;
   }
+
+  if (button.dataset.originalText) {
+    button.textContent = button.dataset.originalText;
+  }
+  button.classList.remove("loading");
+  button.removeAttribute("disabled");
 }
 
 function showFormError(form, message) {
-  let err = form.querySelector(".form-error");
-  if (!err) {
-    err = document.createElement("div");
-    err.className = "form-error";
-    err.setAttribute("role", "alert");
-    err.setAttribute("aria-live", "polite");
-    form.appendChild(err);
+  let error = form.querySelector(".form-error");
+  if (!error) {
+    error = document.createElement("div");
+    error.className = "form-error";
+    error.setAttribute("role", "alert");
+    error.setAttribute("aria-live", "polite");
+    form.appendChild(error);
   }
-  err.textContent = message;
+
+  error.textContent = message;
   const input = form.querySelector('input[type="email"]');
   input?.classList.add("input-error");
 }
 
 function clearFormError(form) {
-  const err = form.querySelector(".form-error");
-  if (err) err.remove();
+  form.querySelector(".form-error")?.remove();
   const input = form.querySelector('input[type="email"]');
   input?.classList.remove("input-error");
 }
 
-function replaceFormWithSuccess(form, email) {
+function replaceFormWithSuccess(form, email, alreadySubscribed) {
+  form.parentNode?.querySelector(".cta-success")?.remove();
+
+  const title = alreadySubscribed ? "Already subscribed" : "You're subscribed";
+  const message = alreadySubscribed
+    ? `We already have <strong>${escapeHtml(
+        email
+      )}</strong> on the list.`
+    : `We'll send occasional updates to <strong>${escapeHtml(
+        email
+      )}</strong>. You can unsubscribe anytime from the email footer.`;
+
   const wrap = document.createElement("div");
   wrap.className = "cta-success";
   wrap.setAttribute("role", "status");
   wrap.setAttribute("aria-live", "polite");
   wrap.innerHTML = `
-    <button type="button" class="dismiss" aria-label="Dismiss">✕</button>
-    <div class="check">✓</div>
+    <button type="button" class="dismiss" aria-label="Dismiss">&times;</button>
+    <div class="check">&check;</div>
     <div class="success-copy">
-      <h4 class="success-title">You're subscribed</h4>
-      <p class="success-sub">We'll send occasional updates to <strong>${escapeHtml(
-        email
-      )}</strong>. You can unsubscribe anytime via the email footer.</p>
+      <h4 class="success-title" tabindex="-1">${title}</h4>
+      <p class="success-sub">${message}</p>
     </div>
   `;
-  // Insert success panel above the form, keep the form visible for new subscriptions
+
   form.parentNode?.insertBefore(wrap, form);
   try {
     form.reset();
   } catch (_) {}
-  // Move focus to success title for accessibility
+
   wrap.querySelector(".success-title")?.focus?.();
-  // Allow manual dismiss
-  wrap
-    .querySelector(".dismiss")
-    ?.addEventListener("click", () => wrap.remove());
+  wrap.querySelector(".dismiss")?.addEventListener("click", () => wrap.remove());
 }
 
 function showToast(message, type = "info") {
@@ -345,65 +319,176 @@ function showToast(message, type = "info") {
     container.className = "toast-container";
     document.body.appendChild(container);
   }
+
   const item = document.createElement("div");
   item.className = `toast ${type}`;
   item.innerHTML = `<span class="toast-msg">${escapeHtml(
     message
-  )}</span><button class="toast-close" aria-label="Dismiss notification">✕</button>`;
+  )}</span><button class="toast-close" aria-label="Dismiss notification">&times;</button>`;
+
   container.appendChild(item);
-  const showT = setTimeout(() => item.classList.add("show"), 20);
-  const hideT = setTimeout(() => {
+
+  const showTimer = setTimeout(() => item.classList.add("show"), 20);
+  const hideTimer = setTimeout(() => {
     item.classList.remove("show");
     setTimeout(() => item.remove(), 300);
   }, 4200);
-  // Manual close
-  item.querySelector(".toast-close")?.addEventListener("click", (e) => {
-    e.stopPropagation();
-    clearTimeout(showT);
-    clearTimeout(hideT);
+
+  item.querySelector(".toast-close")?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    clearTimeout(showTimer);
+    clearTimeout(hideTimer);
     item.classList.remove("show");
     setTimeout(() => item.remove(), 150);
   });
 }
 
-function escapeHtml(s) {
-  return s.replace(
-    /[&<>"]+/g,
-    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])
+function escapeHtml(value) {
+  return String(value ?? "").replace(
+    /[&<>"]/g,
+    (char) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[char])
   );
 }
 
-// Simplified submit: direct Firestore call via single import, no offline queue
-// Local-only subscriber storage (no Firebase). Stored under `byc_local_subscribers`.
-function getLocalSubscribers() {
+function getRememberedSubscribers() {
   try {
-    return JSON.parse(localStorage.getItem("byc_local_subscribers") || "[]");
+    return JSON.parse(localStorage.getItem(SUBSCRIBED_EMAILS_KEY) || "[]");
   } catch (_) {
     return [];
   }
 }
-function setLocalSubscribers(list) {
+
+function setRememberedSubscribers(list) {
   try {
     localStorage.setItem(
-      "byc_local_subscribers",
-      JSON.stringify(list.slice(-1000))
-    ); // cap
+      SUBSCRIBED_EMAILS_KEY,
+      JSON.stringify(list.slice(-200))
+    );
   } catch (_) {}
 }
-function storeLocalSubscriber(email, source = "footer-cta") {
-  const list = getLocalSubscribers();
-  // avoid duplicates (case-insensitive)
-  if (!list.some((e) => e.email.toLowerCase() === email.toLowerCase())) {
-    list.push({ email, source, createdAt: Date.now() });
-    setLocalSubscribers(list);
+
+function rememberSubscriber(email) {
+  const normalized = (email || "").trim().toLowerCase();
+  if (!normalized) return;
+
+  const remembered = getRememberedSubscribers();
+  if (!remembered.includes(normalized)) {
+    remembered.push(normalized);
+    setRememberedSubscribers(remembered);
   }
-  return list;
 }
-async function submitNewsletter(email) {
-  storeLocalSubscriber(email);
-  // Broadcast to other tabs/admin via storage event helper
+
+function hasRememberedSubscriber(email) {
+  const normalized = (email || "").trim().toLowerCase();
+  return getRememberedSubscribers().includes(normalized);
+}
+
+function getQueuedSubscribers() {
   try {
-    localStorage.setItem("byc_last_subscriber_added", Date.now() + ":" + email);
-  } catch (_) {}
-  return { ok: true, local: true };
+    return JSON.parse(localStorage.getItem(SUBSCRIBER_QUEUE_KEY) || "[]");
+  } catch (_) {
+    return [];
+  }
 }
+
+function setQueuedSubscribers(entries) {
+  try {
+    localStorage.setItem(
+      SUBSCRIBER_QUEUE_KEY,
+      JSON.stringify(entries.slice(-100))
+    );
+  } catch (_) {}
+}
+
+function queueSubscriber(email) {
+  const normalized = (email || "").trim().toLowerCase();
+  if (!normalized) return;
+
+  const queue = getQueuedSubscribers().filter(
+    (entry) => entry.email !== normalized
+  );
+  queue.push({
+    email: normalized,
+    source: window.location.pathname,
+    queuedAt: Date.now(),
+  });
+
+  setQueuedSubscribers(queue);
+}
+
+async function flushQueuedSubscribers() {
+  const queue = getQueuedSubscribers();
+  if (!queue.length) return;
+
+  try {
+    const { submitSubscriber } = await getFirebaseModule();
+    const remaining = [];
+
+    for (const entry of queue) {
+      try {
+        await submitSubscriber(entry);
+        rememberSubscriber(entry.email);
+      } catch (_) {
+        remaining.push(entry);
+      }
+    }
+
+    setQueuedSubscribers(remaining);
+  } catch (_) {}
+}
+
+async function submitNewsletter(email) {
+  const normalized = (email || "").trim().toLowerCase();
+
+  try {
+    const { submitSubscriber } = await getFirebaseModule();
+    await submitSubscriber({
+      email: normalized,
+      source: window.location.pathname,
+    });
+    return { ok: true };
+  } catch (err) {
+    console.warn("Newsletter signup queued locally.", err);
+    queueSubscriber(normalized);
+    return { ok: true, queued: true };
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  initializeNavigation();
+
+  const toggleButton = document.querySelector(".menu-toggle");
+  if (toggleButton) {
+    toggleButton.setAttribute("aria-controls", "nav-links");
+    toggleButton.setAttribute("aria-expanded", "false");
+  }
+
+  initializeFooter();
+  flushQueuedSubscribers();
+  window.addEventListener("online", flushQueuedSubscribers);
+
+  document.addEventListener("click", (event) => {
+    const list = document.getElementById("nav-links");
+    const button = document.querySelector(".menu-toggle");
+    if (!document.body.classList.contains("nav-open")) return;
+    if (list && list.contains(event.target)) return;
+    if (button && button.contains(event.target)) return;
+    closeMenu();
+  });
+
+  const list = document.getElementById("nav-links");
+  if (list) {
+    list.addEventListener("click", (event) => {
+      if (event.target?.tagName === "A") closeMenu();
+    });
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeMenu();
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 980) closeMenu();
+  });
+});

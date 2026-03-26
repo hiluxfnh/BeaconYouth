@@ -1,70 +1,29 @@
-# 🔒 Firebase Security Setup
+# Firebase Security
 
-## ⚠️ CRITICAL: Your API Key Was Exposed
+This site is a browser-based Firebase app. The Firebase web config in `public/firebase.js` is public by design and will be shipped to every visitor. Security does not come from hiding those values in the repo.
 
-Your Google API key was **publicly visible** in `public/firebase.js` and committed to GitHub. Google has already notified you.
+## What actually matters
 
-## ✅ What I've Done (Code-Level)
+1. Restrict the Firebase API key to the right HTTP referrers and Firebase APIs.
+2. Keep Firestore rules tight and deploy them with code changes.
+3. Limit admin access to approved Google accounts in both client logic and Firestore rules.
+4. Rotate any previously exposed API key that may still be active.
 
-1. ✔️ Removed hardcoded API key from `public/firebase.js`
-2. ✔️ Created `public/config.js` (local, git-ignored) to hold credentials
-3. ✔️ Created `public/config.example.js` as a template for new developers
-4. ✔️ Updated `.gitignore` to prevent future commits of sensitive config
+## One-time checks
 
-## 🚨 IMMEDIATE ACTIONS YOU MUST TAKE
+In Google Cloud Console for project `byc-website-3ee13`:
 
-### 1. **Regenerate Your API Key** (URGENT)
-Go to [Google Cloud Console](https://console.cloud.google.com/):
-   - Project: `byc-website-3ee13`
-   - Navigate to **APIs & Services** → **Credentials**
-   - Find the key `AIzaSyBPdyPCIlRQjw2MjSPinQYhV8shfypSHCM`
-   - Click it, then **Regenerate Key** (this invalidates the old one)
-   - Copy the **new key** and update `public/config.js`
+- Regenerate any API key that was previously committed publicly.
+- Set application restrictions to `Web applications (HTTP referrers)`.
+- Allow only the expected local/dev/prod domains.
+- Restrict the key to the Firebase APIs this site needs.
 
-### 2. **Restrict Your New API Key**
-In the Cloud Console, edit the new key and:
-   - **Application restrictions**: Select **Web applications (HTTP referrers)**
-   - Add your domain(s): `localhost:*, yourdomain.com`
-   - **API restrictions**: Select **Firebase**
-   - Save
+## Repo expectations
 
-### 3. **Force Push the Security Fix to GitHub**
-```bash
-# Remove the exposed key from git history
-git rm --cached public/config.js 2>/dev/null || true
-git add -A
-git commit -m "security: remove exposed Firebase API key, use local config"
-git push origin main --force-with-lease
-```
+- `public/firebase.js` contains the public Firebase web config used by the site.
+- `firestore.rules` should be deployed whenever form or admin behavior changes.
+- The deploy workflow in `.github/workflows/firebase-hosting.yml` ships the existing `public/` directory as-is.
 
-### 4. **Notify Your Team**
-Share the new API key with team members via a secure channel (NOT via email/chat):
-   - They should copy `config.example.js` → `config.js`
-   - Replace placeholders with the new credentials
+## Local verification
 
-## 📁 File Structure
-```
-public/
-  ├── config.example.js       ← Template (committed to git)
-  ├── config.js               ← Local credentials (NOT committed, git-ignored)
-  └── firebase.js             ← References config.js
-```
-
-## ⚡ For Developers
-To set up locally:
-```bash
-# Copy the example config
-cp public/config.example.js public/config.js
-
-# Edit config.js with your Firebase credentials
-# DO NOT commit config.js
-```
-
-## 🎯 Why This Matters
-- **Browser apps require public API keys** – this is by design in Firebase
-- **But it still needs protection** – restrict the key to your domains and Firebase services only
-- **Never commit credentials to version control** – even "public" keys should be rotated if exposed
-
----
-
-**Status**: Code updated ✓ | **Next**: Regenerate key in Google Cloud Console + restrict it
+Use the emulator flow from `README.md` when testing forms locally so you do not write test submissions into production.

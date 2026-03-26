@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin — Beacon Youth Collective</title>
+    <title>Admin - Beacon Youth Collective</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="assets/logo_initials.png" />
     <link
@@ -18,6 +18,7 @@
         gap: 12px;
         margin-bottom: 12px;
       }
+
       .admin-chip {
         padding: 6px 10px;
         border: 1px solid var(--border);
@@ -25,11 +26,13 @@
         background: #fff;
         font-size: 12px;
       }
+
       .table {
         width: 100%;
         border-collapse: separate;
         border-spacing: 0 8px;
       }
+
       .table th {
         font-size: 12px;
         text-transform: uppercase;
@@ -38,17 +41,22 @@
         text-align: left;
         padding: 0 8px;
       }
+
       .table td {
         background: #fff;
         border: 1px solid var(--border);
         padding: 10px 12px;
+        vertical-align: top;
       }
+
       .table tr td:first-child {
         border-radius: 10px 0 0 10px;
       }
+
       .table tr td:last-child {
         border-radius: 0 10px 10px 0;
       }
+
       .status-pill {
         display: inline-block;
         padding: 4px 8px;
@@ -57,21 +65,26 @@
         background: var(--mint-50);
         font-size: 12px;
       }
+
       .toolbar {
         display: flex;
         gap: 8px;
         align-items: center;
+        flex-wrap: wrap;
       }
+
       .input {
         padding: 10px 12px;
         border: 1px solid var(--border);
         border-radius: 8px;
       }
+
       .select {
         padding: 8px 10px;
         border: 1px solid var(--border);
         border-radius: 8px;
       }
+
       .mono {
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
           "Liberation Mono", "Courier New", monospace;
@@ -87,10 +100,8 @@
           <strong>Beacon Youth Collective</strong>
         </a>
         <nav>
-          <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-          <ul class="nav-links" id="nav-links">
-            <!-- populated by script.js -->
-          </ul>
+          <button class="menu-toggle" onclick="toggleMenu()">Menu</button>
+          <ul class="nav-links" id="nav-links"></ul>
         </nav>
       </div>
     </header>
@@ -100,7 +111,7 @@
         <div class="admin-bar">
           <div class="stack" style="gap: 4px">
             <div class="kicker">Admin</div>
-            <h1 class="h2" style="margin: 0">Submissions Dashboard</h1>
+            <h1 class="h2" style="margin: 0">Submissions dashboard</h1>
           </div>
           <div class="toolbar">
             <span id="authInfo" class="admin-chip">Not signed in</span>
@@ -112,17 +123,18 @@
         </div>
 
         <div class="alert alert-info" id="adminNote">
-          Access is restricted to BYC admins. Sign in to view data.
+          Sign in with an allowlisted Google account to review inquiries,
+          contact messages, and newsletter subscribers.
         </div>
 
         <section class="card" id="inquiriesCard" style="display: none">
           <div class="admin-bar">
-            <h3 style="margin: 0">Inquiries (Get&nbsp;Involved)</h3>
+            <h3 style="margin: 0">Inquiries</h3>
             <div class="toolbar">
               <input
                 id="inqFilter"
                 class="input"
-                placeholder="Filter by name/email/type..."
+                placeholder="Filter by name, email, type, or location"
               />
               <button id="reloadInq" class="btn">Reload</button>
             </div>
@@ -150,12 +162,12 @@
 
         <section class="card" id="contactsCard" style="display: none">
           <div class="admin-bar">
-            <h3 style="margin: 0">Contact Messages</h3>
+            <h3 style="margin: 0">Contact messages</h3>
             <div class="toolbar">
               <input
                 id="conFilter"
                 class="input"
-                placeholder="Filter by name/email/subject..."
+                placeholder="Filter by name, email, or subject"
               />
               <button id="reloadCon" class="btn">Reload</button>
             </div>
@@ -181,13 +193,13 @@
 
         <section class="card" id="subsCard" style="display: none">
           <div class="admin-bar">
-            <h3 style="margin: 0">Newsletter Subscribers</h3>
+            <h3 style="margin: 0">Newsletter subscribers</h3>
             <div class="toolbar">
               <span id="subsCount" class="admin-chip">0 subscribers</span>
               <input
                 id="subsFilter"
                 class="input"
-                placeholder="Filter by email..."
+                placeholder="Filter by email or source"
               />
               <button id="reloadSubs" class="btn">Reload</button>
             </div>
@@ -196,7 +208,9 @@
             <table class="table" id="subsTable">
               <thead>
                 <tr>
+                  <th>Date</th>
                   <th>Email</th>
+                  <th>Source</th>
                   <th>Doc ID</th>
                 </tr>
               </thead>
@@ -207,54 +221,21 @@
       </div>
     </main>
 
-    <footer>
-      <div class="container footer-inner">
-        <div class="footer-brand">
-          <img src="assets/logo.png" alt="BYC" />
-          <div>
-            <strong>Beacon Youth Collective</strong><br /><span class="muted"
-              >Bertoua, Cameroon</span
-            >
-          </div>
-        </div>
-        <div class="footer-cols">
-          <div>
-            <p class="muted">Youth-led. Evidence-driven. Community-rooted.</p>
-          </div>
-          <div>
-            <strong>Programs</strong>
-            <div class="stack" style="margin-top: 8px">
-              <a href="education.html">Education</a
-              ><a href="climate.html">Climate</a><a href="tech.html">Tech</a
-              ><a href="gbv.html">Gender & GBV</a>
-            </div>
-          </div>
-          <div>
-            <strong>Connect</strong>
-            <div class="stack" style="margin-top: 8px">
-              <a href="get-involved.html">Get Involved</a
-              ><a href="news.html">News</a><a href="contact.html">Contact</a
-              ><a href="donate.html">Donate</a>
-            </div>
-          </div>
-        </div>
-        <p class="muted" style="margin-top: 14px">
-          © 2025 Beacon Youth Collective
-        </p>
-      </div>
-    </footer>
+    <footer></footer>
 
     <script src="script.js"></script>
     <script type="module">
       import {
+        PUBLIC_ADMIN_EMAILS,
+        isAllowedAdminEmail,
         signInWithGoogle,
         signOutCurrent,
         onAuthChange,
         fetchInquiries,
         fetchContacts,
+        fetchSubscribers,
         updateSubmissionStatus,
       } from "./firebase.js";
-      import { getSubscribersCount, fetchSubscribers } from "./firebase.js";
 
       const authInfo = document.getElementById("authInfo");
       const signInBtn = document.getElementById("signInBtn");
@@ -275,23 +256,36 @@
           return "";
         }
       }
-      function esc(s) {
-        return (s || "")
-          .toString()
-          .replace(
-            /[&<>"]/g,
-            (c) =>
-              ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])
-          );
+
+      function esc(value) {
+        return String(value || "").replace(
+          /[&<>"]/g,
+          (char) =>
+            ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[char])
+        );
       }
+
+      function showNote(kind, message) {
+        adminNote.className = `alert alert-${kind}`;
+        adminNote.textContent = message;
+        adminNote.style.display = "block";
+      }
+
+      function setCardsVisible(isVisible) {
+        const display = isVisible ? "" : "none";
+        inquiriesCard.style.display = display;
+        contactsCard.style.display = display;
+        subsCard.style.display = display;
+      }
+
       function renderStatusSelect(kind, id, current) {
-        const opts = ["received", "reviewing", "responded", "closed"];
-        return `<select data-kind="${kind}" data-id="${id}" class="select">${opts
+        const options = ["received", "reviewing", "responded", "closed"];
+        return `<select data-kind="${kind}" data-id="${id}" class="select">${options
           .map(
-            (o) =>
+            (option) =>
               `<option ${
-                o === current ? "selected" : ""
-              } value="${o}">${o}</option>`
+                option === current ? "selected" : ""
+              } value="${option}">${option}</option>`
           )
           .join("")}</select>`;
       }
@@ -300,151 +294,182 @@
         const rows = await fetchInquiries(100);
         const filter = document.getElementById("inqFilter").value.toLowerCase();
         inqTableBody.innerHTML = rows
-          .filter((r) => {
-            const hay = `${r.type || ""} ${r.name || ""} ${r.email || ""} ${
-              r.org || ""
-            }`.toLowerCase();
-            return hay.includes(filter);
+          .filter((row) => {
+            const haystack = `${row.type || ""} ${row.name || ""} ${
+              row.email || ""
+            } ${row.org || ""} ${row.location || ""}`.toLowerCase();
+            return haystack.includes(filter);
           })
           .map(
-            (r) => `
-          <tr>
-            <td>${esc(fmt(r.createdAt))}</td>
-            <td>${esc(r.type)}</td>
-            <td>${esc(r.name)}</td>
-            <td class="mono">${esc(r.email)}</td>
-            <td>${esc(r.org || "")}</td>
-            <td>${esc(r.location || "")}</td>
-            <td title="${esc(r.message)}">${esc(
-              (r.message || "").slice(0, 80)
-            )}${(r.message || "").length > 80 ? "…" : ""}</td>
-            <td>${`<span class="status-pill">${esc(r.status)}</span>`}</td>
-            <td class="mono">${esc(r.id)}</td>
-            <td>${renderStatusSelect("inquiries", r.id, r.status)}</td>
-          </tr>
-        `
+            (row) => `
+              <tr>
+                <td>${esc(fmt(row.createdAt))}</td>
+                <td>${esc(row.type)}</td>
+                <td>${esc(row.name)}</td>
+                <td class="mono">${esc(row.email)}</td>
+                <td>${esc(row.org || "")}</td>
+                <td>${esc(row.location || "")}</td>
+                <td title="${esc(row.message)}">${esc(
+                  (row.message || "").slice(0, 80)
+                )}${(row.message || "").length > 80 ? "..." : ""}</td>
+                <td><span class="status-pill">${esc(row.status)}</span></td>
+                <td class="mono">${esc(row.id)}</td>
+                <td>${renderStatusSelect("inquiries", row.id, row.status)}</td>
+              </tr>
+            `
           )
           .join("");
       }
+
       async function loadContacts() {
         const rows = await fetchContacts(100);
         const filter = document.getElementById("conFilter").value.toLowerCase();
         conTableBody.innerHTML = rows
-          .filter((r) => {
-            const hay = `${r.name || ""} ${r.email || ""} ${
-              r.subject || ""
+          .filter((row) => {
+            const haystack = `${row.name || ""} ${row.email || ""} ${
+              row.subject || ""
             }`.toLowerCase();
-            return hay.includes(filter);
+            return haystack.includes(filter);
           })
           .map(
-            (r) => `
-          <tr>
-            <td>${esc(fmt(r.createdAt))}</td>
-            <td>${esc(r.name)}</td>
-            <td class="mono">${esc(r.email)}</td>
-            <td>${esc(r.subject || "")}</td>
-            <td title="${esc(r.message)}">${esc(
-              (r.message || "").slice(0, 80)
-            )}${(r.message || "").length > 80 ? "…" : ""}</td>
-            <td>${`<span class="status-pill">${esc(r.status)}</span>`}</td>
-            <td class="mono">${esc(r.id)}</td>
-            <td>${renderStatusSelect("contacts", r.id, r.status)}</td>
-          </tr>
-        `
+            (row) => `
+              <tr>
+                <td>${esc(fmt(row.createdAt))}</td>
+                <td>${esc(row.name)}</td>
+                <td class="mono">${esc(row.email)}</td>
+                <td>${esc(row.subject || "")}</td>
+                <td title="${esc(row.message)}">${esc(
+                  (row.message || "").slice(0, 80)
+                )}${(row.message || "").length > 80 ? "..." : ""}</td>
+                <td><span class="status-pill">${esc(row.status)}</span></td>
+                <td class="mono">${esc(row.id)}</td>
+                <td>${renderStatusSelect("contacts", row.id, row.status)}</td>
+              </tr>
+            `
           )
           .join("");
       }
 
       async function loadSubscribers() {
         const rows = await fetchSubscribers(500);
-        const filterVal = document
-          .getElementById("subsFilter")
-          .value.toLowerCase();
-        const filtered = rows.filter((r) =>
-          (r.email || "").toLowerCase().includes(filterVal)
-        );
-        subsCount.textContent = `${rows.length} subscriber${
-          rows.length === 1 ? "" : "s"
+        const uniqueRows = [];
+        const seen = new Set();
+
+        for (const row of rows) {
+          const key = (row.email || "").trim().toLowerCase();
+          if (!key || seen.has(key)) continue;
+          seen.add(key);
+          uniqueRows.push(row);
+        }
+
+        const filter = document.getElementById("subsFilter").value.toLowerCase();
+        const filtered = uniqueRows.filter((row) => {
+          const haystack = `${row.email || ""} ${row.source || ""}`.toLowerCase();
+          return haystack.includes(filter);
+        });
+
+        subsCount.textContent = `${uniqueRows.length} subscriber${
+          uniqueRows.length === 1 ? "" : "s"
         }`;
+
         subsTableBody.innerHTML = filtered
           .map(
-            (r) => `
-          <tr>
-            <td class="mono">${esc(r.email)}</td>
-            <td class="mono" title="${esc(r.id)}">${esc(r.id)}</td>
-          </tr>
-        `
+            (row) => `
+              <tr>
+                <td>${esc(fmt(row.createdAt))}</td>
+                <td class="mono">${esc(row.email)}</td>
+                <td>${esc(row.source || "")}</td>
+                <td class="mono" title="${esc(row.id)}">${esc(row.id)}</td>
+              </tr>
+            `
           )
           .join("");
       }
 
-      document
-        .getElementById("inqFilter")
-        .addEventListener("input", loadInquiries);
-      document
-        .getElementById("conFilter")
-        .addEventListener("input", loadContacts);
-      document
-        .getElementById("subsFilter")
-        .addEventListener("input", loadSubscribers);
-      document
-        .getElementById("reloadInq")
-        .addEventListener("click", loadInquiries);
-      document
-        .getElementById("reloadCon")
-        .addEventListener("click", loadContacts);
-      document
-        .getElementById("reloadSubs")
-        .addEventListener("click", loadSubscribers);
+      async function loadAll() {
+        await Promise.all([loadInquiries(), loadContacts(), loadSubscribers()]);
+      }
 
-      document.addEventListener("change", async (e) => {
-        const sel = e.target.closest("select[data-id]");
-        if (!sel) return;
-        const kind = sel.getAttribute("data-kind");
-        const id = sel.getAttribute("data-id");
-        const status = sel.value;
-        sel.disabled = true;
+      document.getElementById("inqFilter").addEventListener("input", loadInquiries);
+      document.getElementById("conFilter").addEventListener("input", loadContacts);
+      document.getElementById("subsFilter").addEventListener("input", loadSubscribers);
+      document.getElementById("reloadInq").addEventListener("click", loadInquiries);
+      document.getElementById("reloadCon").addEventListener("click", loadContacts);
+      document.getElementById("reloadSubs").addEventListener("click", loadSubscribers);
+
+      document.addEventListener("change", async (event) => {
+        const select = event.target.closest("select[data-id]");
+        if (!select) return;
+
+        const kind = select.getAttribute("data-kind");
+        const id = select.getAttribute("data-id");
+        const status = select.value;
+        select.disabled = true;
+
         try {
           await updateSubmissionStatus(kind, id, status);
           await (kind === "inquiries" ? loadInquiries() : loadContacts());
         } catch (err) {
           console.error(err);
-          alert("Failed to update status.");
+          showNote("error", "Failed to update status. Please try again.");
         } finally {
-          sel.disabled = false;
+          select.disabled = false;
         }
       });
 
       signInBtn.addEventListener("click", async () => {
         try {
           await signInWithGoogle();
-        } catch (e) {
-          console.error(e);
-          alert(`Sign-in failed: ${e?.code || e?.message || "unknown error"}`);
+        } catch (err) {
+          console.error(err);
+          showNote(
+            "error",
+            `Sign-in failed: ${err?.code || err?.message || "unknown error"}.`
+          );
         }
       });
+
       signOutBtn.addEventListener("click", () => signOutCurrent());
 
       onAuthChange(async (user) => {
-        if (user) {
-          authInfo.textContent = `Signed in as ${user.email}`;
-          signInBtn.style.display = "none";
-          signOutBtn.style.display = "";
-          adminNote.style.display = "none";
-          inquiriesCard.style.display = "";
-          contactsCard.style.display = "";
-          subsCard.style.display = "";
-          await loadInquiries();
-          await loadContacts();
-          await loadSubscribers();
-        } else {
+        if (!user) {
           authInfo.textContent = "Not signed in";
           signInBtn.style.display = "";
           signOutBtn.style.display = "none";
-          adminNote.style.display = "";
-          inquiriesCard.style.display = "none";
-          contactsCard.style.display = "none";
-          subsCard.style.display = "none";
+          setCardsVisible(false);
+          showNote(
+            "info",
+            "Sign in with an allowlisted Google account to review inquiries, contact messages, and newsletter subscribers."
+          );
+          return;
+        }
+
+        authInfo.textContent = `Signed in as ${user.email}`;
+        signInBtn.style.display = "none";
+        signOutBtn.style.display = "";
+
+        if (!isAllowedAdminEmail(user.email)) {
+          setCardsVisible(false);
+          showNote(
+            "error",
+            `Signed in as ${user.email}, but this account is not on the admin allowlist. Allowed admins: ${PUBLIC_ADMIN_EMAILS.join(
+              ", "
+            )}.`
+          );
+          return;
+        }
+
+        setCardsVisible(true);
+        adminNote.style.display = "none";
+
+        try {
+          await loadAll();
+        } catch (err) {
+          console.error(err);
+          showNote(
+            "error",
+            "Signed in successfully, but data could not be loaded. Check Firestore rules, indexes, and project config."
+          );
         }
       });
     </script>
