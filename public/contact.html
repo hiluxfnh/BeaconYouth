@@ -40,51 +40,87 @@
 
         <div class="form-grid">
           <section class="form-container">
-            <h2 class="h2" style="margin:0 0 8px">Send a Message</h2>
-            <p class="muted" style="margin:0 0 16px">We read every message.</p>
+            <h2 class="h2" style="margin: 0 0 8px">Send a Message</h2>
+            <p class="muted" style="margin: 0 0 16px">We read every message.</p>
             <form id="contact-form">
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label" for="name">Full name</label>
-                  <input id="name" name="name" class="form-input" autocomplete="name" required />
+                  <input
+                    id="name"
+                    name="name"
+                    class="form-input"
+                    autocomplete="name"
+                    required
+                  />
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="email">Email</label>
-                  <input id="email" name="email" type="email" class="form-input" autocomplete="email" required />
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    class="form-input"
+          <div class="footer-actions">
+            <a href="admin.html" class="btn soft small" title="Admin">Admin</a>
+          </div>
+          <p class="muted" style="margin-top: 10px">© 2025 Beacon Youth Collective</p>
+                    required
+                  />
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="subject">Subject (optional)</label>
-                <input id="subject" name="subject" class="form-input" placeholder="Topic or reason for contacting" />
+                <label class="form-label" for="subject"
+                  >Subject (optional)</label
+                >
+                <input
+                  id="subject"
+                  name="subject"
+                  class="form-input"
+                  placeholder="Topic or reason for contacting"
+                />
               </div>
 
               <div class="form-group">
                 <label class="form-label" for="message">Message</label>
-                <textarea id="message" name="message" class="form-textarea" placeholder="How can we help?" required></textarea>
+                <textarea
+                  id="message"
+                  name="message"
+                  class="form-textarea"
+                  placeholder="How can we help?"
+                  required
+                ></textarea>
               </div>
 
               <div class="form-group">
-                <label style="display:flex;gap:8px;align-items:flex-start">
+                <label style="display: flex; gap: 8px; align-items: flex-start">
                   <input type="checkbox" id="consent" required />
-                  <span>I agree to be contacted by BYC regarding my message.</span>
+                  <span
+                    >I agree to be contacted by BYC regarding my message.</span
+                  >
                 </label>
               </div>
 
-              <div id="contact-alert" style="display:none"></div>
-              <button id="contactSubmit" class="form-submit" type="submit">Send</button>
+              <div id="contact-alert" style="display: none"></div>
+              <button id="contactSubmit" class="form-submit" type="submit">
+                Send
+              </button>
             </form>
           </section>
 
           <aside class="form-container">
-            <h2 class="h2" style="margin:0 0 8px">Contact Details</h2>
-            <div class="stack" style="margin-top:8px">
+            <h2 class="h2" style="margin: 0 0 8px">Contact Details</h2>
+            <div class="stack" style="margin-top: 8px">
               <p><strong>Location:</strong> Bertoua, Cameroon</p>
               <p>
-                <strong>Email:</strong> <span class="muted">info@beaconyouth.org</span>
+                <strong>Email:</strong>
+                <span class="muted">info@beaconyouth.org</span>
                 <span class="muted">(placeholder)</span>
               </p>
-              <p class="muted">Follow our updates on the News and Get&nbsp;Involved pages.</p>
+              <p class="muted">
+                Follow our updates on the News and Get&nbsp;Involved pages.
+              </p>
               <a class="btn" href="get-involved.html">Get Involved</a>
               <a class="btn alt" href="donate.html">Contribute to BYC</a>
             </div>
@@ -125,50 +161,59 @@
             </div>
           </div>
         </div>
-        <p class="muted" style="margin-top: 14px">© 2025 Beacon Youth Collective</p>
+        <p class="muted" style="margin-top: 14px">
+          © 2025 Beacon Youth Collective
+        </p>
       </div>
     </footer>
 
     <script src="script.js"></script>
     <script type="module">
-      import { submitContact } from './firebase.js';
+      import { submitContact } from "./firebase.js";
 
-      const form = document.getElementById('contact-form');
-      const alertBox = document.getElementById('contact-alert');
-      const submitBtn = document.getElementById('contactSubmit');
+      const form = document.getElementById("contact-form");
+      const alertBox = document.getElementById("contact-alert");
+      const submitBtn = document.getElementById("contactSubmit");
 
-      function showAlert(kind, message){
+      function showAlert(kind, message) {
         alertBox.className = `alert alert-${kind}`;
         alertBox.textContent = message;
-        alertBox.style.display = 'block';
+        alertBox.style.display = "block";
       }
 
-      form.addEventListener('submit', async (e) => {
+      form.addEventListener("submit", async (e) => {
         e.preventDefault();
-        alertBox.style.display = 'none';
+        alertBox.style.display = "none";
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span class="loading-spinner" aria-hidden="true"></span> Sending...';
+        submitBtn.innerHTML =
+          '<span class="loading-spinner" aria-hidden="true"></span> Sending...';
 
         const data = {
           name: form.name.value,
           email: form.email.value,
           subject: form.subject.value || null,
           message: form.message.value,
-          consent: document.getElementById('consent').checked,
+          consent: document.getElementById("consent").checked,
           source: window.location.pathname,
-          userAgent: navigator.userAgent
+          userAgent: navigator.userAgent,
         };
 
-        try{
+        try {
           const id = await submitContact(data);
-          showAlert('success', `Thanks! Your message was sent. Reference: ${id}. We'll reply by email.`);
+          showAlert(
+            "success",
+            `Thanks! Your message was sent. Reference: ${id}. We'll reply by email.`
+          );
           form.reset();
-        }catch(err){
+        } catch (err) {
           console.error(err);
-          showAlert('error', 'Sorry, something went wrong. Please try again later.');
-        }finally{
+          showAlert(
+            "error",
+            "Sorry, something went wrong. Please try again later."
+          );
+        } finally {
           submitBtn.disabled = false;
-          submitBtn.textContent = 'Send';
+          submitBtn.textContent = "Send";
         }
       });
     </script>

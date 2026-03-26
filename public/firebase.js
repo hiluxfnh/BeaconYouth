@@ -12,8 +12,18 @@ import {
   query,
   orderBy,
   limit as qLimit,
+  updateDoc,
+  doc,
   serverTimestamp,
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithRedirect,
+  onAuthStateChanged,
+  signOut,
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
 // Your Firebase config (provided)
 export const firebaseConfig = {
@@ -35,6 +45,8 @@ try {
 
 // Firestore
 const db = getFirestore(app);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
 
 // Submit an inquiry/request to Firestore
 // data shape: { type, name, email, phone?, org?, message, consent, source, userAgent, status, createdAt }
@@ -56,6 +68,57 @@ export async function submitContact(data) {
     createdAt: serverTimestamp(),
   });
   return docRef.id;
+}
+
+// Auth helpers for admin page
+export async function signInWithGoogle() {
+  try {
+    return await signInWithPopup(auth, provider);
+  } catch (e) {
+    // Fallback to redirect for environments where popups are blocked.
+    if (
+      e?.code === "auth/popup-blocked" ||
+      e?.code === "auth/popup-closed-by-user" ||
+      e?.code === "auth/operation-not-supported-in-this-environment"
+    ) {
+      return signInWithRedirect(auth, provider);
+    }
+    throw e;
+  }
+}
+
+export function signOutCurrent() {
+  return signOut(auth);
+}
+
+export function onAuthChange(cb) {
+  return onAuthStateChanged(auth, cb);
+}
+
+// Admin data helpers
+export async function fetchInquiries(max = 100) {
+  const q = query(
+    collection(db, "inquiries"),
+    orderBy("createdAt", "desc"),
+    qLimit(max)
+  );
+  const snap = await getDocs(q);
+  return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+}
+
+export async function fetchContacts(max = 100) {
+  const q = query(
+    collection(db, "contacts"),
+    orderBy("createdAt", "desc"),
+    qLimit(max)
+  );
+  const snap = await getDocs(q);
+  return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+}
+
+export async function updateSubmissionStatus(kind, id, status) {
+  const ref = doc(db, kind, id);
+  await updateDoc(ref, { status });
 }
 
 // Newsletter
