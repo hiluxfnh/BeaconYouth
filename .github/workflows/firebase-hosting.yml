@@ -12,18 +12,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Prepare public folder
-        shell: bash
-        run: |
-          set -e
-          rm -rf public
-          mkdir -p public
-          shopt -s nullglob
-          cp -a *.html public/ || true
-          cp -a *.css public/ || true
-          cp -a *.js public/ || true
-          cp -a assets public/ || true
-
       - name: Deploy to Firebase Hosting (live)
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:

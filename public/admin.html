@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Beacon Youth Collective</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="assets/logo_initials.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .admin-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .admin-chip {
+        padding: 6px 10px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: #fff;
+        font-size: 12px;
+      }
+
+      .table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+      }
+
+      .table th {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--ink-70);
+        text-align: left;
+        padding: 0 8px;
+      }
+
+      .table td {
+        background: #fff;
+        border: 1px solid var(--border);
+        padding: 10px 12px;
+        vertical-align: top;
+      }
+
+      .table tr td:first-child {
+        border-radius: 10px 0 0 10px;
+      }
+
+      .table tr td:last-child {
+        border-radius: 0 10px 10px 0;
+      }
+
+      .status-pill {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: var(--mint-50);
+        font-size: 12px;
+      }
+
+      .toolbar {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .input {
+        padding: 10px 12px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+      }
+
+      .select {
+        padding: 8px 10px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+      }
+
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="navbar-inner container">
+        <a class="brand" href="index.html">
+          <img src="assets/logo.png" alt="BYC" />
+          <strong>Beacon Youth Collective</strong>
+        </a>
+        <nav>
+          <button class="menu-toggle" onclick="toggleMenu()">Menu</button>
+          <ul class="nav-links" id="nav-links"></ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="section">
+      <div class="container stack">
+        <div class="admin-bar">
+          <div class="stack" style="gap: 4px">
+            <div class="kicker">Admin</div>
+            <h1 class="h2" style="margin: 0">Submissions dashboard</h1>
+          </div>
+          <div class="toolbar">
+            <span id="authInfo" class="admin-chip">Not signed in</span>
+            <button id="signInBtn" class="btn">Sign in with Google</button>
+            <button id="signOutBtn" class="btn ghost" style="display: none">
+              Sign out
+            </button>
+          </div>
+        </div>
+
+        <div class="alert alert-info" id="adminNote">
+          Sign in with an allowlisted Google account to review inquiries,
+          contact messages, and newsletter subscribers.
+        </div>
+
+        <section class="card" id="inquiriesCard" style="display: none">
+          <div class="admin-bar">
+            <h3 style="margin: 0">Inquiries</h3>
+            <div class="toolbar">
+              <input
+                id="inqFilter"
+                class="input"
+                placeholder="Filter by name, email, type, or location"
+              />
+              <button id="reloadInq" class="btn">Reload</button>
+            </div>
+          </div>
+          <div style="overflow: auto">
+            <table class="table" id="inquiriesTable">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Type</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Org</th>
+                  <th>Location</th>
+                  <th>Message</th>
+                  <th>Status</th>
+                  <th>Doc ID</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card" id="contactsCard" style="display: none">
+          <div class="admin-bar">
+            <h3 style="margin: 0">Contact messages</h3>
+            <div class="toolbar">
+              <input
+                id="conFilter"
+                class="input"
+                placeholder="Filter by name, email, or subject"
+              />
+              <button id="reloadCon" class="btn">Reload</button>
+            </div>
+          </div>
+          <div style="overflow: auto">
+            <table class="table" id="contactsTable">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Subject</th>
+                  <th>Message</th>
+                  <th>Status</th>
+                  <th>Doc ID</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card" id="subsCard" style="display: none">
+          <div class="admin-bar">
+            <h3 style="margin: 0">Newsletter subscribers</h3>
+            <div class="toolbar">
+              <span id="subsCount" class="admin-chip">0 subscribers</span>
+              <input
+                id="subsFilter"
+                class="input"
+                placeholder="Filter by email or source"
+              />
+              <button id="reloadSubs" class="btn">Reload</button>
+            </div>
+          </div>
+          <div style="overflow: auto">
+            <table class="table" id="subsTable">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Email</th>
+                  <th>Source</th>
+                  <th>Doc ID</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer></footer>
+
+    <script src="script.js"></script>
+    <script type="module">
+      import {
+        PUBLIC_ADMIN_EMAILS,
+        isAllowedAdminEmail,
+        signInWithGoogle,
+        signOutCurrent,
+        onAuthChange,
+        fetchInquiries,
+        fetchContacts,
+        fetchSubscribers,
+        updateSubmissionStatus,
+      } from "./firebase.js";
+
+      const authInfo = document.getElementById("authInfo");
+      const signInBtn = document.getElementById("signInBtn");
+      const signOutBtn = document.getElementById("signOutBtn");
+      const adminNote = document.getElementById("adminNote");
+      const inquiriesCard = document.getElementById("inquiriesCard");
+      const contactsCard = document.getElementById("contactsCard");
+      const subsCard = document.getElementById("subsCard");
+      const inqTableBody = document.querySelector("#inquiriesTable tbody");
+      const conTableBody = document.querySelector("#contactsTable tbody");
+      const subsTableBody = document.querySelector("#subsTable tbody");
+      const subsCount = document.getElementById("subsCount");
+
+      function fmt(ts) {
+        try {
+          return ts?.toDate?.().toLocaleString?.() || "";
+        } catch {
+          return "";
+        }
+      }
+
+      function esc(value) {
+        return String(value || "").replace(
+          /[&<>"]/g,
+          (char) =>
+            ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[char])
+        );
+      }
+
+      function showNote(kind, message) {
+        adminNote.className = `alert alert-${kind}`;
+        adminNote.textContent = message;
+        adminNote.style.display = "block";
+      }
+
+      function setCardsVisible(isVisible) {
+        const display = isVisible ? "" : "none";
+        inquiriesCard.style.display = display;
+        contactsCard.style.display = display;
+        subsCard.style.display = display;
+      }
+
+      function renderStatusSelect(kind, id, current) {
+        const options = ["received", "reviewing", "responded", "closed"];
+        return `<select data-kind="${kind}" data-id="${id}" class="select">${options
+          .map(
+            (option) =>
+              `<option ${
+                option === current ? "selected" : ""
+              } value="${option}">${option}</option>`
+          )
+          .join("")}</select>`;
+      }
+
+      async function loadInquiries() {
+        const rows = await fetchInquiries(100);
+        const filter = document.getElementById("inqFilter").value.toLowerCase();
+        inqTableBody.innerHTML = rows
+          .filter((row) => {
+            const haystack = `${row.type || ""} ${row.name || ""} ${
+              row.email || ""
+            } ${row.org || ""} ${row.location || ""}`.toLowerCase();
+            return haystack.includes(filter);
+          })
+          .map(
+            (row) => `
+              <tr>
+                <td>${esc(fmt(row.createdAt))}</td>
+                <td>${esc(row.type)}</td>
+                <td>${esc(row.name)}</td>
+                <td class="mono">${esc(row.email)}</td>
+                <td>${esc(row.org || "")}</td>
+                <td>${esc(row.location || "")}</td>
+                <td title="${esc(row.message)}">${esc(
+                  (row.message || "").slice(0, 80)
+                )}${(row.message || "").length > 80 ? "..." : ""}</td>
+                <td><span class="status-pill">${esc(row.status)}</span></td>
+                <td class="mono">${esc(row.id)}</td>
+                <td>${renderStatusSelect("inquiries", row.id, row.status)}</td>
+              </tr>
+            `
+          )
+          .join("");
+      }
+
+      async function loadContacts() {
+        const rows = await fetchContacts(100);
+        const filter = document.getElementById("conFilter").value.toLowerCase();
+        conTableBody.innerHTML = rows
+          .filter((row) => {
+            const haystack = `${row.name || ""} ${row.email || ""} ${
+              row.subject || ""
+            }`.toLowerCase();
+            return haystack.includes(filter);
+          })
+          .map(
+            (row) => `
+              <tr>
+                <td>${esc(fmt(row.createdAt))}</td>
+                <td>${esc(row.name)}</td>
+                <td class="mono">${esc(row.email)}</td>
+                <td>${esc(row.subject || "")}</td>
+                <td title="${esc(row.message)}">${esc(
+                  (row.message || "").slice(0, 80)
+                )}${(row.message || "").length > 80 ? "..." : ""}</td>
+                <td><span class="status-pill">${esc(row.status)}</span></td>
+                <td class="mono">${esc(row.id)}</td>
+                <td>${renderStatusSelect("contacts", row.id, row.status)}</td>
+              </tr>
+            `
+          )
+          .join("");
+      }
+
+      async function loadSubscribers() {
+        const rows = await fetchSubscribers(500);
+        const uniqueRows = [];
+        const seen = new Set();
+
+        for (const row of rows) {
+          const key = (row.email || "").trim().toLowerCase();
+          if (!key || seen.has(key)) continue;
+          seen.add(key);
+          uniqueRows.push(row);
+        }
+
+        const filter = document.getElementById("subsFilter").value.toLowerCase();
+        const filtered = uniqueRows.filter((row) => {
+          const haystack = `${row.email || ""} ${row.source || ""}`.toLowerCase();
+          return haystack.includes(filter);
+        });
+
+        subsCount.textContent = `${uniqueRows.length} subscriber${
+          uniqueRows.length === 1 ? "" : "s"
+        }`;
+
+        subsTableBody.innerHTML = filtered
+          .map(
+            (row) => `
+              <tr>
+                <td>${esc(fmt(row.createdAt))}</td>
+                <td class="mono">${esc(row.email)}</td>
+                <td>${esc(row.source || "")}</td>
+                <td class="mono" title="${esc(row.id)}">${esc(row.id)}</td>
+              </tr>
+            `
+          )
+          .join("");
+      }
+
+      async function loadAll() {
+        await Promise.all([loadInquiries(), loadContacts(), loadSubscribers()]);
+      }
+
+      document.getElementById("inqFilter").addEventListener("input", loadInquiries);
+      document.getElementById("conFilter").addEventListener("input", loadContacts);
+      document.getElementById("subsFilter").addEventListener("input", loadSubscribers);
+      document.getElementById("reloadInq").addEventListener("click", loadInquiries);
+      document.getElementById("reloadCon").addEventListener("click", loadContacts);
+      document.getElementById("reloadSubs").addEventListener("click", loadSubscribers);
+
+      document.addEventListener("change", async (event) => {
+        const select = event.target.closest("select[data-id]");
+        if (!select) return;
+
+        const kind = select.getAttribute("data-kind");
+        const id = select.getAttribute("data-id");
+        const status = select.value;
+        select.disabled = true;
+
+        try {
+          await updateSubmissionStatus(kind, id, status);
+          await (kind === "inquiries" ? loadInquiries() : loadContacts());
+        } catch (err) {
+          console.error(err);
+          showNote("error", "Failed to update status. Please try again.");
+        } finally {
+          select.disabled = false;
+        }
+      });
+
+      signInBtn.addEventListener("click", async () => {
+        try {
+          await signInWithGoogle();
+        } catch (err) {
+          console.error(err);
+          showNote(
+            "error",
+            `Sign-in failed: ${err?.code || err?.message || "unknown error"}.`
+          );
+        }
+      });
+
+      signOutBtn.addEventListener("click", () => signOutCurrent());
+
+      onAuthChange(async (user) => {
+        if (!user) {
+          authInfo.textContent = "Not signed in";
+          signInBtn.style.display = "";
+          signOutBtn.style.display = "none";
+          setCardsVisible(false);
+          showNote(
+            "info",
+            "Sign in with an allowlisted Google account to review inquiries, contact messages, and newsletter subscribers."
+          );
+          return;
+        }
+
+        authInfo.textContent = `Signed in as ${user.email}`;
+        signInBtn.style.display = "none";
+        signOutBtn.style.display = "";
+
+        if (!isAllowedAdminEmail(user.email)) {
+          setCardsVisible(false);
+          showNote(
+            "error",
+            `Signed in as ${user.email}, but this account is not on the admin allowlist. Allowed admins: ${PUBLIC_ADMIN_EMAILS.join(
+              ", "
+            )}.`
+          );
+          return;
+        }
+
+        setCardsVisible(true);
+        adminNote.style.display = "none";
+
+        try {
+          await loadAll();
+        } catch (err) {
+          console.error(err);
+          showNote(
+            "error",
+            "Signed in successfully, but data could not be loaded. Check Firestore rules, indexes, and project config."
+          );
+        }
+      });
+    </script>
+  </body>
+</html>

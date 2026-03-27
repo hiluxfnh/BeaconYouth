@@ -1,65 +1,101 @@
 rules_version = '2';
 service cloud.firestore {
-	match /databases/{database}/documents {
-		// Helper validators
-		function nonEmptyString(field, max) {
-			return field is string && field.size() > 0 && field.size() <= max;
-		}
-		function optionalString(field, max) {
-			return field == null || (field is string && field.size() > 0 && field.size() <= max);
-		}
+  match /databases/{database}/documents {
+    function nonEmptyString(field, max) {
+      return field is string && field.size() > 0 && field.size() <= max;
+    }
 
-		// Public submission endpoint for Get Involved form
-		match /inquiries/{docId} {
-			// Allow creating a new inquiry document with strict validation.
-			allow create: if
-				// Required and allowed fields only
-				request.resource.data.keys().hasAll(['type', 'name', 'email', 'message', 'consent', 'status', 'createdAt']) &&
-				request.resource.data.keys().hasOnly(['type', 'org', 'name', 'email', 'phone', 'location', 'message', 'consent', 'source', 'userAgent', 'status', 'createdAt']) &&
+    function optionalString(field, max) {
+      return field == null || nonEmptyString(field, max);
+    }
 
-				// Enum and field validations
-				request.resource.data.type in ['Membership', 'Volunteer', 'Partnership', 'Internship'] &&
-				nonEmptyString(request.resource.data.name, 100) &&
-				nonEmptyString(request.resource.data.email, 320) &&
-				nonEmptyString(request.resource.data.message, 2000) &&
-			request.resource.data.consent == true &&
-			request.resource.data.status == 'received' &&
+    function isAdmin() {
+      return request.auth != null &&
+        request.auth.token.email in ['beaconyouthcollective@gmail.com'];
+    }
 
-				// Optional fields (when present) must be reasonable strings
-				optionalString(request.resource.data.org, 120) &&
-				optionalString(request.resource.data.phone, 40) &&
-				optionalString(request.resource.data.location, 120) &&
-				(request.resource.data.source == null || request.resource.data.source is string) &&
-				(request.resource.data.userAgent == null || request.resource.data.userAgent is string);
+    match /inquiries/{docId} {
+      allow create: if
+        request.resource.data.keys().hasAll([
+          'type',
+          'name',
+          'email',
+          'message',
+          'consent',
+          'status',
+          'createdAt'
+        ]) &&
+        request.resource.data.keys().hasOnly([
+          'type',
+          'org',
+          'name',
+          'email',
+          'phone',
+          'location',
+          'message',
+          'consent',
+          'source',
+          'userAgent',
+          'status',
+          'createdAt'
+        ]) &&
+        request.resource.data.type in ['Membership', 'Volunteer', 'Partnership', 'Internship'] &&
+        nonEmptyString(request.resource.data.name, 100) &&
+        nonEmptyString(request.resource.data.email, 320) &&
+        nonEmptyString(request.resource.data.message, 2000) &&
+        request.resource.data.consent == true &&
+        request.resource.data.status == 'received' &&
+        optionalString(request.resource.data.org, 120) &&
+        optionalString(request.resource.data.phone, 40) &&
+        optionalString(request.resource.data.location, 120) &&
+        optionalString(request.resource.data.source, 240) &&
+        optionalString(request.resource.data.userAgent, 1000);
 
-					// Read/update/delete restricted to admins
-							allow read, update, delete: if request.auth != null &&
-								request.auth.token.email in [
-									'hiluxfokou33@gmail.com',
-									'beaconyouthcollective@gmail.com'
-								];
-		}
+      allow read, update, delete: if isAdmin();
+    }
 
-		// Public submission endpoint for Contact form
-		match /contacts/{docId} {
-			allow create: if
-				request.resource.data.keys().hasAll(['name','email','message','consent','status','createdAt']) &&
-				request.resource.data.keys().hasOnly(['name','email','subject','message','consent','source','userAgent','status','createdAt']) &&
-				nonEmptyString(request.resource.data.name, 100) &&
-				nonEmptyString(request.resource.data.email, 320) &&
-				nonEmptyString(request.resource.data.message, 2000) &&
-				(request.resource.data.subject == null || nonEmptyString(request.resource.data.subject, 140)) &&
-				request.resource.data.consent == true &&
-				request.resource.data.status == 'received' &&
-				(request.resource.data.source == null || request.resource.data.source is string) &&
-				(request.resource.data.userAgent == null || request.resource.data.userAgent is string);
+    match /contacts/{docId} {
+      allow create: if
+        request.resource.data.keys().hasAll([
+          'name',
+          'email',
+          'message',
+          'consent',
+          'status',
+          'createdAt'
+        ]) &&
+        request.resource.data.keys().hasOnly([
+          'name',
+          'email',
+          'subject',
+          'message',
+          'consent',
+          'source',
+          'userAgent',
+          'status',
+          'createdAt'
+        ]) &&
+        nonEmptyString(request.resource.data.name, 100) &&
+        nonEmptyString(request.resource.data.email, 320) &&
+        nonEmptyString(request.resource.data.message, 2000) &&
+        optionalString(request.resource.data.subject, 140) &&
+        request.resource.data.consent == true &&
+        request.resource.data.status == 'received' &&
+        optionalString(request.resource.data.source, 240) &&
+        optionalString(request.resource.data.userAgent, 1000);
 
-			allow read, update, delete: if request.auth != null &&
-			  request.auth.token.email in [
-			    'hiluxfokou33@gmail.com',
-			    'beaconyouthcollective@gmail.com'
-			  ];
-		}
-	}
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /subscribers/{docId} {
+      allow create: if
+        request.resource.data.keys().hasAll(['email', 'createdAt']) &&
+        request.resource.data.keys().hasOnly(['email', 'source', 'createdAt']) &&
+        nonEmptyString(request.resource.data.email, 320) &&
+        optionalString(request.resource.data.source, 240);
+
+      allow read: if isAdmin();
+      allow update, delete: if false;
+    }
+  }
 }
-
