@@ -564,6 +564,142 @@ body.nav-open{
   transform:translateY(-1px);
 }
 
+/* ===== SOCIAL SECTION ===== */
+
+.social-feed-section {
+  background: linear-gradient(180deg, rgba(64,145,108,0.08), transparent);
+}
+
+.social-header {
+  max-width: 760px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+/* GRID */
+.social-posts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 900px) {
+  .social-posts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* CARD */
+.social-post-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: 0.25s ease;
+  /* height: 100%; */
+}
+
+.social-post-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--hover-shadow);
+}
+
+/* HEADER */
+.social-card-header {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(64,145,108,0.06);
+}
+
+.social-card-header h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--green-700);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* BODY */
+.social-card-body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* EMBED WRAPPER */
+.social-embed-wrapper {
+  width: 100%;
+  height: 900px; /* default height, can be adjusted per platform */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* IFRAME NORMALIZATION */
+.social-embed-wrapper iframe {
+  width: 100% !important;
+  height: 100% !important;
+  border: none;
+}
+
+/* FACEBOOK */
+.facebook-embed iframe {
+  min-width: 100%;
+}
+
+/* TWITTER */
+.twitter-embed {
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.twitter-tweet {
+  margin: 0 auto !important;
+}
+
+/* INSTAGRAM */
+.instagram-embed iframe {
+  height: 100% !important;
+}
+
+/* CTA */
+.social-cta {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.footer-social .soc {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(64,145,108,0.12);
+  color: var(--green-700);
+  transition: 0.2s ease;
+  text-decoration: none;
+}
+
+.footer-social .soc:hover {
+  background: var(--green-600);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
 /* =========
    Footer
 ========= */
