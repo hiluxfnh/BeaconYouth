@@ -6,7 +6,8 @@
     <title>About — Beacon Youth Collective</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/png" href="assets/logo_initials.png" />
-  </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
   <body>
     <header class="navbar">
       <div class="navbar-inner container">
@@ -24,105 +25,130 @@
       </div>
     </header>
 
+    <!-- Hero -->
+    <section style="background:linear-gradient(135deg,var(--green-900),var(--green-700));color:#fff;padding:64px 0 56px;position:relative;overflow:hidden;">
+      <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:24px 24px;pointer-events:none;"></div>
+      <div class="container" style="position:relative;z-index:1;">
+        <div class="kicker" style="background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.25);color:#fff;">About BYC</div>
+        <h1 style="font-size:clamp(28px,5vw,48px);font-weight:700;line-height:1.15;margin:12px 0 16px;letter-spacing:-.02em;">Who we are</h1>
+        <p style="font-size:17px;line-height:1.7;max-width:60ch;opacity:.88;margin:0;">
+          BYC is a youth-led nonprofit founded by young people in Cameroon, advancing education, climate action, technology for good, and gender equality — together.
+        </p>
+      </div>
+    </section>
+
     <main class="section">
       <div class="container stack">
-        <div>
-          <div class="kicker">About</div>
-          <h2 class="h2">Who we are</h2>
-          <p class="lead">
-            BYC is a youth-led nonprofit founded by Young people, based in Cameroon, advancing education, climate action, technology
-            for good, and gender equality.
-          </p>
-        </div>
 
+        <!-- Mission & Vision -->
         <div class="grid grid-lg-2">
-          <div class="card">
-            <h3>Mission</h3>
+          <div class="card" style="border-top:4px solid var(--green-600);">
+            <div style="font-size:32px;margin-bottom:12px;">🎯</div>
+            <h3>Our Mission</h3>
             <p>
-              Empower young people to lead change—through skills, opportunities,
-              and safe spaces—so that communities become more educated,
-              resilient, and equitable.
+              Empower young people to lead change — through skills, opportunities, and safe spaces — so that communities become more educated, resilient, and equitable.
             </p>
           </div>
-          <div class="card">
-            <h3>Vision & Values</h3>
+          <div class="card" style="border-top:4px solid var(--accent);">
+            <div style="font-size:32px;margin-bottom:12px;">🌟</div>
+            <h3>Our Vision &amp; Values</h3>
             <p>
-              We envision a world where youth thrive and shape solutions. Our
-              values: integrity, inclusion, participation, climate & social
-              justice, collaboration, and do-no-harm.
+              A world where youth thrive and shape solutions. We stand for integrity, inclusion, participation, climate &amp; social justice, collaboration, and do-no-harm.
             </p>
           </div>
         </div>
 
+        <!-- Approach, Governance, Where we work -->
         <div class="grid grid-lg-3">
           <div class="card">
-            <h3>Approach</h3>
+            <div style="font-size:28px;margin-bottom:10px;">🤝</div>
+            <h3>Our Approach</h3>
             <p>
-              We co-design with schools, councils, and local NGOs. We blend
-              programs, policy linkages, and partnerships—supported by data and
-              youth voice.
+              We co-design with schools, councils, and local NGOs — blending programs, policy linkages, and partnerships backed by data and authentic youth voice.
             </p>
           </div>
           <div class="card">
+            <div style="font-size:28px;margin-bottom:10px;">🏛️</div>
             <h3>Governance</h3>
             <p>
-              Simple and accountable: Founder/ED, Treasurer, Secretary, Program
-              Leads (Education, Climate, Tech, GBV) and a Youth Advisory
-              Council.
+              Simple and accountable: Founder/ED, Treasurer, Secretary, Program Leads across Education, Climate, Tech &amp; GBV, and a Youth Advisory Council.
             </p>
           </div>
           <div class="card">
-            <h3>Where we work</h3>
+            <div style="font-size:28px;margin-bottom:10px;">📍</div>
+            <h3>Where We Work</h3>
             <p>
-              Headquartered in Bertoua with activities across Cameroon and
-              partnerships across Africa. We work in schools, community centers,
-              and online.
+              Headquartered in Bertoua with activities across Cameroon and partnerships across Africa — in schools, community centres, and online.
             </p>
+          </div>
+        </div>
+
+        <!-- Values chips -->
+        <div class="card" style="background:var(--green-50);border-color:var(--green-100);">
+          <h3 style="color:var(--green-800);margin-bottom:16px;">Our Core Values</h3>
+          <div class="about-values">
+            <span class="value-chip">✅ Integrity</span>
+            <span class="value-chip">🤝 Inclusion</span>
+            <span class="value-chip">💬 Participation</span>
+            <span class="value-chip">🌱 Climate Justice</span>
+            <span class="value-chip">💡 Collaboration</span>
+            <span class="value-chip">🛡️ Do-No-Harm</span>
           </div>
         </div>
 
         <div class="banner">
-          English governs. French version coming soon as capacity allows.
+          🌐 English governs all official communications. French version coming soon as capacity allows.
         </div>
       </div>
     </main>
 
-    <footer>
-      <div class="container footer-inner">
-        <div class="footer-brand">
-          <img src="assets/logo.png" alt="BYC Logo full" />
-          <div>
-            <strong>Beacon Youth Collective</strong><br /><span class="muted"
-              >Bertoua, Cameroon</span
-            >
-          </div>
-        </div>
-        <div class="footer-cols">
-          <div>
-            <p class="muted">Youth-led. Evidence-driven. Community-rooted.</p>
-          </div>
-          <div>
-            <strong>Programs</strong>
-            <div class="stack" style="margin-top: 8px">
-              <a href="education.html">Education</a
-              ><a href="climate.html">Climate</a><a href="tech.html">Tech</a
-              ><a href="gbv.html">Gender & GBV</a>
+      <footer>
+    <div class="container footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">
+            <img src="assets/logo.png" alt="BYC Logo" />
+            <div class="footer-brand-text">
+              <strong>Beacon Youth Collective</strong>
+              <span>Bertoua, Cameroon</span>
             </div>
           </div>
-          <div>
-            <strong>Connect</strong>
-            <div class="stack" style="margin-top: 8px">
-              <a href="get-involved.html">Get Involved</a
-              ><a href="news.html">News</a><a href="contact.html">Contact</a
-              ><a href="donate.html">Donate</a>
-            </div>
+          <p class="footer-tagline">"Youth-led. Evidence-driven. Community-rooted."</p>
+          <div class="footer-social-row" style="margin-top:20px;">
+            <a href="https://instagram.com/beaconyouthcollective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/BeaconYouthBYC" target="_blank" rel="noopener" class="footer-social-icon" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://linkedin.com/company/beacon-youth-collective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://facebook.com/BeaconYouthCollective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
           </div>
         </div>
-        <p class="muted" style="margin-top: 14px">
-          © 2025 Beacon Youth Collective
-        </p>
+        <div>
+          <div class="footer-col-title">Programs</div>
+          <div class="footer-links">
+            <a href="education.html">📚 Education</a>
+            <a href="climate.html">🌿 Climate Action</a>
+            <a href="tech.html">💻 Tech for Good</a>
+            <a href="gbv.html">🤝 Gender &amp; GBV</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Connect</div>
+          <div class="footer-links">
+            <a href="about.html">About Us</a>
+            <a href="team.html">Our Team</a>
+            <a href="get-involved.html">Get Involved</a>
+            <a href="news.html">News</a>
+            <a href="contact.html">Contact</a>
+            <a href="donate.html">Donate</a>
+          </div>
+        </div>
       </div>
-    </footer>
+      <hr class="footer-divider" />
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2025 Beacon Youth Collective · All rights reserved</p>
+        <a href="admin.html" class="btn soft small">🔒 Admin</a>
+      </div>
+    </div>
+  </footer>
 
     <script src="script.js"></script>
   </body>

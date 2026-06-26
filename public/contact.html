@@ -10,7 +10,8 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-  </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
   <body>
     <header class="navbar">
       <div class="navbar-inner container">
@@ -40,51 +41,84 @@
 
         <div class="form-grid">
           <section class="form-container">
-            <h2 class="h2" style="margin:0 0 8px">Send a Message</h2>
-            <p class="muted" style="margin:0 0 16px">We read every message.</p>
+            <h2 class="h2" style="margin: 0 0 8px">Send a Message</h2>
+            <p class="muted" style="margin: 0 0 16px">We read every message.</p>
             <form id="contact-form">
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label" for="name">Full name</label>
-                  <input id="name" name="name" class="form-input" autocomplete="name" required />
+                  <input
+                    id="name"
+                    name="name"
+                    class="form-input"
+                    autocomplete="name"
+                    required
+                  />
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="email">Email</label>
-                  <input id="email" name="email" type="email" class="form-input" autocomplete="email" required />
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    class="form-input"
+                    autocomplete="email"
+                    required
+                  />
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="subject">Subject (optional)</label>
-                <input id="subject" name="subject" class="form-input" placeholder="Topic or reason for contacting" />
+                <label class="form-label" for="subject"
+                  >Subject (optional)</label
+                >
+                <input
+                  id="subject"
+                  name="subject"
+                  class="form-input"
+                  placeholder="Topic or reason for contacting"
+                />
               </div>
 
               <div class="form-group">
                 <label class="form-label" for="message">Message</label>
-                <textarea id="message" name="message" class="form-textarea" placeholder="How can we help?" required></textarea>
+                <textarea
+                  id="message"
+                  name="message"
+                  class="form-textarea"
+                  placeholder="How can we help?"
+                  required
+                ></textarea>
               </div>
 
               <div class="form-group">
-                <label style="display:flex;gap:8px;align-items:flex-start">
+                <label style="display: flex; gap: 8px; align-items: flex-start">
                   <input type="checkbox" id="consent" required />
-                  <span>I agree to be contacted by BYC regarding my message.</span>
+                  <span
+                    >I agree to be contacted by BYC regarding my message.</span
+                  >
                 </label>
               </div>
 
-              <div id="contact-alert" style="display:none"></div>
-              <button id="contactSubmit" class="form-submit" type="submit">Send</button>
+              <div id="contact-alert" style="display: none"></div>
+              <button id="contactSubmit" class="form-submit" type="submit">
+                Send
+              </button>
             </form>
           </section>
 
           <aside class="form-container">
-            <h2 class="h2" style="margin:0 0 8px">Contact Details</h2>
-            <div class="stack" style="margin-top:8px">
+            <h2 class="h2" style="margin: 0 0 8px">Contact Details</h2>
+            <div class="stack" style="margin-top: 8px">
               <p><strong>Location:</strong> Bertoua, Cameroon</p>
               <p>
-                <strong>Email:</strong> <span class="muted">info@beaconyouth.org</span>
+                <strong>Email:</strong>
+                <span class="muted">info@beaconyouth.org</span>
                 <span class="muted">(placeholder)</span>
               </p>
-              <p class="muted">Follow our updates on the News and Get Involved pages.</p>
+              <p class="muted">
+                Follow our updates on the News and Get Involved pages.
+              </p>
               <a class="btn" href="get-involved.html">Get Involved</a>
               <a class="btn alt" href="donate.html">Contribute to BYC</a>
             </div>
@@ -93,82 +127,101 @@
       </div>
     </main>
 
-    <footer>
-      <div class="container footer-inner">
-        <div class="footer-brand">
-          <img src="assets/logo.png" alt="BYC" />
-          <div>
-            <strong>Beacon Youth Collective</strong><br />
-            <span class="muted">Bertoua, Cameroon</span>
-          </div>
-        </div>
-        <div class="footer-cols">
-          <div>
-            <p class="muted">Youth-led. Evidence-driven. Community-rooted.</p>
-          </div>
-          <div>
-            <strong>Programs</strong>
-            <div class="stack" style="margin-top: 8px">
-              <a href="education.html">Education</a>
-              <a href="climate.html">Climate</a>
-              <a href="tech.html">Tech</a>
-              <a href="gbv.html">Gender & GBV</a>
+      <footer>
+    <div class="container footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">
+            <img src="assets/logo.png" alt="BYC Logo" />
+            <div class="footer-brand-text">
+              <strong>Beacon Youth Collective</strong>
+              <span>Bertoua, Cameroon</span>
             </div>
           </div>
-          <div>
-            <strong>Connect</strong>
-            <div class="stack" style="margin-top: 8px">
-              <a href="get-involved.html">Get Involved</a>
-              <a href="news.html">News</a>
-              <a href="contact.html" aria-current="page">Contact</a>
-              <a href="donate.html">Donate</a>
-            </div>
+          <p class="footer-tagline">"Youth-led. Evidence-driven. Community-rooted."</p>
+          <div class="footer-social-row" style="margin-top:20px;">
+            <a href="https://instagram.com/beaconyouthcollective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/BeaconYouthBYC" target="_blank" rel="noopener" class="footer-social-icon" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://linkedin.com/company/beacon-youth-collective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://facebook.com/BeaconYouthCollective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
           </div>
         </div>
-        <p class="muted" style="margin-top: 14px">© 2025 Beacon Youth Collective</p>
+        <div>
+          <div class="footer-col-title">Programs</div>
+          <div class="footer-links">
+            <a href="education.html">📚 Education</a>
+            <a href="climate.html">🌿 Climate Action</a>
+            <a href="tech.html">💻 Tech for Good</a>
+            <a href="gbv.html">🤝 Gender &amp; GBV</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Connect</div>
+          <div class="footer-links">
+            <a href="about.html">About Us</a>
+            <a href="team.html">Our Team</a>
+            <a href="get-involved.html">Get Involved</a>
+            <a href="news.html">News</a>
+            <a href="contact.html">Contact</a>
+            <a href="donate.html">Donate</a>
+          </div>
+        </div>
       </div>
-    </footer>
+      <hr class="footer-divider" />
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2025 Beacon Youth Collective · All rights reserved</p>
+        <a href="admin.html" class="btn soft small">🔒 Admin</a>
+      </div>
+    </div>
+  </footer>
 
     <script src="script.js"></script>
     <script type="module">
-      import { submitContact } from './firebase.js';
+      import { submitContact } from "./firebase.js";
 
-      const form = document.getElementById('contact-form');
-      const alertBox = document.getElementById('contact-alert');
-      const submitBtn = document.getElementById('contactSubmit');
+      const form = document.getElementById("contact-form");
+      const alertBox = document.getElementById("contact-alert");
+      const submitBtn = document.getElementById("contactSubmit");
 
-      function showAlert(kind, message){
+      function showAlert(kind, message) {
         alertBox.className = `alert alert-${kind}`;
         alertBox.textContent = message;
-        alertBox.style.display = 'block';
+        alertBox.style.display = "block";
       }
 
-      form.addEventListener('submit', async (e) => {
+      form.addEventListener("submit", async (e) => {
         e.preventDefault();
-        alertBox.style.display = 'none';
+        alertBox.style.display = "none";
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span class="loading-spinner" aria-hidden="true"></span> Sending...';
+        submitBtn.innerHTML =
+          '<span class="loading-spinner" aria-hidden="true"></span> Sending...';
 
         const data = {
           name: form.name.value,
           email: form.email.value,
           subject: form.subject.value || null,
           message: form.message.value,
-          consent: document.getElementById('consent').checked,
+          consent: document.getElementById("consent").checked,
           source: window.location.pathname,
-          userAgent: navigator.userAgent
+          userAgent: navigator.userAgent,
         };
 
-        try{
+        try {
           const id = await submitContact(data);
-          showAlert('success', `Thanks! Your message was sent. Reference: ${id}. We'll reply by email.`);
+          showAlert(
+            "success",
+            `Thanks! Your message was sent. Reference: ${id}. We'll reply by email.`
+          );
           form.reset();
-        }catch(err){
+        } catch (err) {
           console.error(err);
-          showAlert('error', 'Sorry, something went wrong. Please try again later.');
-        }finally{
+          showAlert(
+            "error",
+            "Sorry, something went wrong. Please try again later."
+          );
+        } finally {
           submitBtn.disabled = false;
-          submitBtn.textContent = 'Send';
+          submitBtn.textContent = "Send";
         }
       });
     </script>

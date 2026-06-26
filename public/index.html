@@ -1,172 +1,419 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Beacon Youth Collective — Home</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" type="image/png" href="assets/logo_initials.png" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <header class="navbar">
-      <div class="navbar-inner container">
-        <a class="brand" href="index.html">
-          <img src="assets/logo.png" alt="BYC Logo" />
-          <strong>Beacon Youth Collective</strong>
-        </a>
-        <nav>
-          <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-          <ul class="nav-links" id="nav-links">
-            <!-- Navigation will be populated by script.js -->
-          </ul>
-        </nav>
-      </div>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beacon Youth Collective — Empowering Youth Across Africa</title>
+  <meta name="description" content="BYC is a youth-led nonprofit in Bertoua, Cameroon, driving impact through Education, Climate Action, Tech for Good, and Gender Equality." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="assets/logo_initials.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
 
-    <section class="hero">
-      <div class="container stack">
-        <img
-          src="assets/logo_initials.png"
-          alt="BYC Initials"
-          style="height: 52px"
-          class="img-soft-bg"
-        />
-        <h1>Empowering youth across Education, Climate, Tech & Equality</h1>
-        <p class="lead" style="color: #fff">
-          BYC is a youth-led nonprofit based in Bertoua, Cameroon. We catalyze
-          leadership and opportunity for adolescents and young people through
-          programs, evidence, and partnerships.
+  <!-- ── NAVBAR ─────────────────────────────────────────── -->
+  <header class="navbar">
+    <div class="navbar-inner container">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.png" alt="BYC Logo" />
+        <strong>Beacon Youth Collective</strong>
+      </a>
+      <nav>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+        <ul class="nav-links" id="nav-links">
+          <!-- Populated by script.js -->
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── HERO ───────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="container hero-split">
+
+      <!-- Left: text -->
+      <div class="hero-text">
+        <div class="hero-eyebrow">
+          <span>🌍</span> Youth-led · Evidence-driven · Community-rooted
+        </div>
+        <h1>Building <span class="accent-word">brighter futures</span> for youth across Africa</h1>
+        <p>
+          BYC is a youth-led nonprofit based in Bertoua, Cameroon. We catalyze leadership and opportunity through programs in Education, Climate Action, Tech for Good, and Gender Equality.
         </p>
         <div class="hero-actions">
           <a class="btn primary" href="get-involved.html">Join Us</a>
-          <a class="btn alt" href="donate.html">Donate</a>
-          <a class="btn ghost" href="about.html">Learn More</a>
+          <a class="btn alt" href="donate.html">Donate Now</a>
+          <a class="btn ghost" href="about.html">Our Story</a>
         </div>
       </div>
-    </section>
 
-    <section class="section">
-      <div class="container stack">
-        <div>
-          <div class="kicker">Our Pillars</div>
-          <h2 class="h2">What we focus on</h2>
-          <p class="lead">
-            A practical, youth-powered model anchored in four domains. Explore
-            each to see goals, activities, and how to partner.
-          </p>
-        </div>
-
-        <div class="grid grid-lg-4">
-          <article class="card">
-            <h3>Education</h3>
-            <p>
-              Digital & civic literacy, scholarships (as funding allows),
-              mentorship networks, leadership camps, and school partnerships.
-            </p>
-            <p class="hr"></p>
-            <a class="btn" href="education.html">Explore Education →</a>
-          </article>
-
-          <article class="card">
-            <h3>Climate Action</h3>
-            <p>
-              Climate literacy clubs, adaptation demos, nature-based solutions,
-              and youth policy engagement (YOUNGO/UNFCCC).
-            </p>
-            <p class="hr"></p>
-            <a class="btn" href="climate.html">Explore Climate →</a>
-          </article>
-
-          <article class="card">
-            <h3>Tech for Good</h3>
-            <p>
-              Cyber safety & digital rights, hackathons, incubation for youth
-              solutions, open data & AI literacy for social impact.
-            </p>
-            <p class="hr"></p>
-            <a class="btn" href="tech.html">Explore Tech →</a>
-          </article>
-
-          <article class="card">
-            <h3>Gender & GBV</h3>
-            <p>
-              Prevention curricula, SRHR education, survivor-centered referrals,
-              and allyship with men & boys for safer communities.
-            </p>
-            <p class="hr"></p>
-            <a class="btn" href="gbv.html">Explore Gender & GBV →</a>
-          </article>
+      <!-- Right: decorative visual -->
+      <div class="hero-visual">
+        <div class="hero-orb">
+          <div class="hero-orb-ring"></div>
+          <div class="hero-orb-ring"></div>
+          <div class="hero-orb-center">
+            <img src="assets/logo.png" alt="BYC" />
+            <span>Since 2025</span>
+          </div>
+          <div class="hero-badges">
+            <div class="hero-badge">📚 Education</div>
+            <div class="hero-badge">🌿 Climate</div>
+            <div class="hero-badge">💻 Tech for Good</div>
+          </div>
         </div>
       </div>
-    </section>
 
-    <section class="section">
-      <div class="container grid grid-lg-2">
-        <div class="card">
-          <span class="badge">New</span>
-          <h3 style="margin-top: 8px">Launch: BYC School Climate Clubs</h3>
-          <p>
-            We’re piloting youth-led clubs to blend climate literacy with
-            hands-on adaptation projects, using your EcoCityAdapt approach and
-            community mapping.
-          </p>
-        </div>
-        <div class="card">
-          <span class="badge">Call</span>
-          <h3 style="margin-top: 8px">Mentors & Partners</h3>
-          <p>
-            We’re onboarding mentors for coding, design, and community
-            organizing—plus schools/NGOs for joint activities in 2025–2026.
-          </p>
-        </div>
+    </div>
+  </section>
+
+  <!-- ── STATS BAR ──────────────────────────────────────── -->
+  <section class="stats-bar">
+    <div class="container stats-grid">
+      <div class="stat-item reveal">
+        <span class="stat-number">4</span>
+        <span class="stat-label">Core Programs</span>
       </div>
-    </section>
+      <div class="stat-item reveal reveal-delay-1">
+        <span class="stat-number">250+</span>
+        <span class="stat-label">Youth Reached</span>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <span class="stat-number">10+</span>
+        <span class="stat-label">Partner Schools</span>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <span class="stat-number">2025</span>
+        <span class="stat-label">Year Founded</span>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-      <div class="container footer-inner">
-        <div class="footer-brand">
-          <img src="assets/logo.png" alt="BYC Logo full" />
-          <div>
-            <strong>Beacon Youth Collective</strong><br />
-            <span class="muted">Bertoua, Cameroon</span>
+  <!-- ── PROGRAMS ───────────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="kicker">Our Work</div>
+        <h2 class="h2">Four pillars, one mission</h2>
+        <p class="lead">Youth-powered programs built for real, lasting community impact.</p>
+      </div>
+
+      <div class="programs-grid">
+
+        <div class="program-card reveal reveal-delay-1" data-program="education">
+          <div class="program-icon">📚</div>
+          <h3>Education</h3>
+          <p>Digital &amp; civic literacy, mentorship networks, leadership camps, scholarships, and deep school partnerships.</p>
+          <a class="prog-link" href="education.html">Explore Education <span>→</span></a>
+        </div>
+
+        <div class="program-card reveal reveal-delay-2" data-program="climate">
+          <div class="program-icon">🌿</div>
+          <h3>Climate Action</h3>
+          <p>Climate literacy clubs, adaptation demonstrations, nature-based solutions, and youth engagement at UNFCCC.</p>
+          <a class="prog-link" href="climate.html">Explore Climate <span>→</span></a>
+        </div>
+
+        <div class="program-card reveal reveal-delay-3" data-program="tech">
+          <div class="program-icon">💻</div>
+          <h3>Tech for Good</h3>
+          <p>Cyber safety, digital rights, hackathons, youth-led incubation, open data, and AI literacy for social impact.</p>
+          <a class="prog-link" href="tech.html">Explore Tech <span>→</span></a>
+        </div>
+
+        <div class="program-card reveal reveal-delay-4" data-program="gender">
+          <div class="program-icon">🤝</div>
+          <h3>Gender &amp; GBV</h3>
+          <p>Prevention curricula, SRHR education, survivor-centered referrals, and allyship programs for safer communities.</p>
+          <a class="prog-link" href="gbv.html">Explore Gender &amp; GBV <span>→</span></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PAST WORK / PORTFOLIO ──────────────────────────── -->
+  <section class="section" style="background: #fff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="kicker">What We've Done</div>
+        <h2 class="h2">Work we're proud of</h2>
+        <p class="lead">From school pilots to global forums — here's a glimpse of our impact so far.</p>
+      </div>
+
+      <div class="work-grid">
+
+        <!-- Featured card (spans 2 rows on desktop) -->
+        <div class="work-card reveal">
+          <div class="work-image" style="--work-bg: linear-gradient(135deg,#1b4332,#2d6a4f);">
+            <div class="work-image-icon">🚀</div>
+            <div class="work-image-title">BYC Official Launch — 2025</div>
+          </div>
+          <div class="work-body">
+            <span class="work-tag" style="--tag-color:var(--green-700);--tag-bg:var(--green-50);--tag-border:var(--green-100);">Milestone</span>
+            <h3>Beacon Youth Collective Goes Live</h3>
+            <p>After months of co-design with young people across Cameroon, BYC formally launched in 2025 with adopted statutes, an executive committee, and pilot programs underway in schools across Bertoua.</p>
           </div>
         </div>
-        <div class="footer-cols">
-          <div>
-            <p class="muted">Youth-led. Evidence-driven. Community-rooted.</p>
-            <div class="banner" style="margin-top: 8px">
-              Prefer English for now; French version coming soon.
-            </div>
+
+        <!-- Top-right -->
+        <div class="work-card reveal reveal-delay-1">
+          <div class="work-image" style="--work-bg: linear-gradient(135deg,#14532d,#166534);">
+            <div class="work-image-icon">🌍</div>
+            <div class="work-image-title">School Climate Clubs Pilot</div>
           </div>
-          <div>
-            <strong>Programs</strong>
-            <div class="stack" style="margin-top: 8px">
-              <a href="education.html">Education</a>
-              <a href="climate.html">Climate Action</a>
-              <a href="tech.html">Tech for Good</a>
-              <a href="gbv.html">Gender & GBV</a>
-            </div>
-          </div>
-          <div>
-            <strong>Connect</strong>
-            <div class="stack" style="margin-top: 8px">
-              <a href="get-involved.html">Get Involved</a>
-              <a href="news.html">News</a>
-              <a href="contact.html">Contact</a>
-              <a href="donate.html">Donate</a>
-            </div>
+          <div class="work-body">
+            <span class="work-tag" style="--tag-color:var(--green-700);--tag-bg:var(--green-50);--tag-border:var(--green-100);">Climate</span>
+            <h3>Youth-Led Climate Clubs in Schools</h3>
+            <p>Piloting climate literacy clubs that blend hands-on adaptation projects with community mapping using the EcoCityAdapt approach.</p>
           </div>
         </div>
-        <p class="muted" style="margin-top: 14px">
-          © 2025 Beacon Youth Collective
+
+        <!-- Bottom-right top -->
+        <div class="work-card reveal reveal-delay-2">
+          <div class="work-image" style="--work-bg: linear-gradient(135deg,#312e81,#4338ca);">
+            <div class="work-image-icon">🔒</div>
+            <div class="work-image-title">Digital Rights &amp; Cyber Safety</div>
+          </div>
+          <div class="work-body">
+            <span class="work-tag" style="--tag-color:#6d28d9;--tag-bg:rgba(124,58,237,.08);--tag-border:rgba(124,58,237,.2);">Tech</span>
+            <h3>Cyber Safety Workshops for Youth</h3>
+            <p>Interactive sessions teaching digital rights, online safety, and responsible AI use — reaching over 150 young people in community centres.</p>
+          </div>
+        </div>
+
+        <!-- Bottom-right bottom -->
+        <div class="work-card reveal reveal-delay-3">
+          <div class="work-image" style="--work-bg: linear-gradient(135deg,#7c2d12,#c2410c);">
+            <div class="work-image-icon">🌐</div>
+            <div class="work-image-title">Global Representation</div>
+          </div>
+          <div class="work-body">
+            <span class="work-tag" style="--tag-color:var(--accent-dk);--tag-bg:rgba(244,162,97,.1);--tag-border:rgba(244,162,97,.3);">Advocacy</span>
+            <h3>Youth Voice at CSW &amp; COP</h3>
+            <p>BYC's founder represented Cameroonian youth at international forums including the UN Commission on the Status of Women and COP climate negotiations.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT TEASER ────────────────────────────────────── -->
+  <section class="about-teaser">
+    <div class="container about-teaser-inner">
+
+      <!-- Left: text -->
+      <div class="reveal">
+        <div class="kicker">Who We Are</div>
+        <h2 class="h2">A community built by youth, for youth</h2>
+        <p class="lead">
+          We co-design with schools, councils, and local NGOs to create programs that are youth-led, evidence-driven, and deeply rooted in community realities.
         </p>
+        <div class="about-values">
+          <span class="value-chip">✅ Integrity</span>
+          <span class="value-chip">🤝 Inclusion</span>
+          <span class="value-chip">🌱 Climate Justice</span>
+          <span class="value-chip">💡 Collaboration</span>
+          <span class="value-chip">🛡️ Do-No-Harm</span>
+        </div>
+        <a href="about.html" class="btn primary" style="margin-top: 28px; display: inline-flex;">Learn More About BYC →</a>
       </div>
-    </footer>
 
-    <script src="script.js"></script>
-  </body>
+      <!-- Right: visual -->
+      <div class="about-visual reveal reveal-delay-1">
+        <div class="about-visual-box">
+          <div class="about-visual-icon">🌍</div>
+          <div class="about-visual-label">Bertoua, Cameroon &amp; Beyond</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── LATEST NEWS ─────────────────────────────────────── -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal" style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:16px; max-width:none;">
+        <div>
+          <div class="kicker">Latest</div>
+          <h2 class="h2" style="margin-bottom:0;">News &amp; Updates</h2>
+        </div>
+        <a href="news.html" class="btn ghost-outline" style="background:transparent;color:var(--green-700);border-color:var(--green-600);">All News →</a>
+      </div>
+
+      <div class="news-grid">
+
+        <article class="news-card reveal">
+          <div class="news-card-image" style="--news-bg: linear-gradient(135deg,var(--green-50),#d8f3dc);">🚀</div>
+          <div class="news-card-body">
+            <div class="news-meta">
+              <span class="news-date">Jun 2025</span>
+              <span class="tag green">Milestone</span>
+            </div>
+            <h3>BYC Is Officially Launched</h3>
+            <p>Statutes adopted, executive committee formed, and first school pilots kicking off this term across Bertoua.</p>
+          </div>
+        </article>
+
+        <article class="news-card reveal reveal-delay-1">
+          <div class="news-card-image" style="--news-bg: linear-gradient(135deg,#ecfdf5,#d1fae5);">🌱</div>
+          <div class="news-card-body">
+            <div class="news-meta">
+              <span class="news-date">May 2025</span>
+              <span class="tag green">Climate</span>
+            </div>
+            <h3>EcoCityAdapt in Schools</h3>
+            <p>We're adapting a leading climate education platform into school-friendly modules with teacher guides for Cameroon classrooms.</p>
+          </div>
+        </article>
+
+        <article class="news-card reveal reveal-delay-2">
+          <div class="news-card-image" style="--news-bg: linear-gradient(135deg,rgba(124,58,237,.06),rgba(124,58,237,.12));">📄</div>
+          <div class="news-card-body">
+            <div class="news-meta">
+              <span class="news-date">Apr 2025</span>
+              <span class="tag purple">Research</span>
+            </div>
+            <h3>Paper: From Data to Action</h3>
+            <p>Our founder co-authored a paper on youth-led approaches to climate decision-making — available from our publications page soon.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SOCIAL MEDIA ────────────────────────────────────── -->
+  <section class="social-section">
+    <div class="container">
+      <div class="section-header center reveal">
+        <div class="kicker">Follow Us</div>
+        <h2 class="h2">Connect with us on social media</h2>
+        <p class="lead">Stay updated with our latest activities, youth stories, and community events.</p>
+      </div>
+
+      <div class="social-platforms-grid">
+
+        <a class="social-platform-card reveal" data-platform="instagram" href="https://instagram.com/beaconyouthcollective" target="_blank" rel="noopener">
+          <div class="social-platform-icon" style="background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);">
+            <i class="fab fa-instagram" style="color:#fff;"></i>
+          </div>
+          <div class="social-platform-name">Instagram</div>
+          <div class="social-platform-handle">@beaconyouthcollective</div>
+          <span class="social-platform-cta">Follow →</span>
+        </a>
+
+        <a class="social-platform-card reveal reveal-delay-1" data-platform="twitter" href="https://x.com/BeaconYouthBYC" target="_blank" rel="noopener">
+          <div class="social-platform-icon" style="background:#000;">
+            <i class="fab fa-x-twitter" style="color:#fff;"></i>
+          </div>
+          <div class="social-platform-name">X (Twitter)</div>
+          <div class="social-platform-handle">@BeaconYouthBYC</div>
+          <span class="social-platform-cta">Follow →</span>
+        </a>
+
+        <a class="social-platform-card reveal reveal-delay-2" data-platform="linkedin" href="https://linkedin.com/company/beacon-youth-collective" target="_blank" rel="noopener">
+          <div class="social-platform-icon" style="background:#0a66c2;">
+            <i class="fab fa-linkedin-in" style="color:#fff;"></i>
+          </div>
+          <div class="social-platform-name">LinkedIn</div>
+          <div class="social-platform-handle">Beacon Youth Collective</div>
+          <span class="social-platform-cta">Connect →</span>
+        </a>
+
+        <a class="social-platform-card reveal reveal-delay-3" data-platform="facebook" href="https://facebook.com/BeaconYouthCollective" target="_blank" rel="noopener">
+          <div class="social-platform-icon" style="background:#1877f2;">
+            <i class="fab fa-facebook-f" style="color:#fff;"></i>
+          </div>
+          <div class="social-platform-name">Facebook</div>
+          <div class="social-platform-handle">BeaconYouthCollective</div>
+          <span class="social-platform-cta">Like &amp; Follow →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PARTNER CTA ─────────────────────────────────────── -->
+  <section class="partner-cta">
+    <div class="container">
+      <div class="kicker">Work With Us</div>
+      <h2 class="h2">Ready to partner with BYC?</h2>
+      <p class="lead">
+        We work with schools, NGOs, government agencies, and international organizations to multiply our reach. Whether you want to fund, co-design, or implement — there's a place for you here.
+      </p>
+      <div class="partner-cta-actions">
+        <a class="btn alt" href="get-involved.html">Become a Partner</a>
+        <a class="btn ghost-outline" href="contact.html">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ──────────────────────────────────────────── -->
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-top">
+        <!-- Brand -->
+        <div>
+          <div class="footer-brand">
+            <img src="assets/logo.png" alt="BYC Logo" />
+            <div class="footer-brand-text">
+              <strong>Beacon Youth Collective</strong>
+              <span>Bertoua, Cameroon</span>
+            </div>
+          </div>
+          <p class="footer-tagline">"Youth-led. Evidence-driven. Community-rooted."</p>
+          <div class="footer-social-row" style="margin-top:20px;">
+            <a href="https://instagram.com/beaconyouthcollective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://x.com/BeaconYouthBYC" target="_blank" rel="noopener" class="footer-social-icon" aria-label="X / Twitter">
+              <i class="fab fa-x-twitter"></i>
+            </a>
+            <a href="https://linkedin.com/company/beacon-youth-collective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://facebook.com/BeaconYouthCollective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Programs -->
+        <div>
+          <div class="footer-col-title">Programs</div>
+          <div class="footer-links">
+            <a href="education.html">📚 Education</a>
+            <a href="climate.html">🌿 Climate Action</a>
+            <a href="tech.html">💻 Tech for Good</a>
+            <a href="gbv.html">🤝 Gender &amp; GBV</a>
+          </div>
+        </div>
+
+        <!-- Connect -->
+        <div>
+          <div class="footer-col-title">Connect</div>
+          <div class="footer-links">
+            <a href="about.html">About Us</a>
+            <a href="team.html">Our Team</a>
+            <a href="get-involved.html">Get Involved</a>
+            <a href="news.html">News</a>
+            <a href="contact.html">Contact</a>
+            <a href="donate.html">Donate</a>
+          </div>
+        </div>
+      </div>
+
+      <hr class="footer-divider" />
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2025 Beacon Youth Collective · All rights reserved</p>
+        <a href="admin.html" class="btn soft small">🔒 Admin</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
