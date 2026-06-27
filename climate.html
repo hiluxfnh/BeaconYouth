@@ -1,43 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Climate Action — Beacon Youth Collective</title>
-  <link rel="stylesheet" href="styles.css"/><link rel="icon" href="assets/logo_initials.png"/>
+  <meta name="description" content="BYC's Climate Action program runs school climate clubs, community adaptation demos, and youth policy engagement at UNFCCC/YOUNGO." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/logo_initials.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body>
-<header class="navbar">
-  <div class="navbar-inner container">
-    <a class="brand" href="index.html"><img src="assets/logo.png" alt="BYC"/><strong>Beacon Youth Collective</strong></a>
-    <nav><button class="menu-toggle" onclick="toggleMenu()">☰</button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="about.html">About</a></li><li><a href="education.html">Education</a></li>
-        <li><a href="climate.html" aria-current="page">Climate</a></li><li><a href="tech.html">Tech for Good</a></li><li><a href="gbv.html">Gender & GBV</a></li>
-        <li><a href="team.html">Team</a></li><li><a href="get-involved.html">Get Involved</a></li><li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li>
-      </ul></nav>
-  </div>
-</header>
 
-<main class="section">
-  <div class="container stack">
-    <div><div class="kicker">Programs</div><h2 class="h2">Climate Action</h2>
-      <p class="lead">We mainstream climate literacy, support adaptation & nature-based solutions, and amplify youth voices in policy spaces.</p></div>
-
-    <div class="grid grid-lg-3">
-      <div class="card"><h3>School Climate Clubs</h3><p>Interactive projects on waste, water, trees, and local adaptation—guided by youth mentors.</p></div>
-      <div class="card"><h3>Community Adaptation</h3><p>Demonstrations on rainwater harvesting, soil restoration, and heat-risk awareness for vulnerable groups.</p></div>
-      <div class="card"><h3>Policy Engagement</h3><p>Briefs, consultations, and youth participation in UNFCCC/YOUNGO processes—turning data into action.</p></div>
+  <header class="navbar">
+    <div class="navbar-inner container">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.png" alt="BYC Logo" />
+        <strong>Beacon Youth Collective</strong>
+      </a>
+      <nav>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+        <ul class="nav-links" id="nav-links"></ul>
+      </nav>
     </div>
+  </header>
 
-    <div class="card">
-      <h3>EcoCityAdapt</h3>
-      <p>We’ll integrate your EcoCityAdapt content to teach climate basics, risk mapping, and practical solutions tailored to urban and peri-urban schools.</p>
-      <p class="hr"></p>
-      <a class="btn" href="get-involved.html">Bring this to your school →</a>
+  <!-- Page Hero -->
+  <section class="page-hero" style="--ph-dark:var(--green-900);--ph-mid:var(--green-600);">
+    <div class="container">
+      <span class="page-hero-icon">🌿</span>
+      <div class="page-hero-eyebrow">Programs</div>
+      <h1 class="page-hero-title">Climate Action</h1>
+      <p class="page-hero-lead">We mainstream climate literacy, support community adaptation &amp; nature-based solutions, and amplify youth voices in local and global policy spaces.</p>
+      <div class="impact-chips">
+        <span class="impact-chip">🏫 School Climate Clubs</span>
+        <span class="impact-chip">💧 Community Adaptation</span>
+        <span class="impact-chip">🌐 UNFCCC / YOUNGO</span>
+        <span class="impact-chip">🗺️ Risk Mapping</span>
+      </div>
     </div>
-  </div>
-</main>
+  </section>
+
+  <!-- Program sub-nav -->
+  <nav class="prog-subnav" aria-label="Programs">
+    <div class="prog-subnav-inner">
+      <a class="prog-subnav-link" href="education.html">📚 Education</a>
+      <a class="prog-subnav-link active" href="climate.html" style="--prog-color:var(--green-600);">🌿 Climate Action</a>
+      <a class="prog-subnav-link" href="tech.html">💻 Tech for Good</a>
+      <a class="prog-subnav-link" href="gbv.html">🤝 Gender &amp; GBV</a>
+    </div>
+  </nav>
+
+  <main class="section">
+    <div class="container stack">
+
+      <!-- Core areas -->
+      <div class="grid grid-lg-3">
+
+        <div class="card" style="border-top:4px solid var(--green-600);">
+          <div style="font-size:32px;margin-bottom:12px;">🏫</div>
+          <h3>School Climate Clubs</h3>
+          <p>Interactive, youth-led clubs tackling waste, water, trees, and local adaptation — guided by peer mentors using practical, hands-on approaches.</p>
+          <ul class="feature-list" style="margin-top:16px;">
+            <li>Waste reduction &amp; sorting projects</li>
+            <li>Tree-planting &amp; green space creation</li>
+            <li>Water conservation demonstrations</li>
+            <li>Youth-made climate risk maps</li>
+          </ul>
+        </div>
+
+        <div class="card" style="border-top:4px solid var(--green-600);">
+          <div style="font-size:32px;margin-bottom:12px;">💧</div>
+          <h3>Community Adaptation</h3>
+          <p>Practical demonstrations on rainwater harvesting, soil restoration, heat-risk awareness, and nature-based solutions for vulnerable groups.</p>
+          <ul class="feature-list" style="margin-top:16px;">
+            <li>Rainwater harvesting systems</li>
+            <li>Soil restoration &amp; composting</li>
+            <li>Heat-risk awareness campaigns</li>
+            <li>Nature-based urban cooling</li>
+          </ul>
+        </div>
+
+        <div class="card" style="border-top:4px solid var(--green-600);">
+          <div style="font-size:32px;margin-bottom:12px;">🌐</div>
+          <h3>Policy Engagement</h3>
+          <p>Youth briefs, consultations, and participation in UNFCCC/YOUNGO processes — turning community data into real policy recommendations.</p>
+          <ul class="feature-list" style="margin-top:16px;">
+            <li>Youth climate policy briefs</li>
+            <li>Representation at COP &amp; YOUNGO</li>
+            <li>Community data for decision-makers</li>
+            <li>Stakeholder consultation sessions</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- EcoCityAdapt showcase -->
+      <div class="card" style="background:linear-gradient(135deg,rgba(64,145,108,.05),rgba(64,145,108,.1));border:1.5px solid rgba(64,145,108,.25);">
+        <div style="display:grid;gap:32px;align-items:center;" class="grid-lg-2">
+          <div>
+            <div style="font-size:36px;margin-bottom:12px;">🗺️</div>
+            <h3 style="font-size:22px;">EcoCityAdapt Integration</h3>
+            <p>We adapt the EcoCityAdapt platform into school-friendly modules — covering climate basics, risk mapping, and practical solutions tailored to urban and peri-urban Cameroonian schools.</p>
+            <ul class="feature-list" style="margin-top:16px;">
+              <li>School-ready climate literacy modules</li>
+              <li>Teacher guides &amp; facilitation tools</li>
+              <li>Community risk mapping activities</li>
+              <li>Student-led adaptation project templates</li>
+            </ul>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <a class="btn alt" href="get-involved.html">Bring This to Your School →</a>
+            <a class="btn primary" href="contact.html">Start a Partnership</a>
+            <a class="btn ghost-outline" style="background:transparent;color:var(--green-700);border-color:var(--green-400);" href="donate.html">Fund Climate Programs</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- CTA -->
+  <section class="partner-cta">
+    <div class="container">
+      <div class="kicker" style="background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.25);color:#fff;">Take Action</div>
+      <h2 class="h2">Youth are ready. Are you?</h2>
+      <p class="lead">Partner with BYC to launch climate clubs, co-design community projects, or support youth representation at global climate forums.</p>
+      <div class="partner-cta-actions">
+        <a class="btn alt" href="get-involved.html">Partner with Us</a>
+        <a class="btn ghost-outline" href="donate.html">Fund Climate Action</a>
+      </div>
+    </div>
+  </section>
 
   <footer>
     <div class="container footer-inner">
@@ -86,6 +180,7 @@
       </div>
     </div>
   </footer>
-<script src="script.js"></script>
+
+  <script src="script.js"></script>
 </body>
 </html>

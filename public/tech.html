@@ -1,41 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tech for Good — Beacon Youth Collective</title>
-  <link rel="stylesheet" href="styles.css"/><link rel="icon" href="assets/logo_initials.png"/>
+  <meta name="description" content="BYC's Tech for Good program empowers youth with cyber safety, hackathons, digital rights, and tools for social impact." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/logo_initials.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body>
-<header class="navbar">
-  <div class="navbar-inner container">
-    <a class="brand" href="index.html"><img src="assets/logo.png" alt="BYC"/><strong>Beacon Youth Collective</strong></a>
-    <nav><button class="menu-toggle" onclick="toggleMenu()">☰</button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="about.html">About</a></li><li><a href="education.html">Education</a></li>
-        <li><a href="climate.html">Climate</a></li><li><a href="tech.html" aria-current="page">Tech for Good</a></li><li><a href="gbv.html">Gender & GBV</a></li>
-        <li><a href="team.html">Team</a></li><li><a href="get-involved.html">Get Involved</a></li><li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li>
-      </ul></nav>
-  </div>
-</header>
 
-<main class="section">
-  <div class="container stack">
-    <div><div class="kicker">Programs</div><h2 class="h2">Tech for Good</h2>
-      <p class="lead">We help youth use technology safely and creatively to solve real problems in education, health, and climate.</p></div>
-
-    <div class="grid grid-lg-3">
-      <div class="card"><h3>Cyber Safety</h3><p>Digital rights, privacy, and online well-being—so youth unlock the web without harm.</p></div>
-      <div class="card"><h3>Innovation & Incubation</h3><p>Hackathons and incubators turning ideas into pilots—mentorship, UI/UX basics, and deployment tips.</p></div>
-      <div class="card"><h3>Open Tools & Data</h3><p>Low-code and open-source toolkits for mapping, data collection, and storytelling (including BYC starter templates).</p></div>
+  <header class="navbar">
+    <div class="navbar-inner container">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.png" alt="BYC Logo" />
+        <strong>Beacon Youth Collective</strong>
+      </a>
+      <nav>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+        <ul class="nav-links" id="nav-links"></ul>
+      </nav>
     </div>
+  </header>
 
-    <div class="card">
-      <h3>Showcase: Student Housing (KamerLark)</h3>
-      <p>Inspired by your work solving student housing pain points, we’ll share case studies that guide young founders from problem discovery to ethical scaling.</p>
+  <!-- Page Hero -->
+  <section class="page-hero" style="--ph-dark:#3b0764;--ph-mid:#7c3aed;">
+    <div class="container">
+      <span class="page-hero-icon">💻</span>
+      <div class="page-hero-eyebrow">Programs</div>
+      <h1 class="page-hero-title">Tech for Good</h1>
+      <p class="page-hero-lead">We help youth use technology safely and creatively to solve real problems in education, health, climate, and community development.</p>
+      <div class="impact-chips">
+        <span class="impact-chip">🔒 Cyber Safety</span>
+        <span class="impact-chip">⚡ Hackathons</span>
+        <span class="impact-chip">🧠 AI Literacy</span>
+        <span class="impact-chip">🔓 Digital Rights</span>
+      </div>
     </div>
-  </div>
-</main>
+  </section>
+
+  <!-- Program sub-nav -->
+  <nav class="prog-subnav" aria-label="Programs">
+    <div class="prog-subnav-inner">
+      <a class="prog-subnav-link" href="education.html">📚 Education</a>
+      <a class="prog-subnav-link" href="climate.html">🌿 Climate Action</a>
+      <a class="prog-subnav-link active" href="tech.html" style="--prog-color:#7c3aed;">💻 Tech for Good</a>
+      <a class="prog-subnav-link" href="gbv.html">🤝 Gender &amp; GBV</a>
+    </div>
+  </nav>
+
+  <main class="section">
+    <div class="container stack">
+
+      <!-- Core areas -->
+      <div class="grid grid-lg-3">
+
+        <div class="card" style="border-top:4px solid #7c3aed;">
+          <div style="font-size:32px;margin-bottom:12px;">🔒</div>
+          <h3>Cyber Safety &amp; Digital Rights</h3>
+          <p>Empowering youth with the knowledge to navigate the web safely — from privacy and security to online well-being and digital activism.</p>
+          <ul class="feature-list" style="margin-top:16px;">
+            <li>Online privacy &amp; data protection</li>
+            <li>Recognising scams &amp; misinformation</li>
+            <li>Digital rights &amp; freedom of expression</li>
+            <li>Healthy screen-time habits</li>
+          </ul>
+        </div>
+
+        <div class="card" style="border-top:4px solid #7c3aed;">
+          <div style="font-size:32px;margin-bottom:12px;">⚡</div>
+          <h3>Innovation &amp; Incubation</h3>
+          <p>Hackathons and incubators that turn youth ideas into working prototypes — with mentorship, UI/UX basics, and deployment guidance.</p>
+          <ul class="feature-list" style="margin-top:16px;">
+            <li>24–48 hr community hackathons</li>
+            <li>Youth startup incubation sprints</li>
+            <li>UI/UX &amp; product design basics</li>
+            <li>Pitching &amp; ethical tech scaling</li>
+          </ul>
+        </div>
+
+        <div class="card" style="border-top:4px solid #7c3aed;">
+          <div style="font-size:32px;margin-bottom:12px;">🧰</div>
+          <h3>Open Tools &amp; Data</h3>
+          <p>Low-code and open-source toolkits for community mapping, data collection, and digital storytelling — including free BYC starter templates.</p>
+          <ul class="feature-list" style="margin-top:16px;">
+            <li>Community data collection tools</li>
+            <li>Mapping &amp; visualisation platforms</li>
+            <li>AI literacy for social impact</li>
+            <li>Free BYC open-source templates</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Case study showcase -->
+      <div class="card" style="background:linear-gradient(135deg,rgba(124,58,237,.04),rgba(124,58,237,.09));border:1.5px solid rgba(124,58,237,.2);">
+        <div style="display:grid;gap:32px;align-items:center;" class="grid-lg-2">
+          <div>
+            <div style="font-size:36px;margin-bottom:12px;">🏠</div>
+            <h3 style="font-size:22px;">Case Study: KamerLark Student Housing</h3>
+            <p>Inspired by real youth-led problem solving, we share case studies like KamerLark — which tackled student housing pain points in Cameroon — to guide young founders from problem discovery to ethical, scalable solutions.</p>
+            <ul class="feature-list" style="margin-top:16px;">
+              <li>Problem discovery &amp; user research</li>
+              <li>Prototyping with minimal resources</li>
+              <li>Ethical design &amp; data practices</li>
+              <li>Community validation &amp; iteration</li>
+            </ul>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <a class="btn alt" href="get-involved.html">Join a Hackathon →</a>
+            <a class="btn primary" href="contact.html">Propose a Tech Project</a>
+            <a class="btn ghost-outline" style="background:transparent;color:var(--purple, #7c3aed);border-color:rgba(124,58,237,.4);" href="donate.html">Fund Tech Programs</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- CTA -->
+  <section class="partner-cta">
+    <div class="container">
+      <div class="kicker" style="background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.25);color:#fff;">Get Involved</div>
+      <h2 class="h2">Build solutions, not just skills</h2>
+      <p class="lead">Mentors, tech partners, and funders: help us create spaces where youth go from ideas to real, community-driven technology.</p>
+      <div class="partner-cta-actions">
+        <a class="btn alt" href="get-involved.html">Mentor or Partner with Us</a>
+        <a class="btn ghost-outline" href="donate.html">Support a Hackathon</a>
+      </div>
+    </div>
+  </section>
 
   <footer>
     <div class="container footer-inner">
@@ -84,6 +180,7 @@
       </div>
     </div>
   </footer>
-<script src="script.js"></script>
+
+  <script src="script.js"></script>
 </body>
 </html>

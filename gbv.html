@@ -1,38 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gender & GBV — Beacon Youth Collective</title>
-  <link rel="stylesheet" href="styles.css"/><link rel="icon" href="assets/logo_initials.png"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gender Equality &amp; GBV — Beacon Youth Collective</title>
+  <meta name="description" content="BYC's Gender &amp; GBV program delivers prevention curricula, SRHR education, survivor-centered referrals, and allyship programs for safer communities." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/logo_initials.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body>
-<header class="navbar">
-  <div class="navbar-inner container">
-    <a class="brand" href="index.html"><img src="assets/logo.png" alt="BYC"/><strong>Beacon Youth Collective</strong></a>
-    <nav><button class="menu-toggle" onclick="toggleMenu()">☰</button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="about.html">About</a></li><li><a href="education.html">Education</a></li>
-        <li><a href="climate.html">Climate</a></li><li><a href="tech.html">Tech for Good</a></li><li><a href="gbv.html" aria-current="page">Gender & GBV</a></li>
-        <li><a href="team.html">Team</a></li><li><a href="get-involved.html">Get Involved</a></li><li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li>
-      </ul></nav>
-  </div>
-</header>
 
-<main class="section">
-  <div class="container stack">
-    <div><div class="kicker">Programs</div><h2 class="h2">Gender Equality & Ending GBV</h2>
-      <p class="lead">We prevent and respond to violence against women and girls via awareness, allyship with men & boys, SRHR education, and survivor-centered referrals.</p></div>
-
-    <div class="grid grid-lg-3">
-      <div class="card"><h3>Prevention & Allyship</h3><p>Curricula for schools/communities, engaging boys and men as allies, addressing norms respectfully and firmly.</p></div>
-      <div class="card"><h3>SRHR Education</h3><p>Evidence-based adolescent SRHR sessions adapted from humanitarian toolkits—delivered safely by trained facilitators.</p></div>
-      <div class="card"><h3>Referral Mapping</h3><p>Clear pathways to survivor-centered services with confidentiality and do-no-harm principles.</p></div>
+  <header class="navbar">
+    <div class="navbar-inner container">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.png" alt="BYC Logo" />
+        <strong>Beacon Youth Collective</strong>
+      </a>
+      <nav>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+        <ul class="nav-links" id="nav-links"></ul>
+      </nav>
     </div>
+  </header>
 
-    <div class="banner">Safeguarding, anti-harassment, and PSEAH policies apply to all staff, volunteers, and partners.</div>
-  </div>
-</main>
+  <!-- Page Hero -->
+  <section class="page-hero" style="--ph-dark:#7f1d1d;--ph-mid:#e11d48;">
+    <div class="container">
+      <span class="page-hero-icon">🤝</span>
+      <div class="page-hero-eyebrow">Programs</div>
+      <h1 class="page-hero-title">Gender Equality &amp; Ending GBV</h1>
+      <p class="page-hero-lead">We prevent and respond to violence against women and girls through awareness, allyship with men &amp; boys, SRHR education, and survivor-centered referral pathways.</p>
+      <div class="impact-chips">
+        <span class="impact-chip">🛡️ Prevention Curricula</span>
+        <span class="impact-chip">❤️ SRHR Education</span>
+        <span class="impact-chip">📍 Referral Mapping</span>
+        <span class="impact-chip">🧑‍🤝‍🧑 Allyship Programs</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Program sub-nav -->
+  <nav class="prog-subnav" aria-label="Programs">
+    <div class="prog-subnav-inner">
+      <a class="prog-subnav-link" href="education.html">📚 Education</a>
+      <a class="prog-subnav-link" href="climate.html">🌿 Climate Action</a>
+      <a class="prog-subnav-link" href="tech.html">💻 Tech for Good</a>
+      <a class="prog-subnav-link active" href="gbv.html" style="--prog-color:#e11d48;">🤝 Gender &amp; GBV</a>
+    </div>
+  </nav>
+
+  <main class="section">
+    <div class="container stack">
+
+      <!-- Core areas -->
+      <div class="grid grid-lg-3">
+
+        <div class="card" style="border-top:4px solid #e11d48;">
+          <div style="font-size:32px;margin-bottom:12px;">🛡️</div>
+          <h3>Prevention &amp; Allyship</h3>
+          <p>Evidence-based curricula for schools and communities — engaging boys and men as active allies, addressing harmful norms respectfully but firmly.</p>
+          <ul class="feature-list" style="margin-top:16px;">
+            <li>School-based GBV prevention modules</li>
+            <li>Boys &amp; men allyship workshops</li>
+            <li>Community norm-change campaigns</li>
+            <li>Trained peer facilitators</li>
+          </ul>
+        </div>
+
+        <div class="card" style="border-top:4px solid #e11d48;">
+          <div style="font-size:32px;margin-bottom:12px;">❤️</div>
+          <h3>SRHR Education</h3>
+          <p>Evidence-based adolescent sexual &amp; reproductive health and rights sessions — adapted from humanitarian toolkits and delivered safely by trained facilitators.</p>
+          <ul class="feature-list" style="margin-top:16px;">
+            <li>Age-appropriate SRHR content</li>
+            <li>Consent &amp; healthy relationships</li>
+            <li>Menstrual health &amp; hygiene</li>
+            <li>Safe referrals to health services</li>
+          </ul>
+        </div>
+
+        <div class="card" style="border-top:4px solid #e11d48;">
+          <div style="font-size:32px;margin-bottom:12px;">📍</div>
+          <h3>Referral Mapping</h3>
+          <p>Clear, survivor-centered pathways to trusted local services — with strict confidentiality, do-no-harm principles, and psychosocial support integration.</p>
+          <ul class="feature-list" style="margin-top:16px;">
+            <li>Local service mapping &amp; directories</li>
+            <li>Confidential reporting channels</li>
+            <li>Psychosocial first aid training</li>
+            <li>Case management coordination</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Safeguarding note -->
+      <div class="card" style="background:rgba(225,29,72,.04);border:1.5px solid rgba(225,29,72,.18);">
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div style="font-size:28px;flex-shrink:0;">🔒</div>
+          <div>
+            <h3 style="color:#9f1239;margin:0 0 10px;">Safeguarding &amp; PSEAH Commitment</h3>
+            <p style="margin:0 0 12px;">Safeguarding, anti-harassment, and PSEAH (Protection from Sexual Exploitation, Abuse and Harassment) policies apply to all BYC staff, volunteers, and partners. We hold ourselves to the highest standards.</p>
+            <p style="margin:0;font-size:14px;color:var(--ink-70);">All facilitators are trained in do-no-harm principles and survivor-centred approaches before engaging with communities.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Get involved -->
+      <div style="display:grid;gap:32px;align-items:center;" class="grid-lg-2">
+        <div class="card" style="background:linear-gradient(135deg,rgba(225,29,72,.04),rgba(225,29,72,.08));border:1.5px solid rgba(225,29,72,.18);">
+          <div style="font-size:32px;margin-bottom:12px;">🧑‍🤝‍🧑</div>
+          <h3 style="font-size:20px;">Become a Facilitator</h3>
+          <p>We train community members, social workers, and youth leaders to deliver GBV prevention sessions. Join our next cohort.</p>
+          <a class="btn alt" href="get-involved.html" style="margin-top:16px;display:inline-flex;">Apply to Facilitate →</a>
+        </div>
+        <div class="card">
+          <div style="font-size:32px;margin-bottom:12px;">🤝</div>
+          <h3 style="font-size:20px;">Partner with Us</h3>
+          <p>Organizations focused on health, education, or protection — let's co-design programs that keep young people safer.</p>
+          <a class="btn primary" href="contact.html" style="margin-top:16px;display:inline-flex;">Start a Conversation →</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- CTA -->
+  <section class="partner-cta" style="background:linear-gradient(135deg,#7f1d1d,#9f1239);">
+    <div class="container">
+      <div class="kicker" style="background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.25);color:#fff;">Make Communities Safer</div>
+      <h2 class="h2">Every young person deserves safety and dignity</h2>
+      <p class="lead">Support BYC's work to end gender-based violence through community education, survivor support, and systemic change.</p>
+      <div class="partner-cta-actions">
+        <a class="btn alt" href="get-involved.html">Get Involved</a>
+        <a class="btn ghost-outline" href="donate.html">Donate to This Program</a>
+      </div>
+    </div>
+  </section>
 
   <footer>
     <div class="container footer-inner">
@@ -81,6 +186,7 @@
       </div>
     </div>
   </footer>
-<script src="script.js"></script>
+
+  <script src="script.js"></script>
 </body>
 </html>

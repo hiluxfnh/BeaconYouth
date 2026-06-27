@@ -1,133 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact — Beacon Youth Collective</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="assets/logo_initials.png" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Beacon Youth Collective</title>
+  <meta name="description" content="Get in touch with Beacon Youth Collective. We respond to all inquiries within a few days." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/logo_initials.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
-  <body>
-    <header class="navbar">
-      <div class="navbar-inner container">
-        <a class="brand" href="index.html">
-          <img src="assets/logo.png" alt="BYC" />
-          <strong>Beacon Youth Collective</strong>
-        </a>
-        <nav>
-          <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-          <ul class="nav-links" id="nav-links">
-            <!-- Navigation populated by script.js -->
-          </ul>
-        </nav>
-      </div>
-    </header>
+<body>
 
-    <main class="section">
-      <div class="container stack">
-        <div>
-          <div class="kicker">Contact</div>
-          <h1 class="h2">We’d love to hear from you</h1>
-          <p class="lead">
-            Partnerships, programs, volunteers, or media—send us a message and
-            we’ll get back within a few days.
-          </p>
-        </div>
+  <header class="navbar">
+    <div class="navbar-inner container">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.png" alt="BYC" />
+        <strong>Beacon Youth Collective</strong>
+      </a>
+      <nav>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+        <ul class="nav-links" id="nav-links"></ul>
+      </nav>
+    </div>
+  </header>
 
-        <div class="form-grid">
-          <section class="form-container">
-            <h2 class="h2" style="margin: 0 0 8px">Send a Message</h2>
-            <p class="muted" style="margin: 0 0 16px">We read every message.</p>
-            <form id="contact-form">
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="name">Full name</label>
-                  <input
-                    id="name"
-                    name="name"
-                    class="form-input"
-                    autocomplete="name"
-                    required
-                  />
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="email">Email</label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    class="form-input"
-                    autocomplete="email"
-                    required
-                  />
-                </div>
-              </div>
+  <!-- Page Hero -->
+  <section class="page-hero" style="--ph-dark:#1b4332;--ph-mid:#2d6a4f;">
+    <div class="container">
+      <span class="page-hero-icon">✉️</span>
+      <div class="page-hero-eyebrow">Reach Out</div>
+      <h1 class="page-hero-title">We'd love to hear from you</h1>
+      <p class="page-hero-lead">Partnerships, programs, media, or general questions — send us a message and we'll get back to you within a few days.</p>
+    </div>
+  </section>
 
+  <main class="section">
+    <div class="container">
+      <div style="display:grid;gap:32px;" class="form-grid">
+
+        <!-- Contact form -->
+        <section class="form-container">
+          <h2 style="font-size:20px;font-weight:700;color:var(--green-900);margin:0 0 6px;">Send a Message</h2>
+          <p class="muted" style="margin:0 0 24px;font-size:14px;">We read every message — no bots, just people.</p>
+
+          <form id="contact-form">
+            <div class="form-row">
               <div class="form-group">
-                <label class="form-label" for="subject"
-                  >Subject (optional)</label
-                >
-                <input
-                  id="subject"
-                  name="subject"
-                  class="form-input"
-                  placeholder="Topic or reason for contacting"
-                />
+                <label class="form-label" for="name">Full name <span style="color:#e11d48;">*</span></label>
+                <input id="name" name="name" class="form-input" autocomplete="name" required placeholder="Your name" />
               </div>
-
               <div class="form-group">
-                <label class="form-label" for="message">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  class="form-textarea"
-                  placeholder="How can we help?"
-                  required
-                ></textarea>
+                <label class="form-label" for="email">Email <span style="color:#e11d48;">*</span></label>
+                <input id="email" name="email" type="email" class="form-input" autocomplete="email" required placeholder="you@example.com" />
               </div>
-
-              <div class="form-group">
-                <label style="display: flex; gap: 8px; align-items: flex-start">
-                  <input type="checkbox" id="consent" required />
-                  <span
-                    >I agree to be contacted by BYC regarding my message.</span
-                  >
-                </label>
-              </div>
-
-              <div id="contact-alert" style="display: none"></div>
-              <button id="contactSubmit" class="form-submit" type="submit">
-                Send
-              </button>
-            </form>
-          </section>
-
-          <aside class="form-container">
-            <h2 class="h2" style="margin: 0 0 8px">Contact Details</h2>
-            <div class="stack" style="margin-top: 8px">
-              <p><strong>Location:</strong> Bertoua, Cameroon</p>
-              <p>
-                <strong>Email:</strong>
-                <span class="muted">info@beaconyouth.org</span>
-                <span class="muted">(placeholder)</span>
-              </p>
-              <p class="muted">
-                Follow our updates on the News and Get Involved pages.
-              </p>
-              <a class="btn" href="get-involved.html">Get Involved</a>
-              <a class="btn alt" href="donate.html">Contribute to BYC</a>
             </div>
-          </aside>
-        </div>
-      </div>
-    </main>
 
-      <footer>
+            <div class="form-group">
+              <label class="form-label" for="subject">Subject (optional)</label>
+              <input id="subject" name="subject" class="form-input" placeholder="Topic or reason for contacting" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">Message <span style="color:#e11d48;">*</span></label>
+              <textarea id="message" name="message" class="form-textarea" placeholder="How can we help?" required style="min-height:130px;"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label style="display:flex;gap:10px;align-items:flex-start;font-size:14px;cursor:pointer;">
+                <input type="checkbox" id="consent" required style="margin-top:3px;flex-shrink:0;" />
+                <span>I agree to be contacted by BYC regarding my message.</span>
+              </label>
+            </div>
+
+            <div id="contact-alert" style="display:none;"></div>
+            <button id="contactSubmit" class="form-submit" type="submit">Send Message</button>
+          </form>
+        </section>
+
+        <!-- Sidebar -->
+        <aside>
+          <div class="contact-info-card" style="margin-bottom:20px;">
+            <h3 style="font-size:17px;font-weight:700;color:var(--green-900);margin:0 0 4px;">Contact Details</h3>
+            <p style="font-size:13px;color:var(--ink-50);margin:0 0 16px;">We'll reply by email within a few days.</p>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon">📍</div>
+              <div>
+                <div class="contact-info-label">Location</div>
+                <div class="contact-info-value">Bertoua, East Region, Cameroon</div>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon">✉️</div>
+              <div>
+                <div class="contact-info-label">Email</div>
+                <div class="contact-info-value">
+                  <a href="mailto:beaconyouthcollective@gmail.com">beaconyouthcollective@gmail.com</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon">🕐</div>
+              <div>
+                <div class="contact-info-label">Response Time</div>
+                <div class="contact-info-value">Within 3–5 business days</div>
+              </div>
+            </div>
+
+            <!-- Social links -->
+            <div style="padding-top:16px;">
+              <div class="contact-info-label" style="margin-bottom:12px;">Follow us</div>
+              <div class="footer-social-row">
+                <a href="https://instagram.com/beaconyouthcollective" target="_blank" rel="noopener" class="footer-social-icon" style="background:var(--green-50);border-color:var(--green-100);color:var(--green-700);" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://x.com/BeaconYouthBYC" target="_blank" rel="noopener" class="footer-social-icon" style="background:var(--green-50);border-color:var(--green-100);color:var(--green-700);" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://linkedin.com/company/beacon-youth-collective" target="_blank" rel="noopener" class="footer-social-icon" style="background:var(--green-50);border-color:var(--green-100);color:var(--green-700);" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://facebook.com/BeaconYouthCollective" target="_blank" rel="noopener" class="footer-social-icon" style="background:var(--green-50);border-color:var(--green-100);color:var(--green-700);" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick actions -->
+          <div class="contact-info-card">
+            <h3 style="font-size:15px;font-weight:700;color:var(--green-900);margin:0 0 14px;">Quick actions</h3>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <a class="btn primary" href="get-involved.html">Get Involved →</a>
+              <a class="btn alt" href="donate.html">Make a Donation →</a>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
     <div class="container footer-inner">
       <div class="footer-top">
         <div>
@@ -175,55 +184,49 @@
     </div>
   </footer>
 
-    <script src="script.js"></script>
-    <script type="module">
-      import { submitContact } from "./firebase.js";
+  <script src="script.js"></script>
+  <script type="module">
+    import { submitContact } from "./firebase.js";
 
-      const form = document.getElementById("contact-form");
-      const alertBox = document.getElementById("contact-alert");
-      const submitBtn = document.getElementById("contactSubmit");
+    const form = document.getElementById("contact-form");
+    const alertBox = document.getElementById("contact-alert");
+    const submitBtn = document.getElementById("contactSubmit");
 
-      function showAlert(kind, message) {
-        alertBox.className = `alert alert-${kind}`;
-        alertBox.textContent = message;
-        alertBox.style.display = "block";
+    function showAlert(kind, message) {
+      alertBox.className = `alert alert-${kind}`;
+      alertBox.textContent = message;
+      alertBox.style.display = "block";
+      alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      alertBox.style.display = "none";
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="loading-spinner" aria-hidden="true"></span> Sending…';
+
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        subject: form.subject.value || null,
+        message: form.message.value,
+        consent: document.getElementById("consent").checked,
+        source: window.location.pathname,
+        userAgent: navigator.userAgent,
+      };
+
+      try {
+        const id = await submitContact(data);
+        showAlert("success", `Thanks! Your message was sent. Reference: ${id}. We'll reply by email.`);
+        form.reset();
+      } catch (err) {
+        console.error(err);
+        showAlert("error", "Sorry, something went wrong. Please try again later.");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Send Message";
       }
-
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        alertBox.style.display = "none";
-        submitBtn.disabled = true;
-        submitBtn.innerHTML =
-          '<span class="loading-spinner" aria-hidden="true"></span> Sending...';
-
-        const data = {
-          name: form.name.value,
-          email: form.email.value,
-          subject: form.subject.value || null,
-          message: form.message.value,
-          consent: document.getElementById("consent").checked,
-          source: window.location.pathname,
-          userAgent: navigator.userAgent,
-        };
-
-        try {
-          const id = await submitContact(data);
-          showAlert(
-            "success",
-            `Thanks! Your message was sent. Reference: ${id}. We'll reply by email.`
-          );
-          form.reset();
-        } catch (err) {
-          console.error(err);
-          showAlert(
-            "error",
-            "Sorry, something went wrong. Please try again later."
-          );
-        } finally {
-          submitBtn.disabled = false;
-          submitBtn.textContent = "Send";
-        }
-      });
-    </script>
-  </body>
+    });
+  </script>
+</body>
 </html>

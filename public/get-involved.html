@@ -1,170 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Get Involved — Beacon Youth Collective</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="assets/logo_initials.png" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Involved — Beacon Youth Collective</title>
+  <meta name="description" content="Join BYC as a member, volunteer, partner, or intern. Submit your interest and we'll be in touch within a week." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/logo_initials.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
-  <body>
-    <header class="navbar">
-      <div class="navbar-inner container">
-        <a class="brand" href="index.html">
-          <img src="assets/logo.png" alt="BYC" />
-          <strong>Beacon Youth Collective</strong>
-        </a>
-        <nav>
-          <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-          <ul class="nav-links" id="nav-links">
-            <!-- Navigation populated by script.js -->
-          </ul>
-        </nav>
-      </div>
-    </header>
+<body>
 
-    <main class="section">
-      <div class="container stack">
-        <div>
-          <div class="kicker">Join</div>
-          <h1 class="h2">Get Involved</h1>
-          <p class="lead">
-            We review submissions weekly and respond promptly. Submit your
-            interest below and you'll get an on‑screen confirmation right away.
-          </p>
-          <div class="alert alert-info">
-            We reply weekly; check your email. For urgent questions, use the
-            Contact page.
+  <header class="navbar">
+    <div class="navbar-inner container">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.png" alt="BYC" />
+        <strong>Beacon Youth Collective</strong>
+      </a>
+      <nav>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+        <ul class="nav-links" id="nav-links"></ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-hero-icon">🙋</span>
+      <div class="page-hero-eyebrow">Join Us</div>
+      <h1 class="page-hero-title">Get Involved</h1>
+      <p class="page-hero-lead">Whether you're a young person, professional, school, or organisation — there's a place for you in BYC. Tell us how you'd like to contribute and we'll follow up within a week.</p>
+    </div>
+  </section>
+
+  <main class="section">
+    <div class="container">
+      <div style="display:grid;gap:32px;" class="form-grid">
+
+        <!-- Form -->
+        <section class="form-container">
+          <h2 style="font-size:20px;font-weight:700;color:var(--green-900);margin:0 0 6px;">Express Your Interest</h2>
+          <p class="muted" style="margin:0 0 24px;font-size:14px;">Choose a path below, then fill in your details.</p>
+
+          <!-- Visual type selector -->
+          <div class="type-cards" id="type-cards">
+            <label class="type-card selected" data-value="Membership">
+              <input type="radio" name="type-radio" value="Membership" checked />
+              <span class="type-card-icon">👤</span>
+              <span class="type-card-title">Member</span>
+              <span class="type-card-desc">Join our community</span>
+            </label>
+            <label class="type-card" data-value="Volunteer">
+              <input type="radio" name="type-radio" value="Volunteer" />
+              <span class="type-card-icon">🙋</span>
+              <span class="type-card-title">Volunteer</span>
+              <span class="type-card-desc">Give your time</span>
+            </label>
+            <label class="type-card" data-value="Partnership">
+              <input type="radio" name="type-radio" value="Partnership" />
+              <span class="type-card-icon">🤝</span>
+              <span class="type-card-title">Partner</span>
+              <span class="type-card-desc">Org or school</span>
+            </label>
+            <label class="type-card" data-value="Internship">
+              <input type="radio" name="type-radio" value="Internship" />
+              <span class="type-card-icon">📋</span>
+              <span class="type-card-title">Intern</span>
+              <span class="type-card-desc">Learn &amp; contribute</span>
+            </label>
           </div>
-        </div>
 
-        <div class="form-grid">
-          <!-- Membership / Volunteer / Partnership unified request form -->
-          <section class="form-container">
-            <h2 class="h2" style="margin: 0 0 8px">Express Interest</h2>
-            <p class="muted" style="margin: 0 0 16px">
-              Choose a path and tell us a bit more.
-            </p>
-            <form id="involved-form">
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="type">I'm interested in</label>
-                  <select id="type" name="type" class="form-select" required>
-                    <option value="Membership">Membership</option>
-                    <option value="Volunteer">Volunteer</option>
-                    <option value="Partnership">Partnership</option>
-                    <option value="Internship">Internship</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="org"
-                    >Organization (optional)</label
-                  >
-                  <input
-                    id="org"
-                    name="org"
-                    class="form-input"
-                    placeholder="School, NGO, company"
-                  />
-                </div>
-              </div>
+          <form id="involved-form">
+            <!-- Hidden select synced to radio cards -->
+            <select id="type" name="type" style="display:none;" required>
+              <option value="Membership" selected>Membership</option>
+              <option value="Volunteer">Volunteer</option>
+              <option value="Partnership">Partnership</option>
+              <option value="Internship">Internship</option>
+            </select>
 
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="name">Full name</label>
-                  <input
-                    id="name"
-                    name="name"
-                    class="form-input"
-                    autocomplete="name"
-                    required
-                  />
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="email">Email</label>
-                  <input
-                    id="email"
-                    type="email"
-                    name="email"
-                    class="form-input"
-                    autocomplete="email"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="phone">Phone (optional)</label>
-                  <input
-                    id="phone"
-                    name="phone"
-                    class="form-input"
-                    autocomplete="tel"
-                  />
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="location"
-                    >Location (City/Country)</label
-                  >
-                  <input id="location" name="location" class="form-input" />
-                </div>
-              </div>
-
+            <div class="form-row">
               <div class="form-group">
-                <label class="form-label" for="message">Tell us more</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  class="form-textarea"
-                  placeholder="Share your interests, skills, ideas, or proposal"
-                  required
-                ></textarea>
+                <label class="form-label" for="org">Organization (optional)</label>
+                <input id="org" name="org" class="form-input" placeholder="School, NGO, company…" />
               </div>
-
               <div class="form-group">
-                <label style="display: flex; gap: 8px; align-items: flex-start">
-                  <input type="checkbox" id="consent" required />
-                  <span
-                    >I agree to be contacted by BYC regarding my submission. We
-                    review submissions weekly and respond as soon as
-                    possible.</span
-                  >
-                </label>
+                <label class="form-label" for="location">Location (City/Country)</label>
+                <input id="location" name="location" class="form-input" placeholder="Bertoua, Cameroon" />
               </div>
-
-              <div id="form-alert" style="display: none"></div>
-
-              <button id="submitBtn" class="form-submit" type="submit">
-                Submit
-              </button>
-            </form>
-          </section>
-
-          <!-- Program-specific quick links -->
-          <section class="form-container">
-            <h2 class="h2" style="margin: 0 0 8px">Program Interests</h2>
-            <p class="muted" style="margin: 0 0 16px">
-              Optionally also tell us which program you want to engage with
-              most.
-            </p>
-            <div class="grid grid-lg-2">
-              <a class="btn" href="education.html">Education</a>
-              <a class="btn" href="climate.html">Climate Action</a>
-              <a class="btn" href="tech.html">Tech for Good</a>
-              <a class="btn" href="gbv.html">Gender & GBV</a>
             </div>
-          </section>
-        </div>
-      </div>
-    </main>
 
-      <footer>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="name">Full name <span style="color:#e11d48;">*</span></label>
+                <input id="name" name="name" class="form-input" autocomplete="name" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">Email <span style="color:#e11d48;">*</span></label>
+                <input id="email" type="email" name="email" class="form-input" autocomplete="email" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="phone">Phone (optional)</label>
+              <input id="phone" name="phone" class="form-input" autocomplete="tel" placeholder="+237 6XX XXX XXX" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">Tell us more <span style="color:#e11d48;">*</span></label>
+              <textarea id="message" name="message" class="form-textarea" placeholder="Your interests, skills, ideas, or proposal…" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label style="display:flex;gap:10px;align-items:flex-start;font-size:14px;cursor:pointer;">
+                <input type="checkbox" id="consent" required style="margin-top:3px;flex-shrink:0;" />
+                <span>I agree to be contacted by BYC about my submission. We review weekly and respond as soon as possible.</span>
+              </label>
+            </div>
+
+            <div id="form-alert" style="display:none;"></div>
+
+            <button id="submitBtn" class="form-submit" type="submit">
+              Submit Interest
+            </button>
+          </form>
+        </section>
+
+        <!-- Sidebar -->
+        <aside>
+          <!-- What to expect -->
+          <div class="contact-info-card" style="margin-bottom:20px;">
+            <h3 style="font-size:17px;font-weight:700;color:var(--green-900);margin:0 0 20px;">What to expect</h3>
+            <div class="steps-list">
+              <div class="step-item">
+                <div class="step-num">1</div>
+                <div class="step-body">
+                  <h4>Submit your interest</h4>
+                  <p>Fill out the form — takes less than 3 minutes.</p>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-num">2</div>
+                <div class="step-body">
+                  <h4>We review weekly</h4>
+                  <p>Our team reviews all submissions every week and responds by email.</p>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-num">3</div>
+                <div class="step-body">
+                  <h4>Introductory call</h4>
+                  <p>We'll schedule a 20-min call to discuss next steps and fit.</p>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-num">4</div>
+                <div class="step-body">
+                  <h4>Welcome aboard</h4>
+                  <p>Onboarding, orientation, and your first contribution.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Programs quick links -->
+          <div class="contact-info-card">
+            <h3 style="font-size:15px;font-weight:700;color:var(--green-900);margin:0 0 14px;">Explore our programs</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              <a class="btn" href="education.html" style="background:rgba(58,134,255,.07);color:#1d6edc;border-color:rgba(58,134,255,.2);font-size:13px;padding:10px 12px;">📚 Education</a>
+              <a class="btn" href="climate.html" style="background:var(--green-50);color:var(--green-700);border-color:var(--green-100);font-size:13px;padding:10px 12px;">🌿 Climate</a>
+              <a class="btn" href="tech.html" style="background:rgba(124,58,237,.07);color:#6d28d9;border-color:rgba(124,58,237,.2);font-size:13px;padding:10px 12px;">💻 Tech</a>
+              <a class="btn" href="gbv.html" style="background:rgba(225,29,72,.07);color:#be123c;border-color:rgba(225,29,72,.2);font-size:13px;padding:10px 12px;">🤝 Gender</a>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
     <div class="container footer-inner">
       <div class="footer-top">
         <div>
@@ -212,59 +229,65 @@
     </div>
   </footer>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
-    <script type="module">
-      import { submitInquiry } from "./firebase.js";
-
-      const form = document.getElementById("involved-form");
-      const alertBox = document.getElementById("form-alert");
-      const submitBtn = document.getElementById("submitBtn");
-
-      function showAlert(kind, message) {
-        alertBox.className = `alert alert-${kind}`;
-        alertBox.textContent = message;
-        alertBox.style.display = "block";
-      }
-
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        alertBox.style.display = "none";
-        submitBtn.disabled = true;
-        submitBtn.innerHTML =
-          '<span class="loading-spinner" aria-hidden="true"></span> Submitting...';
-
-        const data = {
-          type: form.type.value,
-          org: form.org.value || null,
-          name: form.name.value,
-          email: form.email.value,
-          phone: form.phone.value || null,
-          location: form.location.value || null,
-          message: form.message.value,
-          consent: document.getElementById("consent").checked,
-          source: window.location.pathname,
-          userAgent: navigator.userAgent,
-        };
-
-        try {
-          const id = await submitInquiry(data);
-          showAlert(
-            "success",
-            `Thanks! Your request was received. Reference: ${id}. We review weekly and will respond by email.`
-          );
-          form.reset();
-        } catch (err) {
-          console.error(err);
-          showAlert(
-            "error",
-            "Sorry, something went wrong. Please try again later or reach us via the Contact page."
-          );
-        } finally {
-          submitBtn.disabled = false;
-          submitBtn.textContent = "Submit";
-        }
+  <script src="script.js"></script>
+  <script>
+    // Sync type cards to hidden select
+    document.querySelectorAll('.type-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.type-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        document.getElementById('type').value = card.dataset.value;
       });
-    </script>
-  </body>
+    });
+  </script>
+  <script type="module">
+    import { submitInquiry } from "./firebase.js";
+
+    const form = document.getElementById("involved-form");
+    const alertBox = document.getElementById("form-alert");
+    const submitBtn = document.getElementById("submitBtn");
+
+    function showAlert(kind, message) {
+      alertBox.className = `alert alert-${kind}`;
+      alertBox.textContent = message;
+      alertBox.style.display = "block";
+      alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      alertBox.style.display = "none";
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="loading-spinner" aria-hidden="true"></span> Submitting…';
+
+      const data = {
+        type: form.type.value,
+        org: form.org.value || null,
+        name: form.name.value,
+        email: form.email.value,
+        phone: form.phone.value || null,
+        location: form.location.value || null,
+        message: form.message.value,
+        consent: document.getElementById("consent").checked,
+        source: window.location.pathname,
+        userAgent: navigator.userAgent,
+      };
+
+      try {
+        const id = await submitInquiry(data);
+        showAlert("success", `Thanks! Your request was received. Reference: ${id}. We review weekly and will respond by email.`);
+        form.reset();
+        document.querySelectorAll('.type-card').forEach((c, i) => {
+          c.classList.toggle('selected', i === 0);
+        });
+      } catch (err) {
+        console.error(err);
+        showAlert("error", "Sorry, something went wrong. Please try again or reach us via the Contact page.");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit Interest";
+      }
+    });
+  </script>
+</body>
 </html>

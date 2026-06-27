@@ -1,49 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Donate — Beacon Youth Collective</title>
-  <link rel="stylesheet" href="styles.css"/><link rel="icon" href="assets/logo_initials.png"/>
+  <meta name="description" content="Support BYC's programs in education, climate action, tech, and gender equality across Cameroon." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/logo_initials.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body>
-<header class="navbar">
-  <div class="navbar-inner container">
-    <a class="brand" href="index.html"><img src="assets/logo.png" alt="BYC"/><strong>Beacon Youth Collective</strong></a>
-    <nav><button class="menu-toggle" onclick="toggleMenu()">☰</button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="team.html">Team</a></li><li><a href="get-involved.html">Get Involved</a></li><li><a href="news.html">News</a></li><li><a href="contact.html">Contact</a></li>
-      </ul></nav>
-  </div>
-</header>
 
-<main class="section">
-  <div class="container grid grid-lg-2">
-    <div class="card">
-      <h3>Make a Simple Contribution</h3>
-      <p>Your support helps us run workshops, climate clubs, and youth incubations. We keep it transparent and impact-focused.</p>
-      <p class="hr"></p>
-      <div class="stack">
-        <a class="btn alt" href="#">Donate via Mobile Money (coming soon)</a>
-        <a class="btn alt" href="#">Donate via Bank Transfer (details on request)</a>
-        <a class="btn alt" href="#">In-Kind Support (equipment & venues)</a>
+  <header class="navbar">
+    <div class="navbar-inner container">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.png" alt="BYC" />
+        <strong>Beacon Youth Collective</strong>
+      </a>
+      <nav>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+        <ul class="nav-links" id="nav-links"></ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero" style="--ph-dark:#78350f;--ph-mid:#f4a261;color:#111;">
+    <div class="container">
+      <span class="page-hero-icon">❤️</span>
+      <div class="page-hero-eyebrow" style="color:rgba(0,0,0,.6);">Support BYC</div>
+      <h1 class="page-hero-title" style="color:#111;">Every contribution counts</h1>
+      <p class="page-hero-lead" style="color:rgba(0,0,0,.75);">Your support helps us run workshops, climate clubs, cyber safety sessions, and mentorship programs for youth across Cameroon. We keep it transparent and impact-focused.</p>
+    </div>
+  </section>
+
+  <main class="section">
+    <div class="container stack">
+
+      <!-- Impact tiers -->
+      <div>
+        <div class="section-header">
+          <div class="kicker">Give</div>
+          <h2 class="h2">Choose your impact level</h2>
+          <p class="lead">Every franc and every dollar goes directly to programs — not overhead.</p>
+        </div>
+
+        <div class="donate-tiers">
+
+          <div class="donate-tier">
+            <div class="donate-tier-icon">🌱</div>
+            <div class="donate-tier-amount">5,000 XAF</div>
+            <div class="donate-tier-usd">≈ $8 USD</div>
+            <div class="donate-tier-desc">A small but mighty contribution — start making a difference today.</div>
+            <div class="donate-tier-impact">Covers digital literacy materials for 1 student</div>
+          </div>
+
+          <div class="donate-tier featured">
+            <div class="donate-tier-badge">Most Popular</div>
+            <div class="donate-tier-icon">⭐</div>
+            <div class="donate-tier-amount">15,000 XAF</div>
+            <div class="donate-tier-usd">≈ $25 USD</div>
+            <div class="donate-tier-desc">Fund a climate club meeting or a digital safety session for a full group.</div>
+            <div class="donate-tier-impact">Covers supplies for 1 climate club meeting (15 students)</div>
+          </div>
+
+          <div class="donate-tier">
+            <div class="donate-tier-icon">🏆</div>
+            <div class="donate-tier-amount">50,000 XAF</div>
+            <div class="donate-tier-usd">≈ $80 USD</div>
+            <div class="donate-tier-desc">Make a real dent — sponsor a full leadership workshop or hackathon session.</div>
+            <div class="donate-tier-impact">Sponsors a full youth leadership workshop (40 students)</div>
+          </div>
+
+          <div class="donate-tier">
+            <div class="donate-tier-icon">🤝</div>
+            <div class="donate-tier-amount">Custom</div>
+            <div class="donate-tier-usd">Your amount</div>
+            <div class="donate-tier-desc">Major funders and institutional partners — let's co-design impact together.</div>
+            <div class="donate-tier-impact">Discuss a multi-program partnership</div>
+          </div>
+
+        </div>
       </div>
-      <p class="muted" style="margin-top:8px">We’ll publish annual summaries of contributions and results.</p>
+
+      <!-- How to give -->
+      <div>
+        <div class="section-header">
+          <div class="kicker">How to Give</div>
+          <h2 class="h2">Payment options</h2>
+          <p class="lead">We accept mobile money, bank transfers, and in-kind contributions. Contact us to arrange.</p>
+        </div>
+
+        <div class="grid grid-lg-3">
+
+          <div class="card" style="border-top:4px solid var(--green-600);">
+            <div style="font-size:32px;margin-bottom:14px;">📱</div>
+            <h3>Mobile Money</h3>
+            <p>MTN Mobile Money or Orange Money. Contact us for the account details — we'll confirm your contribution within 24 hours.</p>
+            <a class="btn primary" href="contact.html" style="margin-top:20px;display:inline-flex;">Get Details →</a>
+          </div>
+
+          <div class="card" style="border-top:4px solid var(--blue);">
+            <div style="font-size:32px;margin-bottom:14px;">🏦</div>
+            <h3>Bank Transfer</h3>
+            <p>International wire or local bank transfer available. Reach out to receive our banking details and a donation acknowledgement.</p>
+            <a class="btn primary" href="contact.html" style="margin-top:20px;display:inline-flex;">Request Details →</a>
+          </div>
+
+          <div class="card" style="border-top:4px solid var(--accent);">
+            <div style="font-size:32px;margin-bottom:14px;">📦</div>
+            <h3>In-Kind Support</h3>
+            <p>Laptops, projectors, school supplies, venue space — in-kind contributions are hugely valuable to our programs.</p>
+            <a class="btn primary" href="contact.html" style="margin-top:20px;display:inline-flex;">Discuss In-Kind →</a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Transparency -->
+      <div class="card" style="background:var(--green-50);border:1.5px solid var(--green-100);">
+        <div style="display:grid;gap:32px;align-items:center;" class="grid-lg-2">
+          <div>
+            <div style="font-size:36px;margin-bottom:12px;">🔍</div>
+            <h3 style="font-size:20px;">Our Transparency Commitment</h3>
+            <p style="margin-bottom:16px;">We believe donors deserve to know exactly where their money goes. That's why we:</p>
+            <ul class="feature-list">
+              <li>Publish annual summaries of all contributions and results</li>
+              <li>Break down spending by program in every report</li>
+              <li>Maintain zero-overhead policy for small donations</li>
+              <li>Respond to donor inquiries within 5 business days</li>
+            </ul>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div class="card" style="background:#fff;padding:20px;">
+              <div style="font-size:24px;margin-bottom:8px;">📊</div>
+              <div style="font-size:13px;font-weight:700;color:var(--green-900);margin-bottom:4px;">Where every gift goes</div>
+              <div style="font-size:13px;color:var(--ink-70);line-height:1.6;">
+                📚 Education programs &amp; materials<br />
+                🌿 Climate clubs &amp; adaptation projects<br />
+                💻 Cyber safety &amp; hackathon sessions<br />
+                🤝 GBV prevention &amp; referrals<br />
+                🛠️ Operations &amp; safeguarding
+              </div>
+            </div>
+            <a class="btn alt" href="contact.html">Ask About Reporting →</a>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <div class="card">
-      <h3>Where your gift goes</h3>
-      <ul>
-        <li>School climate clubs & education toolkits</li>
-        <li>Cyber safety and coding sessions</li>
-        <li>Mentorship & small bursaries (as funding allows)</li>
-        <li>Safeguarding and referrals work</li>
-      </ul>
-      <p class="hr"></p>
-      <a class="btn" href="contact.html">Ask about partnerships</a>
+  </main>
+
+  <!-- CTA -->
+  <section class="partner-cta">
+    <div class="container">
+      <div class="kicker" style="background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.25);color:#fff;">Make a Difference</div>
+      <h2 class="h2">Ready to support BYC?</h2>
+      <p class="lead">Contact us today to arrange a donation, discuss a major gift, or explore institutional partnership opportunities.</p>
+      <div class="partner-cta-actions">
+        <a class="btn alt" href="contact.html">Contact Us to Donate</a>
+        <a class="btn ghost-outline" href="get-involved.html">Explore Other Ways to Help</a>
+      </div>
     </div>
-  </div>
-</main>
+  </section>
 
   <footer>
     <div class="container footer-inner">
@@ -92,6 +212,7 @@
       </div>
     </div>
   </footer>
-<script src="script.js"></script>
+
+  <script src="script.js"></script>
 </body>
 </html>

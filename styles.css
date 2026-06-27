@@ -1506,3 +1506,415 @@ footer {
   }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* =========
+   21. Page Hero (inner pages)
+========= */
+.page-hero {
+  background: linear-gradient(135deg, var(--ph-dark, var(--green-900)) 0%, var(--ph-mid, var(--green-700)) 100%);
+  color: #fff;
+  padding: 52px 0 44px;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+.page-hero .container { position: relative; z-index: 1; }
+
+.page-hero-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: rgba(255,255,255,.7);
+  margin-bottom: 10px;
+}
+
+.page-hero-title {
+  font-size: clamp(28px, 5vw, 46px);
+  font-weight: 700;
+  line-height: 1.12;
+  margin: 0 0 14px;
+  letter-spacing: -.02em;
+}
+
+.page-hero-lead {
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 60ch;
+  opacity: .88;
+  margin: 0;
+}
+
+.page-hero-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* =========
+   22. Program Sub-nav
+========= */
+.prog-subnav {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 68px;
+  z-index: 50;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.prog-subnav::-webkit-scrollbar { display: none; }
+
+.prog-subnav-inner {
+  display: flex;
+  gap: 0;
+  padding: 0 20px;
+  min-width: max-content;
+}
+
+@media (min-width: 768px) { .prog-subnav-inner { padding: 0 32px; } }
+
+.prog-subnav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 14px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-70);
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.prog-subnav-link:hover { color: var(--ink); }
+
+.prog-subnav-link.active {
+  color: var(--prog-color, var(--green-700));
+  border-bottom-color: var(--prog-color, var(--green-700));
+}
+
+/* =========
+   23. Feature List (✓ bullet list for program pages)
+========= */
+.feature-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-70);
+}
+
+.feature-list li::before {
+  content: '✓';
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  background: var(--green-100);
+  color: var(--green-800);
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+/* =========
+   24. Impact Chips (program at-a-glance)
+========= */
+.impact-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.impact-chip {
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 100px;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* =========
+   25. Program Section Divider
+========= */
+.prog-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 32px 0;
+  color: var(--ink-50);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.prog-divider::before, .prog-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* =========
+   26. Type-Selection Cards (Get Involved)
+========= */
+.type-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 480px) { .type-cards { grid-template-columns: repeat(4, 1fr); } }
+
+.type-card {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 10px;
+  border: 2px solid var(--border-md);
+  border-radius: var(--radius);
+  text-align: center;
+  transition: var(--transition);
+  background: #fff;
+  user-select: none;
+}
+
+.type-card:hover { border-color: var(--green-400); background: var(--green-50); }
+
+.type-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.type-card.selected {
+  border-color: var(--green-600);
+  background: var(--green-50);
+  box-shadow: 0 0 0 3px rgba(64,145,108,.15);
+}
+
+.type-card-icon { font-size: 28px; line-height: 1; }
+
+.type-card-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--green-900);
+}
+
+.type-card-desc {
+  font-size: 11px;
+  color: var(--ink-50);
+  line-height: 1.4;
+}
+
+/* =========
+   27. Donate Tiers
+========= */
+.donate-tiers {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+@media (min-width: 900px) { .donate-tiers { grid-template-columns: repeat(4, 1fr); } }
+
+.donate-tier {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 22px;
+  text-align: center;
+  transition: var(--transition);
+  position: relative;
+  cursor: pointer;
+}
+
+.donate-tier:hover {
+  border-color: var(--green-500);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.donate-tier.featured {
+  border-color: var(--green-600);
+  box-shadow: 0 0 0 4px rgba(64,145,108,.12), var(--shadow);
+}
+
+.donate-tier-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--green-600);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  padding: 4px 12px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.donate-tier-icon { font-size: 36px; margin-bottom: 10px; }
+
+.donate-tier-amount {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green-800);
+  margin-bottom: 4px;
+}
+
+.donate-tier-usd {
+  font-size: 13px;
+  color: var(--ink-50);
+  margin-bottom: 14px;
+}
+
+.donate-tier-desc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink-70);
+  margin-bottom: 18px;
+}
+
+.donate-tier-impact {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--green-700);
+  background: var(--green-50);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-sm);
+  padding: 8px;
+}
+
+/* =========
+   28. Contact Info Card (contact sidebar)
+========= */
+.contact-info-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-info-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-info-item:last-of-type { border-bottom: none; }
+
+.contact-info-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--green-50);
+  border: 1px solid var(--green-100);
+  color: var(--green-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.contact-info-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--ink-50);
+  margin-bottom: 3px;
+}
+
+.contact-info-value {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.contact-info-value a { color: var(--green-700); text-decoration: none; }
+.contact-info-value a:hover { text-decoration: underline; }
+
+/* =========
+   29. What-to-Expect Steps
+========= */
+.steps-list {
+  display: grid;
+  gap: 16px;
+}
+
+.step-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--green-700);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step-body h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--green-900);
+  margin: 0 0 4px;
+}
+
+.step-body p {
+  font-size: 13px;
+  color: var(--ink-70);
+  margin: 0;
+  line-height: 1.55;
+}
