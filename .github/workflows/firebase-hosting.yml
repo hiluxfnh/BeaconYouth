@@ -22,6 +22,8 @@ jobs:
           cp -a *.html public/ || true
           cp -a *.css public/ || true
           cp -a *.js public/ || true
+          cp -a *.xml public/ || true
+          cp -a *.txt public/ || true
           cp -a assets public/ || true
 
       - name: Deploy to Firebase Hosting (live)
