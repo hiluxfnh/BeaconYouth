@@ -59,7 +59,37 @@ function initScrollReveal() {
   targets.forEach((el) => observer.observe(el));
 }
 
+// Inject floating WhatsApp button (replace PHONE with actual number)
+function initWhatsApp() {
+  const PHONE = "237XXXXXXXXX"; // replace with BYC WhatsApp number
+  const a = document.createElement("a");
+  a.className = "whatsapp-float";
+  a.href = `https://wa.me/${PHONE}?text=Hi%20Beacon%20Youth%20Collective%2C%20I%27d%20like%20to%20learn%20more%20about%20your%20programs.`;
+  a.target = "_blank";
+  a.rel = "noopener";
+  a.setAttribute("aria-label", "Chat with us on WhatsApp");
+  a.innerHTML = '<i class="fab fa-whatsapp"></i><span class="whatsapp-float-tooltip">Chat on WhatsApp</span>';
+  document.body.appendChild(a);
+}
+
+// Inject back-to-top button
+function initBackToTop() {
+  const btn = document.createElement("button");
+  btn.className = "back-to-top";
+  btn.setAttribute("aria-label", "Back to top");
+  btn.innerHTML = "↑";
+  document.body.appendChild(btn);
+
+  const onScroll = () => {
+    btn.classList.toggle("visible", window.scrollY > 400);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initializeNavigation();
   initScrollReveal();
+  initWhatsApp();
+  initBackToTop();
 });

@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Beacon Youth Collective — Empowering Youth Across Africa</title>
   <meta name="description" content="BYC is a youth-led nonprofit in Bertoua, Cameroon, driving impact through Education, Climate Action, Tech for Good, and Gender Equality." />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Beacon Youth Collective — Empowering Youth Across Africa" />
+  <meta property="og:description" content="BYC is a youth-led nonprofit in Bertoua, Cameroon, driving impact through Education, Climate Action, Tech for Good, and Gender Equality." />
+  <meta property="og:image" content="assets/logo.png" />
+  <meta property="og:site_name" content="Beacon Youth Collective" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@BeaconYouthBYC" />
+  <meta name="twitter:title" content="Beacon Youth Collective — Empowering Youth Across Africa" />
+  <meta name="twitter:description" content="BYC is a youth-led nonprofit in Bertoua, Cameroon, driving impact through Education, Climate Action, Tech for Good, and Gender Equality." />
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" type="image/png" href="assets/logo_initials.png" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -232,6 +242,78 @@
     </div>
   </section>
 
+  <!-- ── TESTIMONIALS ──────────────────────────────────────── -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header center reveal" style="color:#fff;">
+        <div class="kicker" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.8);">Voices</div>
+        <h2 class="h2" style="color:#fff;">What people say about BYC</h2>
+        <p class="lead" style="color:rgba(255,255,255,.7);">Hear from youth, partners, and educators who've experienced our work first-hand.</p>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card reveal">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">BYC's climate club changed how I think about my community. I used to see environmental problems as something for governments to fix. Now I know we — young people — can lead that change.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">🌿</div>
+            <div>
+              <div class="testimonial-name">Amara N.</div>
+              <div class="testimonial-role">Student, Bertoua · Climate Club Member</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">The cyber safety workshop was eye-opening. I learned things about online privacy that I immediately shared with my family. BYC makes complex topics accessible and relevant for young Cameroonians.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">💻</div>
+            <div>
+              <div class="testimonial-name">Kevin T.</div>
+              <div class="testimonial-role">Youth Leader, East Region</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">Partnering with BYC has been a genuine highlight. They bring evidence, passion, and a real understanding of what youth-led work means in practice. We're proud to support their mission.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">🤝</div>
+            <div>
+              <div class="testimonial-name">Partner Organization</div>
+              <div class="testimonial-role">NGO · Cameroon</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── NEWSLETTER ──────────────────────────────────────── -->
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-inner">
+        <div class="reveal">
+          <div class="kicker">Stay in the loop</div>
+          <p class="newsletter-heading">Get BYC updates in your inbox</p>
+          <p class="newsletter-sub">Program news, youth stories, and opportunities — once a month, no spam.</p>
+        </div>
+        <div class="newsletter-form-wrap reveal reveal-delay-1">
+          <div class="newsletter-input-row">
+            <input type="email" class="newsletter-input" id="newsletter-email" placeholder="your@email.com" autocomplete="email" />
+            <button class="newsletter-submit" id="newsletter-submit" type="button">Subscribe →</button>
+          </div>
+          <p class="newsletter-note">We respect your privacy. Unsubscribe at any time.</p>
+          <div id="newsletter-alert" class="newsletter-alert" style="display:none;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── LATEST NEWS ─────────────────────────────────────── -->
   <section class="section">
     <div class="container">
@@ -402,6 +484,7 @@
             <a href="news.html">News</a>
             <a href="contact.html">Contact</a>
             <a href="donate.html">Donate</a>
+            <a href="media.html">Press &amp; Media</a>
           </div>
         </div>
       </div>
@@ -415,5 +498,41 @@
   </footer>
 
   <script src="script.js"></script>
+  <script type="module">
+    import { subscribeNewsletter } from "./firebase.js";
+
+    const emailInput = document.getElementById("newsletter-email");
+    const submitBtn  = document.getElementById("newsletter-submit");
+    const alertBox   = document.getElementById("newsletter-alert");
+
+    submitBtn.addEventListener("click", async () => {
+      const email = emailInput.value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        alertBox.className = "newsletter-alert error";
+        alertBox.textContent = "Please enter a valid email address.";
+        alertBox.style.display = "block";
+        return;
+      }
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Subscribing…";
+      alertBox.style.display = "none";
+
+      try {
+        await subscribeNewsletter(email);
+        alertBox.className = "newsletter-alert success";
+        alertBox.textContent = "You're subscribed! Look out for our next update.";
+        alertBox.style.display = "block";
+        emailInput.value = "";
+      } catch (err) {
+        console.error(err);
+        alertBox.className = "newsletter-alert error";
+        alertBox.textContent = "Something went wrong. Please try again.";
+        alertBox.style.display = "block";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Subscribe →";
+      }
+    });
+  </script>
 </body>
 </html>

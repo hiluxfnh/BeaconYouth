@@ -115,3 +115,13 @@ export async function updateSubmissionStatus(kind, id, status) {
   const ref = doc(db, kind, id);
   await updateDoc(ref, { status });
 }
+
+// Subscribe an email to the newsletter
+export async function subscribeNewsletter(email) {
+  const docRef = await addDoc(collection(db, "newsletter"), {
+    email,
+    source: typeof window !== "undefined" ? window.location.pathname : null,
+    createdAt: serverTimestamp(),
+  });
+  return docRef.id;
+}
