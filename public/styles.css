@@ -1294,6 +1294,34 @@ footer {
 }
 .team-description { font-size: 13px; line-height: 1.6; color: var(--ink-70); margin: 0 0 16px; }
 
+/* Advisory board card — distinct treatment */
+.team-card--advisory {
+  border: 2px solid var(--green-300);
+  background: linear-gradient(160deg, #f0faf4 0%, #fff 60%);
+  position: relative;
+}
+.team-card--advisory::before {
+  content: "Advisory Board";
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: var(--green-700);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  z-index: 1;
+}
+.team-card--advisory .team-title {
+  color: var(--green-800);
+}
+.team-card--advisory:hover {
+  border-color: var(--green-500);
+}
+
 .social-links { display: flex; justify-content: center; gap: 10px; }
 
 .social-link {
