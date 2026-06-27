@@ -1,71 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>News — Beacon Youth Collective</title>
-  <link rel="stylesheet" href="styles.css"/><link rel="icon" href="assets/logo_initials.png"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News &amp; Updates — Beacon Youth Collective</title>
+  <meta name="description" content="Latest news, program updates, and stories from Beacon Youth Collective in Cameroon." />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="News &amp; Updates — Beacon Youth Collective" />
+  <meta property="og:description" content="Latest news, program updates, and stories from Beacon Youth Collective in Cameroon." />
+  <meta property="og:image" content="assets/logo.png" />
+  <meta property="og:site_name" content="Beacon Youth Collective" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@BeaconYouthBYC" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/logo_initials.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body>
-<header class="navbar">
-  <div class="navbar-inner container">
-    <a class="brand" href="index.html"><img src="assets/logo.png" alt="BYC"/><strong>Beacon Youth Collective</strong></a>
-    <nav><button class="menu-toggle" onclick="toggleMenu()">☰</button>
-      <ul class="nav-links" id="nav-links">
-          <!-- Populated by script.js -->
-        </ul></nav>
-  </div>
-</header>
 
-<main class="section">
-  <div class="container">
-    <div class="section-header">
-      <div class="kicker">Updates</div>
-      <h2 class="h2">News &amp; Stories</h2>
-      <p class="lead">Announcements, events, youth stories, and publications from Beacon Youth Collective.</p>
+  <header class="navbar">
+    <div class="navbar-inner container">
+      <a class="brand" href="index.html">
+        <img src="assets/logo.png" alt="BYC" />
+        <strong>Beacon Youth Collective</strong>
+      </a>
+      <nav>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+        <ul class="nav-links" id="nav-links"></ul>
+      </nav>
     </div>
+  </header>
 
-    <div class="news-grid">
+  <!-- Page Hero -->
+  <section class="page-hero" style="--ph-dark:#1b4332;--ph-mid:#2d6a4f;">
+    <div class="container">
+      <span class="page-hero-icon">📰</span>
+      <div class="page-hero-eyebrow">Updates</div>
+      <h1 class="page-hero-title">News &amp; Stories</h1>
+      <p class="page-hero-lead">Announcements, events, youth stories, and publications from Beacon Youth Collective.</p>
+    </div>
+  </section>
 
-      <article class="news-card">
-        <div class="news-card-image" style="--news-bg: linear-gradient(135deg,var(--green-50),#d8f3dc);">🚀</div>
-        <div class="news-card-body">
-          <div class="news-meta">
-            <span class="news-date">June 2025</span>
-            <span class="tag green">Milestone</span>
+  <main class="section">
+    <div class="container">
+
+      <div class="news-grid">
+
+        <article class="news-card reveal">
+          <div class="news-card-image" style="--news-bg: linear-gradient(135deg,var(--green-50),#d8f3dc);">🚀</div>
+          <div class="news-card-body">
+            <div class="news-meta">
+              <span class="news-date">June 2025</span>
+              <span class="tag green">Milestone</span>
+            </div>
+            <h3>BYC Is Officially Launched</h3>
+            <p>We're live! Our statutes are adopted, the Executive Committee is forming, and first school pilots kick off this term across Bertoua.</p>
           </div>
-          <h3>BYC Is Officially Launched</h3>
-          <p>We’re live! Our statutes are adopted, the Executive Committee is forming, and first school pilots kick off this term across Bertoua.</p>
-        </div>
-      </article>
+        </article>
 
-      <article class="news-card">
-        <div class="news-card-image" style="--news-bg: linear-gradient(135deg,#ecfdf5,#d1fae5);">🌱</div>
-        <div class="news-card-body">
-          <div class="news-meta">
-            <span class="news-date">May 2025</span>
-            <span class="tag green">Climate</span>
+        <article class="news-card reveal reveal-delay-1">
+          <div class="news-card-image" style="--news-bg: linear-gradient(135deg,#ecfdf5,#d1fae5);">🌱</div>
+          <div class="news-card-body">
+            <div class="news-meta">
+              <span class="news-date">May 2025</span>
+              <span class="tag green">Climate</span>
+            </div>
+            <h3>EcoCityAdapt in Schools</h3>
+            <p>We're adapting EcoCityAdapt — a leading climate education platform — into school-friendly modules complete with teacher guides for Cameroon classrooms.</p>
           </div>
-          <h3>EcoCityAdapt in Schools</h3>
-          <p>We’re adapting EcoCityAdapt — a leading climate education platform — into school-friendly modules complete with teacher guides for Cameroon classrooms.</p>
-        </div>
-      </article>
+        </article>
 
-      <article class="news-card">
-        <div class="news-card-image" style="--news-bg: linear-gradient(135deg,rgba(124,58,237,.06),rgba(124,58,237,.14));">📄</div>
-        <div class="news-card-body">
-          <div class="news-meta">
-            <span class="news-date">Apr 2025</span>
-            <span class="tag purple">Research</span>
+        <article class="news-card reveal reveal-delay-2">
+          <div class="news-card-image" style="--news-bg: linear-gradient(135deg,rgba(124,58,237,.06),rgba(124,58,237,.14));">📄</div>
+          <div class="news-card-body">
+            <div class="news-meta">
+              <span class="news-date">Apr 2025</span>
+              <span class="tag purple">Research</span>
+            </div>
+            <h3>Paper: From Data to Action</h3>
+            <p>Featuring youth-led approaches in climate decision-making — co-authored by our founder. Coming soon from our publications page.</p>
           </div>
-          <h3>Paper: From Data to Action</h3>
-          <p>Featuring youth-led approaches in climate decision-making — co-authored by our founder. Coming soon from our publications page.</p>
-        </div>
-      </article>
+        </article>
+
+        <article class="news-card reveal">
+          <div class="news-card-image" style="--news-bg: linear-gradient(135deg,#fff7ed,#fed7aa);">🌐</div>
+          <div class="news-card-body">
+            <div class="news-meta">
+              <span class="news-date">Mar 2025</span>
+              <span class="tag" style="background:rgba(244,162,97,.1);color:var(--accent-dk);border-color:rgba(244,162,97,.3);">Advocacy</span>
+            </div>
+            <h3>Youth Voice at CSW69</h3>
+            <p>BYC's founder represented Cameroonian youth at the UN Commission on the Status of Women — amplifying African youth perspectives on gender equality at a global stage.</p>
+          </div>
+        </article>
+
+        <article class="news-card reveal reveal-delay-1">
+          <div class="news-card-image" style="--news-bg: linear-gradient(135deg,#f0f9ff,#bae6fd);">🔒</div>
+          <div class="news-card-body">
+            <div class="news-meta">
+              <span class="news-date">Feb 2025</span>
+              <span class="tag" style="background:rgba(124,58,237,.08);color:#6d28d9;border-color:rgba(124,58,237,.2);">Tech</span>
+            </div>
+            <h3>Cyber Safety Workshops Launch</h3>
+            <p>Over 150 young people participated in our first round of cyber safety sessions covering online privacy, scam recognition, and digital rights in Bertoua.</p>
+          </div>
+        </article>
+
+        <article class="news-card reveal reveal-delay-2">
+          <div class="news-card-image" style="--news-bg: linear-gradient(135deg,#fdf2f8,#f9d0e8);">🤝</div>
+          <div class="news-card-body">
+            <div class="news-meta">
+              <span class="news-date">Jan 2025</span>
+              <span class="tag" style="background:rgba(225,29,72,.07);color:#be123c;border-color:rgba(225,29,72,.2);">GBV</span>
+            </div>
+            <h3>GBV Prevention Curricula Piloted</h3>
+            <p>Pilot sessions of our GBV prevention curriculum rolled out in two partner schools — engaging boys and girls together with our trained peer facilitators.</p>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Newsletter CTA -->
+      <div class="card reveal" style="margin-top:48px;background:var(--green-50);border:1.5px solid var(--green-100);text-align:center;padding:40px 32px;">
+        <div style="font-size:36px;margin-bottom:12px;">📬</div>
+        <h3 style="font-size:20px;color:var(--green-800);margin-bottom:8px;">Never miss an update</h3>
+        <p style="color:var(--ink-70);margin-bottom:20px;">Subscribe to our newsletter for program news, youth stories, and opportunities — once a month.</p>
+        <a class="btn primary" href="index.html#newsletter-email">Subscribe to Newsletter →</a>
+      </div>
 
     </div>
-  </div>
-</main>
+  </main>
 
   <footer>
     <div class="container footer-inner">
@@ -115,6 +181,7 @@
       </div>
     </div>
   </footer>
-<script src="script.js"></script>
+
+  <script src="script.js"></script>
 </body>
 </html>

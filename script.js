@@ -59,6 +59,38 @@ function initScrollReveal() {
   targets.forEach((el) => observer.observe(el));
 }
 
+// Animate stat numbers with a count-up when they enter the viewport
+function initStatCounters() {
+  const stats = document.querySelectorAll(".stat-number");
+  if (!stats.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        observer.unobserve(entry.target);
+        const el = entry.target;
+        const raw = el.textContent.trim();
+        const numeric = parseFloat(raw.replace(/[^0-9.]/g, ""));
+        if (isNaN(numeric) || numeric === 0) return;
+        const suffix = raw.replace(/[0-9.]/g, "");
+        const duration = 1400;
+        const start = performance.now();
+        const step = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * numeric) + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  stats.forEach((el) => observer.observe(el));
+}
+
 // Inject floating WhatsApp button (replace PHONE with actual number)
 function initWhatsApp() {
   const PHONE = "237XXXXXXXXX"; // replace with BYC WhatsApp number
@@ -90,6 +122,7 @@ function initBackToTop() {
 document.addEventListener("DOMContentLoaded", () => {
   initializeNavigation();
   initScrollReveal();
+  initStatCounters();
   initWhatsApp();
   initBackToTop();
 });
