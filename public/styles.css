@@ -718,6 +718,7 @@ a { color: inherit; }
 .work-image-icon {
   font-size: 48px;
   opacity: .85;
+  color: #fff;
 }
 
 .work-image-title {
@@ -978,6 +979,7 @@ a { color: inherit; }
   font-size: 36px;
   background: var(--news-bg, var(--green-50));
   border-bottom: 1px solid var(--border);
+  color: var(--green-700);
 }
 
 .news-card-body {
@@ -1085,7 +1087,7 @@ a { color: inherit; }
   background-size: 20px 20px;
 }
 
-.about-visual-icon { font-size: 64px; position: relative; z-index: 1; }
+.about-visual-icon { font-size: 64px; position: relative; z-index: 1; color: #fff; }
 .about-visual-label {
   font-size: 13px;
   font-weight: 700;
@@ -1756,7 +1758,7 @@ footer {
   box-shadow: 0 0 0 3px rgba(64,145,108,.15);
 }
 
-.type-card-icon { font-size: 28px; line-height: 1; }
+.type-card-icon { font-size: 28px; line-height: 1; color: var(--green-600); }
 
 .type-card-title {
   font-size: 13px;
@@ -1819,7 +1821,7 @@ footer {
   white-space: nowrap;
 }
 
-.donate-tier-icon { font-size: 36px; margin-bottom: 10px; }
+.donate-tier-icon { font-size: 36px; margin-bottom: 10px; color: var(--green-600); }
 
 .donate-tier-amount {
   font-size: 22px;
@@ -2303,6 +2305,7 @@ footer {
 .media-fact-icon {
   font-size: 28px;
   flex-shrink: 0;
+  color: var(--green-600);
 }
 
 .media-fact-label {
