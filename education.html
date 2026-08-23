@@ -1,197 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Education — Beacon Youth Collective</title>
-  <meta name="description" content="BYC's Education program delivers digital & civic literacy, mentorship networks, leadership camps, and school partnerships across Cameroon." />
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Education Programs — Beacon Youth Collective" />
-  <meta property="og:description" content="BYC's Education program delivers digital literacy, mentorship, and leadership opportunities for youth across Cameroon." />
-  <meta property="og:image" content="assets/logo.png" />
-  <meta property="og:site_name" content="Beacon Youth Collective" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@BeaconYouthBYC" />
-  <meta name="twitter:title" content="Education Programs — Beacon Youth Collective" />
-  <meta name="twitter:description" content="BYC's Education program delivers digital literacy, mentorship, and leadership opportunities for youth across Cameroon." />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="assets/logo_initials.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Education — Beacon Youth Collective</title>
+ <meta name="description" content="BYC's Education program delivers digital & civic literacy, mentorship networks, leadership camps, and school partnerships across Cameroon." />
+ <meta property="og:type" content="website" />
+ <meta property="og:title" content="Education — Beacon Youth Collective" />
+ <meta property="og:description" content="BYC's Education program delivers digital literacy, mentorship, and leadership opportunities for youth across Cameroon." />
+ <meta property="og:image" content="assets/logo.png" />
+ <meta property="og:site_name" content="Beacon Youth Collective" />
+ <meta name="twitter:card" content="summary_large_image" />
+ <meta name="twitter:site" content="@BeaconYouthBYC" />
+ <link rel="stylesheet" href="styles.css" />
+ <link rel="icon" type="image/png" href="assets/logo_initials.png" />
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+ <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
 <body>
 
-  <header class="navbar">
-    <div class="navbar-inner container">
-      <a class="brand" href="index.html">
-        <img src="assets/logo.png" alt="BYC Logo" />
-        <strong>Beacon Youth Collective</strong>
-      </a>
-      <nav>
-        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">☰</button>
-        <ul class="nav-links" id="nav-links"></ul>
-      </nav>
-    </div>
-  </header>
+ <header class="navbar">
+ <div class="navbar-inner container">
+ <a class="brand" href="index.html">
+ <img src="assets/logo.png" alt="BYC Logo" />
+ <strong>Beacon Youth Collective</strong>
+ </a>
+ <nav>
+ <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+ <ul class="nav-links" id="nav-links"></ul>
+ </nav>
+ </div>
+ </header>
 
-  <!-- Page Hero -->
-  <section class="page-hero" style="--ph-dark:#1e3a5f;--ph-mid:#3a86ff;">
-    <div class="container">
-      <span class="page-hero-icon"><i class="fa-solid fa-book-open"></i></span>
-      <div class="page-hero-eyebrow">Programs</div>
-      <h1 class="page-hero-title">Education</h1>
-      <p class="page-hero-lead">We expand learning through digital &amp; civic literacy, mentorships, leadership camps, and deep school partnerships — prioritising girls and underserved students.</p>
-      <div class="impact-chips">
-        <span class="impact-chip"><i class="fa-solid fa-graduation-cap"></i> Digital Literacy</span>
-        <span class="impact-chip"><i class="fa-solid fa-handshake"></i> Mentorship</span>
-        <span class="impact-chip"><i class="fa-solid fa-campground"></i> Leadership Camps</span>
-        <span class="impact-chip"><i class="fa-solid fa-school"></i> School Partnerships</span>
-      </div>
-    </div>
-  </section>
+ <section class="page-hero">
+ <div class="container">
+ <span class="page-hero-icon"><i class="fa-solid fa-book-open"></i></span>
+ <div class="page-hero-eyebrow">Programs</div>
+ <h1 class="page-hero-title">Education</h1>
+ <p class="page-hero-lead">We expand learning through digital &amp; civic literacy, mentorships, leadership camps, and deep school partnerships — prioritising girls and underserved students.</p>
+ </div>
+ </section>
 
-  <!-- Program sub-nav -->
-  <nav class="prog-subnav" aria-label="Programs">
-    <div class="prog-subnav-inner">
-      <a class="prog-subnav-link active" href="education.html" style="--prog-color:#3a86ff;"><i class="fa-solid fa-book-open"></i> Education</a>
-      <a class="prog-subnav-link" href="climate.html"><i class="fa-solid fa-leaf"></i> Climate Action</a>
-      <a class="prog-subnav-link" href="tech.html"><i class="fa-solid fa-laptop-code"></i> Tech for Good</a>
-      <a class="prog-subnav-link" href="gbv.html"><i class="fa-solid fa-handshake"></i> Gender &amp; GBV</a>
-    </div>
-  </nav>
+ <nav class="prog-subnav" aria-label="Programs">
+ <div class="prog-subnav-inner">
+ <a class="prog-subnav-link active" href="education.html"><i class="fa-solid fa-book-open"></i> Education</a>
+ <a class="prog-subnav-link" href="climate.html"><i class="fa-solid fa-leaf"></i> Climate Action</a>
+ <a class="prog-subnav-link" href="tech.html"><i class="fa-solid fa-laptop-code"></i> Tech for Good</a>
+ <a class="prog-subnav-link" href="gbv.html"><i class="fa-solid fa-handshake"></i> Gender &amp; GBV</a>
+ </div>
+ </nav>
 
-  <main class="section">
-    <div class="container stack">
+ <main class="section">
+ <div class="container stack">
 
-      <!-- Core areas -->
-      <div class="grid grid-lg-3">
+ <div class="grid grid-lg-3">
+ <div class="card">
+ <div class="card-icon"><i class="fa-solid fa-laptop-code"></i></div>
+ <h3>Digital Literacy</h3>
+ <p>Hands-on modules covering internet basics, cyber safety, productivity tools, and fact-checking — building confident, critical digital citizens.</p>
+ </div>
+ <div class="card">
+ <div class="card-icon"><i class="fa-solid fa-star"></i></div>
+ <h3>Leadership &amp; Mentorship</h3>
+ <p>Peer mentors, alumni, and professionals guiding career choices, civic engagement, and life skills — particularly for girls and first-generation learners.</p>
+ </div>
+ <div class="card">
+ <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+ <h3>Scholarships &amp; Support</h3>
+ <p>As funding allows, we channel small bursaries, equipment support, and school supply assistance — with transparent, merit-and-need criteria.</p>
+ </div>
+ </div>
 
-        <div class="card" style="border-top:4px solid #3a86ff;">
-          <div style="font-size:32px;margin-bottom:12px;color:var(--green-600);"><i class="fa-solid fa-laptop-code"></i></div>
-          <h3>Digital Literacy</h3>
-          <p>Hands-on modules covering internet basics, cyber safety, productivity tools, and fact-checking — building confident, critical digital citizens.</p>
-          <ul class="feature-list" style="margin-top:16px;">
-            <li>Internet basics &amp; safe browsing</li>
-            <li>Productivity (docs, spreadsheets, slides)</li>
-            <li>Fact-checking &amp; media literacy</li>
-            <li>Intro to AI &amp; digital rights</li>
-          </ul>
-        </div>
+ <div class="card">
+ <div class="grid grid-lg-2" style="align-items:center; gap:36px;">
+ <div>
+ <div class="card-icon"><i class="fa-solid fa-school"></i></div>
+ <h3>What this looks like in practice</h3>
+ <p>We co-design clubs, bootcamps, and inclusive classroom activities with teachers and parents. All resources are open and reusable — any school can adopt them for free.</p>
+ <ul class="feature-list" style="margin-top:16px;">
+ <li>Joint after-school digital literacy clubs</li>
+ <li>Peer-to-peer mentorship circles &amp; annual Leadership Camp</li>
+ <li>Teacher capacity-building &amp; parent engagement sessions</li>
+ <li>Open curriculum shared under Creative Commons</li>
+ </ul>
+ </div>
+ <div style="display:flex; flex-direction:column; gap:12px;">
+ <a class="btn primary" href="get-involved.html">Partner with BYC</a>
+ <a class="btn secondary" href="contact.html">Discuss a School Project</a>
+ <a class="btn text" href="donate.html">Fund Education Initiatives <i class="fa-solid fa-arrow-right"></i></a>
+ </div>
+ </div>
+ </div>
 
-        <div class="card" style="border-top:4px solid #3a86ff;">
-          <div style="font-size:32px;margin-bottom:12px;color:var(--green-600);"><i class="fa-solid fa-star"></i></div>
-          <h3>Leadership &amp; Mentorship</h3>
-          <p>Peer mentors, alumni, and professionals guiding career choices, civic engagement, and life skills — particularly for girls and first-generation learners.</p>
-          <ul class="feature-list" style="margin-top:16px;">
-            <li>Peer-to-peer mentorship circles</li>
-            <li>Professional role model sessions</li>
-            <li>Civic engagement &amp; leadership skills</li>
-            <li>Annual Youth Leadership Camp</li>
-          </ul>
-        </div>
+ </div>
+ </main>
 
-        <div class="card" style="border-top:4px solid #3a86ff;">
-          <div style="font-size:32px;margin-bottom:12px;color:var(--green-600);"><i class="fa-solid fa-graduation-cap"></i></div>
-          <h3>Scholarships &amp; Support</h3>
-          <p>As funding allows, we channel small bursaries, equipment support, and school supply assistance — with transparent, merit-and-need criteria.</p>
-          <ul class="feature-list" style="margin-top:16px;">
-            <li>Small bursaries for at-risk students</li>
-            <li>Equipment &amp; device support</li>
-            <li>Transparent public selection criteria</li>
-            <li>Priority for girls &amp; underserved youth</li>
-          </ul>
-        </div>
+ <section class="cta-band">
+ <div class="container">
+ <div class="kicker">Get Involved</div>
+ <h2 class="h2">Help us unlock potential</h2>
+ <p class="lead">Join as a mentor, school partner, or funder and help expand quality education for youth across Cameroon.</p>
+ <div class="cta-actions">
+ <a class="btn primary" href="get-involved.html">Become a Mentor or Partner</a>
+ <a class="btn secondary" href="donate.html">Donate to Education</a>
+ </div>
+ </div>
+ </section>
 
-      </div>
+ <footer>
+ <div class="container footer-inner">
+ <div class="footer-top">
+ <div>
+ <div class="footer-brand">
+ <img src="assets/logo.png" alt="BYC Logo" />
+ <div class="footer-brand-text">
+ <strong>Beacon Youth Collective</strong>
+ <span>Bertoua, Cameroon</span>
+ </div>
+ </div>
+ <p class="footer-tagline">Youth-led. Evidence-driven. Community-rooted.</p>
+ <div class="footer-social-row" style="margin-top:20px;">
+ <a href="https://instagram.com/beaconyouthcollective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+ <a href="https://x.com/BeaconYouthBYC" target="_blank" rel="noopener" class="footer-social-icon" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+ <a href="https://linkedin.com/company/beacon-youth-collective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+ <a href="https://facebook.com/BeaconYouthCollective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+ </div>
+ </div>
+ <div>
+ <div class="footer-col-title">Programs</div>
+ <div class="footer-links">
+ <a href="education.html">Education</a>
+ <a href="climate.html">Climate Action</a>
+ <a href="tech.html">Tech for Good</a>
+ <a href="gbv.html">Gender &amp; GBV</a>
+ </div>
+ </div>
+ <div>
+ <div class="footer-col-title">Connect</div>
+ <div class="footer-links">
+ <a href="about.html">About Us</a>
+ <a href="team.html">Our Team</a>
+ <a href="get-involved.html">Get Involved</a>
+ <a href="news.html">News</a>
+ <a href="contact.html">Contact</a>
+ <a href="donate.html">Donate</a>
+ <a href="media.html">Press &amp; Media</a>
+ </div>
+ </div>
+ </div>
+ <hr class="footer-divider" />
+ <div class="footer-bottom">
+ <p class="footer-copyright">© 2025 Beacon Youth Collective · All rights reserved</p>
+ <a href="admin.html" class="btn soft small"><i class="fa-solid fa-lock"></i> Admin</a>
+ </div>
+ </div>
+ </footer>
 
-      <!-- School partnerships highlight -->
-      <div class="card" style="background:linear-gradient(135deg,rgba(58,134,255,.04),rgba(58,134,255,.08));border:1.5px solid rgba(58,134,255,.2);">
-        <div style="display:grid;gap:32px;align-items:center;" class="grid-lg-2">
-          <div>
-            <div style="font-size:36px;margin-bottom:12px;color:var(--green-600);"><i class="fa-solid fa-school"></i></div>
-            <h3 style="font-size:22px;">School Partnerships</h3>
-            <p>We co-design clubs, bootcamps, and inclusive classroom activities with teachers and parents. All resources are open and reusable — any school can adopt them for free.</p>
-            <ul class="feature-list" style="margin-top:16px;">
-              <li>Joint after-school digital clubs</li>
-              <li>Teacher capacity-building workshops</li>
-              <li>Parent engagement sessions</li>
-              <li>Open curriculum shared under Creative Commons</li>
-            </ul>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:14px;">
-            <a class="btn alt" href="get-involved.html">Partner with BYC →</a>
-            <a class="btn primary" href="contact.html">Discuss a School Project</a>
-            <a class="btn ghost-outline" style="background:transparent;color:var(--green-700);border-color:var(--green-400);" href="donate.html">Fund Education Initiatives</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </main>
-
-  <!-- CTA -->
-  <section class="partner-cta">
-    <div class="container">
-      <div class="kicker" style="background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.25);color:#fff;">Get Involved</div>
-      <h2 class="h2">Help us unlock potential</h2>
-      <p class="lead">Join as a mentor, school partner, or funder and help expand quality education for youth across Cameroon.</p>
-      <div class="partner-cta-actions">
-        <a class="btn alt" href="get-involved.html">Become a Mentor or Partner</a>
-        <a class="btn ghost-outline" href="donate.html">Donate to Education</a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container footer-inner">
-      <div class="footer-top">
-        <div>
-          <div class="footer-brand">
-            <img src="assets/logo.png" alt="BYC Logo" />
-            <div class="footer-brand-text">
-              <strong>Beacon Youth Collective</strong>
-              <span>Bertoua, Cameroon</span>
-            </div>
-          </div>
-          <p class="footer-tagline">"Youth-led. Evidence-driven. Community-rooted."</p>
-          <div class="footer-social-row" style="margin-top:20px;">
-            <a href="https://instagram.com/beaconyouthcollective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://x.com/BeaconYouthBYC" target="_blank" rel="noopener" class="footer-social-icon" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
-            <a href="https://linkedin.com/company/beacon-youth-collective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://facebook.com/BeaconYouthCollective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          </div>
-        </div>
-        <div>
-          <div class="footer-col-title">Programs</div>
-          <div class="footer-links">
-            <a href="education.html"><i class="fa-solid fa-book-open"></i> Education</a>
-            <a href="climate.html"><i class="fa-solid fa-leaf"></i> Climate Action</a>
-            <a href="tech.html"><i class="fa-solid fa-laptop-code"></i> Tech for Good</a>
-            <a href="gbv.html"><i class="fa-solid fa-handshake"></i> Gender &amp; GBV</a>
-          </div>
-        </div>
-        <div>
-          <div class="footer-col-title">Connect</div>
-          <div class="footer-links">
-            <a href="about.html">About Us</a>
-            <a href="team.html">Our Team</a>
-            <a href="get-involved.html">Get Involved</a>
-            <a href="news.html">News</a>
-            <a href="contact.html">Contact</a>
-            <a href="donate.html">Donate</a>
-            <a href="media.html">Press &amp; Media</a>
-          </div>
-        </div>
-      </div>
-      <hr class="footer-divider" />
-      <div class="footer-bottom">
-        <p class="footer-copyright">© 2025 Beacon Youth Collective · All rights reserved</p>
-        <a href="admin.html" class="btn soft small"><i class="fa-solid fa-lock"></i> Admin</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+ <script src="script.js"></script>
 </body>
 </html>

@@ -5,43 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Page Not Found — Beacon Youth Collective</title>
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="assets/logo_initials.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/logo_initials.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <style>
-    .not-found {
-      min-height: 70vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 64px 24px;
-    }
-    .not-found-inner { max-width: 520px; }
-    .not-found-code {
-      font-size: clamp(80px, 18vw, 140px);
-      font-weight: 700;
-      line-height: 1;
-      color: var(--green-100);
-      letter-spacing: -.04em;
-      margin-bottom: 16px;
-    }
-    .not-found-emoji { font-size: 52px; margin-bottom: 16px; display: block; }
-    .not-found-heading { font-size: 24px; font-weight: 700; color: var(--green-900); margin-bottom: 12px; }
-    .not-found-sub { font-size: 16px; color: var(--ink-70); line-height: 1.6; margin-bottom: 32px; }
-    .not-found-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  </style>
 </head>
 <body>
 
   <header class="navbar">
     <div class="navbar-inner container">
       <a class="brand" href="index.html">
-        <img src="assets/logo.png" alt="BYC" />
+        <img src="assets/logo.png" alt="BYC Logo" />
         <strong>Beacon Youth Collective</strong>
       </a>
       <nav>
-        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
         <ul class="nav-links" id="nav-links"></ul>
       </nav>
     </div>
@@ -50,13 +29,13 @@
   <main class="not-found">
     <div class="not-found-inner">
       <div class="not-found-code">404</div>
-      <span class="not-found-emoji"><i class="fa-solid fa-leaf"></i></span>
-      <h1 class="not-found-heading">This page seems to have wandered off</h1>
+      <span class="not-found-icon"><i class="fa-solid fa-leaf"></i></span>
+      <h1 style="font-size:24px; margin-bottom:12px;">This page seems to have wandered off</h1>
       <p class="not-found-sub">The page you're looking for doesn't exist or may have moved. Try one of the links below to get back on track.</p>
       <div class="not-found-links">
         <a class="btn primary" href="index.html">Go Home</a>
-        <a class="btn alt" href="get-involved.html">Get Involved</a>
-        <a class="btn ghost-outline" style="color:var(--green-700);border-color:var(--green-600);" href="contact.html">Contact Us</a>
+        <a class="btn secondary" href="get-involved.html">Get Involved</a>
+        <a class="btn ghost" href="contact.html">Contact Us</a>
       </div>
     </div>
   </main>
@@ -72,15 +51,15 @@
               <span>Bertoua, Cameroon</span>
             </div>
           </div>
-          <p class="footer-tagline">"Youth-led. Evidence-driven. Community-rooted."</p>
+          <p class="footer-tagline">Youth-led. Evidence-driven. Community-rooted.</p>
         </div>
         <div>
           <div class="footer-col-title">Programs</div>
           <div class="footer-links">
-            <a href="education.html"><i class="fa-solid fa-book-open"></i> Education</a>
-            <a href="climate.html"><i class="fa-solid fa-leaf"></i> Climate Action</a>
-            <a href="tech.html"><i class="fa-solid fa-laptop-code"></i> Tech for Good</a>
-            <a href="gbv.html"><i class="fa-solid fa-handshake"></i> Gender &amp; GBV</a>
+            <a href="education.html">Education</a>
+            <a href="climate.html">Climate Action</a>
+            <a href="tech.html">Tech for Good</a>
+            <a href="gbv.html">Gender &amp; GBV</a>
           </div>
         </div>
         <div>

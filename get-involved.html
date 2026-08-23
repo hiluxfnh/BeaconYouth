@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Get Involved — Beacon Youth Collective</title>
   <meta name="description" content="Join BYC as a member, volunteer, partner, or intern. Submit your interest and we'll be in touch within a week." />
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Get Involved — Beacon Youth Collective" />
   <meta property="og:description" content="Join BYC as a member, volunteer, partner, or intern and make a difference for youth across Cameroon." />
@@ -13,11 +12,11 @@
   <meta property="og:site_name" content="Beacon Youth Collective" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@BeaconYouthBYC" />
-  <meta name="twitter:title" content="Get Involved — Beacon Youth Collective" />
-  <meta name="twitter:description" content="Join BYC as a member, volunteer, partner, or intern and make a difference for youth across Cameroon." />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="assets/logo_initials.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/logo_initials.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
 <body>
@@ -25,17 +24,16 @@
   <header class="navbar">
     <div class="navbar-inner container">
       <a class="brand" href="index.html">
-        <img src="assets/logo.png" alt="BYC" />
+        <img src="assets/logo.png" alt="BYC Logo" />
         <strong>Beacon Youth Collective</strong>
       </a>
       <nav>
-        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
         <ul class="nav-links" id="nav-links"></ul>
       </nav>
     </div>
   </header>
 
-  <!-- Page Hero -->
   <section class="page-hero">
     <div class="container">
       <span class="page-hero-icon"><i class="fa-solid fa-hand"></i></span>
@@ -47,14 +45,12 @@
 
   <main class="section">
     <div class="container">
-      <div style="display:grid;gap:32px;" class="form-grid">
+      <div class="grid form-grid">
 
-        <!-- Form -->
         <section class="form-container">
-          <h2 style="font-size:20px;font-weight:700;color:var(--green-900);margin:0 0 6px;">Express Your Interest</h2>
-          <p class="muted" style="margin:0 0 24px;font-size:14px;">Choose a path below, then fill in your details.</p>
+          <h2 style="font-size:20px; margin-bottom:6px;">Express Your Interest</h2>
+          <p class="muted" style="margin-bottom:24px; font-size:14px;">Choose a path below, then fill in your details.</p>
 
-          <!-- Visual type selector -->
           <div class="type-cards" id="type-cards">
             <label class="type-card selected" data-value="Membership">
               <input type="radio" name="type-radio" value="Membership" checked />
@@ -83,7 +79,6 @@
           </div>
 
           <form id="involved-form">
-            <!-- Hidden select synced to radio cards -->
             <select id="type" name="type" style="display:none;" required>
               <option value="Membership" selected>Membership</option>
               <option value="Volunteer">Volunteer</option>
@@ -104,11 +99,11 @@
 
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label" for="name">Full name <span style="color:#e11d48;">*</span></label>
+                <label class="form-label" for="name">Full name <span style="color:var(--danger);">*</span></label>
                 <input id="name" name="name" class="form-input" autocomplete="name" required />
               </div>
               <div class="form-group">
-                <label class="form-label" for="email">Email <span style="color:#e11d48;">*</span></label>
+                <label class="form-label" for="email">Email <span style="color:var(--danger);">*</span></label>
                 <input id="email" type="email" name="email" class="form-input" autocomplete="email" required />
               </div>
             </div>
@@ -119,70 +114,52 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="message">Tell us more <span style="color:#e11d48;">*</span></label>
+              <label class="form-label" for="message">Tell us more <span style="color:var(--danger);">*</span></label>
               <textarea id="message" name="message" class="form-textarea" placeholder="Your interests, skills, ideas, or proposal…" required></textarea>
             </div>
 
             <div class="form-group">
-              <label style="display:flex;gap:10px;align-items:flex-start;font-size:14px;cursor:pointer;">
-                <input type="checkbox" id="consent" required style="margin-top:3px;flex-shrink:0;" />
+              <label style="display:flex; gap:10px; align-items:flex-start; font-size:14px; cursor:pointer;">
+                <input type="checkbox" id="consent" required style="margin-top:3px; flex-shrink:0;" />
                 <span>I agree to be contacted by BYC about my submission. We review weekly and respond as soon as possible.</span>
               </label>
             </div>
 
             <div id="form-alert" style="display:none;"></div>
-
-            <button id="submitBtn" class="form-submit" type="submit">
-              Submit Interest
-            </button>
+            <button id="submitBtn" class="form-submit" type="submit">Submit Interest</button>
           </form>
         </section>
 
-        <!-- Sidebar -->
-        <aside>
-          <!-- What to expect -->
-          <div class="contact-info-card" style="margin-bottom:20px;">
-            <h3 style="font-size:17px;font-weight:700;color:var(--green-900);margin:0 0 20px;">What to expect</h3>
+        <aside class="stack">
+          <div class="contact-info-card">
+            <h3 style="font-size:16px; margin-bottom:20px;">What to expect</h3>
             <div class="steps-list">
               <div class="step-item">
                 <div class="step-num">1</div>
-                <div class="step-body">
-                  <h4>Submit your interest</h4>
-                  <p>Fill out the form — takes less than 3 minutes.</p>
-                </div>
+                <div class="step-body"><h4>Submit your interest</h4><p>Fill out the form — takes less than 3 minutes.</p></div>
               </div>
               <div class="step-item">
                 <div class="step-num">2</div>
-                <div class="step-body">
-                  <h4>We review weekly</h4>
-                  <p>Our team reviews all submissions every week and responds by email.</p>
-                </div>
+                <div class="step-body"><h4>We review weekly</h4><p>Our team reviews all submissions every week and responds by email.</p></div>
               </div>
               <div class="step-item">
                 <div class="step-num">3</div>
-                <div class="step-body">
-                  <h4>Introductory call</h4>
-                  <p>We'll schedule a 20-min call to discuss next steps and fit.</p>
-                </div>
+                <div class="step-body"><h4>Introductory call</h4><p>We'll schedule a 20-min call to discuss next steps and fit.</p></div>
               </div>
               <div class="step-item">
                 <div class="step-num">4</div>
-                <div class="step-body">
-                  <h4>Welcome aboard</h4>
-                  <p>Onboarding, orientation, and your first contribution.</p>
-                </div>
+                <div class="step-body"><h4>Welcome aboard</h4><p>Onboarding, orientation, and your first contribution.</p></div>
               </div>
             </div>
           </div>
 
-          <!-- Programs quick links -->
           <div class="contact-info-card">
-            <h3 style="font-size:15px;font-weight:700;color:var(--green-900);margin:0 0 14px;">Explore our programs</h3>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-              <a class="btn" href="education.html" style="background:rgba(58,134,255,.07);color:#1d6edc;border-color:rgba(58,134,255,.2);font-size:13px;padding:10px 12px;"><i class="fa-solid fa-book-open"></i> Education</a>
-              <a class="btn" href="climate.html" style="background:var(--green-50);color:var(--green-700);border-color:var(--green-100);font-size:13px;padding:10px 12px;"><i class="fa-solid fa-leaf"></i> Climate</a>
-              <a class="btn" href="tech.html" style="background:rgba(124,58,237,.07);color:#6d28d9;border-color:rgba(124,58,237,.2);font-size:13px;padding:10px 12px;"><i class="fa-solid fa-laptop-code"></i> Tech</a>
-              <a class="btn" href="gbv.html" style="background:rgba(225,29,72,.07);color:#be123c;border-color:rgba(225,29,72,.2);font-size:13px;padding:10px 12px;"><i class="fa-solid fa-handshake"></i> Gender</a>
+            <h3 style="font-size:15px; margin-bottom:14px;">Explore our programs</h3>
+            <div class="grid" style="grid-template-columns:1fr 1fr; gap:10px;">
+              <a class="btn ghost small" href="education.html">Education</a>
+              <a class="btn ghost small" href="climate.html">Climate</a>
+              <a class="btn ghost small" href="tech.html">Tech</a>
+              <a class="btn ghost small" href="gbv.html">Gender</a>
             </div>
           </div>
         </aside>
@@ -202,7 +179,7 @@
               <span>Bertoua, Cameroon</span>
             </div>
           </div>
-          <p class="footer-tagline">"Youth-led. Evidence-driven. Community-rooted."</p>
+          <p class="footer-tagline">Youth-led. Evidence-driven. Community-rooted.</p>
           <div class="footer-social-row" style="margin-top:20px;">
             <a href="https://instagram.com/beaconyouthcollective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="https://x.com/BeaconYouthBYC" target="_blank" rel="noopener" class="footer-social-icon" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
@@ -213,10 +190,10 @@
         <div>
           <div class="footer-col-title">Programs</div>
           <div class="footer-links">
-            <a href="education.html"><i class="fa-solid fa-book-open"></i> Education</a>
-            <a href="climate.html"><i class="fa-solid fa-leaf"></i> Climate Action</a>
-            <a href="tech.html"><i class="fa-solid fa-laptop-code"></i> Tech for Good</a>
-            <a href="gbv.html"><i class="fa-solid fa-handshake"></i> Gender &amp; GBV</a>
+            <a href="education.html">Education</a>
+            <a href="climate.html">Climate Action</a>
+            <a href="tech.html">Tech for Good</a>
+            <a href="gbv.html">Gender &amp; GBV</a>
           </div>
         </div>
         <div>
@@ -242,7 +219,6 @@
 
   <script src="script.js"></script>
   <script>
-    // Sync type cards to hidden select
     document.querySelectorAll('.type-card').forEach(card => {
       card.addEventListener('click', () => {
         document.querySelectorAll('.type-card').forEach(c => c.classList.remove('selected'));

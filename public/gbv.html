@@ -1,203 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gender Equality &amp; GBV — Beacon Youth Collective</title>
-  <meta name="description" content="BYC's Gender &amp; GBV program delivers prevention curricula, SRHR education, survivor-centered referrals, and allyship programs for safer communities." />
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Gender Equality & GBV — Beacon Youth Collective" />
-  <meta property="og:description" content="BYC's Gender & GBV program delivers prevention curricula, SRHR education, survivor-centered referrals, and allyship programs." />
-  <meta property="og:image" content="assets/logo.png" />
-  <meta property="og:site_name" content="Beacon Youth Collective" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@BeaconYouthBYC" />
-  <meta name="twitter:title" content="Gender Equality & GBV — Beacon Youth Collective" />
-  <meta name="twitter:description" content="BYC's Gender & GBV program delivers prevention curricula, SRHR education, survivor-centered referrals, and allyship programs." />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="assets/logo_initials.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Gender Equality &amp; GBV — Beacon Youth Collective</title>
+ <meta name="description" content="BYC's Gender &amp; GBV program delivers prevention curricula, SRHR education, survivor-centered referrals, and allyship programs for safer communities." />
+ <meta property="og:type" content="website" />
+ <meta property="og:title" content="Gender Equality &amp; GBV — Beacon Youth Collective" />
+ <meta property="og:description" content="BYC's Gender &amp; GBV program delivers prevention curricula, SRHR education, survivor-centered referrals, and allyship programs." />
+ <meta property="og:image" content="assets/logo.png" />
+ <meta property="og:site_name" content="Beacon Youth Collective" />
+ <meta name="twitter:card" content="summary_large_image" />
+ <meta name="twitter:site" content="@BeaconYouthBYC" />
+ <link rel="stylesheet" href="styles.css" />
+ <link rel="icon" type="image/png" href="assets/logo_initials.png" />
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+ <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
 <body>
 
-  <header class="navbar">
-    <div class="navbar-inner container">
-      <a class="brand" href="index.html">
-        <img src="assets/logo.png" alt="BYC Logo" />
-        <strong>Beacon Youth Collective</strong>
-      </a>
-      <nav>
-        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">☰</button>
-        <ul class="nav-links" id="nav-links"></ul>
-      </nav>
-    </div>
-  </header>
+ <header class="navbar">
+ <div class="navbar-inner container">
+ <a class="brand" href="index.html">
+ <img src="assets/logo.png" alt="BYC Logo" />
+ <strong>Beacon Youth Collective</strong>
+ </a>
+ <nav>
+ <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+ <ul class="nav-links" id="nav-links"></ul>
+ </nav>
+ </div>
+ </header>
 
-  <!-- Page Hero -->
-  <section class="page-hero" style="--ph-dark:#7f1d1d;--ph-mid:#e11d48;">
-    <div class="container">
-      <span class="page-hero-icon"><i class="fa-solid fa-handshake"></i></span>
-      <div class="page-hero-eyebrow">Programs</div>
-      <h1 class="page-hero-title">Gender Equality &amp; Ending GBV</h1>
-      <p class="page-hero-lead">We prevent and respond to violence against women and girls through awareness, allyship with men &amp; boys, SRHR education, and survivor-centered referral pathways.</p>
-      <div class="impact-chips">
-        <span class="impact-chip"><i class="fa-solid fa-shield-halved"></i> Prevention Curricula</span>
-        <span class="impact-chip"><i class="fa-solid fa-heart"></i> SRHR Education</span>
-        <span class="impact-chip"><i class="fa-solid fa-location-dot"></i> Referral Mapping</span>
-        <span class="impact-chip"><i class="fa-solid fa-people-group"></i> Allyship Programs</span>
-      </div>
-    </div>
-  </section>
+ <section class="page-hero">
+ <div class="container">
+ <span class="page-hero-icon"><i class="fa-solid fa-handshake"></i></span>
+ <div class="page-hero-eyebrow">Programs</div>
+ <h1 class="page-hero-title">Gender Equality &amp; Ending GBV</h1>
+ <p class="page-hero-lead">We prevent and respond to violence against women and girls through awareness, allyship with men &amp; boys, SRHR education, and survivor-centered referral pathways.</p>
+ </div>
+ </section>
 
-  <!-- Program sub-nav -->
-  <nav class="prog-subnav" aria-label="Programs">
-    <div class="prog-subnav-inner">
-      <a class="prog-subnav-link" href="education.html"><i class="fa-solid fa-book-open"></i> Education</a>
-      <a class="prog-subnav-link" href="climate.html"><i class="fa-solid fa-leaf"></i> Climate Action</a>
-      <a class="prog-subnav-link" href="tech.html"><i class="fa-solid fa-laptop-code"></i> Tech for Good</a>
-      <a class="prog-subnav-link active" href="gbv.html" style="--prog-color:#e11d48;"><i class="fa-solid fa-handshake"></i> Gender &amp; GBV</a>
-    </div>
-  </nav>
+ <nav class="prog-subnav" aria-label="Programs">
+ <div class="prog-subnav-inner">
+ <a class="prog-subnav-link" href="education.html"><i class="fa-solid fa-book-open"></i> Education</a>
+ <a class="prog-subnav-link" href="climate.html"><i class="fa-solid fa-leaf"></i> Climate Action</a>
+ <a class="prog-subnav-link" href="tech.html"><i class="fa-solid fa-laptop-code"></i> Tech for Good</a>
+ <a class="prog-subnav-link active" href="gbv.html"><i class="fa-solid fa-handshake"></i> Gender &amp; GBV</a>
+ </div>
+ </nav>
 
-  <main class="section">
-    <div class="container stack">
+ <main class="section">
+ <div class="container stack">
 
-      <!-- Core areas -->
-      <div class="grid grid-lg-3">
+ <div class="grid grid-lg-3">
+ <div class="card">
+ <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+ <h3>Prevention &amp; Allyship</h3>
+ <p>Evidence-based curricula for schools and communities — engaging boys and men as active allies, addressing harmful norms respectfully but firmly.</p>
+ </div>
+ <div class="card">
+ <div class="card-icon"><i class="fa-solid fa-heart"></i></div>
+ <h3>SRHR Education</h3>
+ <p>Age-appropriate adolescent sexual &amp; reproductive health and rights sessions — adapted from humanitarian toolkits and delivered by trained facilitators.</p>
+ </div>
+ <div class="card">
+ <div class="card-icon"><i class="fa-solid fa-location-dot"></i></div>
+ <h3>Referral Mapping</h3>
+ <p>Clear, survivor-centered pathways to trusted local services — with strict confidentiality, do-no-harm principles, and psychosocial support.</p>
+ </div>
+ </div>
 
-        <div class="card" style="border-top:4px solid #e11d48;">
-          <div style="font-size:32px;margin-bottom:12px;color:var(--green-600);"><i class="fa-solid fa-shield-halved"></i></div>
-          <h3>Prevention &amp; Allyship</h3>
-          <p>Evidence-based curricula for schools and communities — engaging boys and men as active allies, addressing harmful norms respectfully but firmly.</p>
-          <ul class="feature-list" style="margin-top:16px;">
-            <li>School-based GBV prevention modules</li>
-            <li>Boys &amp; men allyship workshops</li>
-            <li>Community norm-change campaigns</li>
-            <li>Trained peer facilitators</li>
-          </ul>
-        </div>
+ <div class="banner">
+ <i class="fa-solid fa-lock"></i>
+ <div>
+ <strong style="color:var(--green-900);">Safeguarding &amp; PSEAH Commitment.</strong>
+ Safeguarding, anti-harassment, and PSEAH (Protection from Sexual Exploitation, Abuse and Harassment) policies apply to all BYC staff, volunteers, and partners. All facilitators are trained in do-no-harm principles and survivor-centred approaches before engaging with communities.
+ </div>
+ </div>
 
-        <div class="card" style="border-top:4px solid #e11d48;">
-          <div style="font-size:32px;margin-bottom:12px;color:var(--green-600);"><i class="fa-solid fa-heart"></i></div>
-          <h3>SRHR Education</h3>
-          <p>Evidence-based adolescent sexual &amp; reproductive health and rights sessions — adapted from humanitarian toolkits and delivered safely by trained facilitators.</p>
-          <ul class="feature-list" style="margin-top:16px;">
-            <li>Age-appropriate SRHR content</li>
-            <li>Consent &amp; healthy relationships</li>
-            <li>Menstrual health &amp; hygiene</li>
-            <li>Safe referrals to health services</li>
-          </ul>
-        </div>
+ <div class="grid grid-lg-2">
+ <div class="card">
+ <div class="card-icon"><i class="fa-solid fa-people-group"></i></div>
+ <h3>Become a Facilitator</h3>
+ <p>We train community members, social workers, and youth leaders to deliver GBV prevention sessions. Join our next cohort.</p>
+ <a class="btn secondary" href="get-involved.html" style="margin-top:14px;">Apply to Facilitate</a>
+ </div>
+ <div class="card">
+ <div class="card-icon"><i class="fa-solid fa-handshake"></i></div>
+ <h3>Partner with Us</h3>
+ <p>Organizations focused on health, education, or protection — let's co-design programs that keep young people safer.</p>
+ <a class="btn primary" href="contact.html" style="margin-top:14px;">Start a Conversation</a>
+ </div>
+ </div>
 
-        <div class="card" style="border-top:4px solid #e11d48;">
-          <div style="font-size:32px;margin-bottom:12px;color:var(--green-600);"><i class="fa-solid fa-location-dot"></i></div>
-          <h3>Referral Mapping</h3>
-          <p>Clear, survivor-centered pathways to trusted local services — with strict confidentiality, do-no-harm principles, and psychosocial support integration.</p>
-          <ul class="feature-list" style="margin-top:16px;">
-            <li>Local service mapping &amp; directories</li>
-            <li>Confidential reporting channels</li>
-            <li>Psychosocial first aid training</li>
-            <li>Case management coordination</li>
-          </ul>
-        </div>
+ </div>
+ </main>
 
-      </div>
+ <section class="cta-band">
+ <div class="container">
+ <div class="kicker">Make Communities Safer</div>
+ <h2 class="h2">Every young person deserves safety and dignity</h2>
+ <p class="lead">Support BYC's work to end gender-based violence through community education, survivor support, and systemic change.</p>
+ <div class="cta-actions">
+ <a class="btn primary" href="get-involved.html">Get Involved</a>
+ <a class="btn secondary" href="donate.html">Donate to This Program</a>
+ </div>
+ </div>
+ </section>
 
-      <!-- Safeguarding note -->
-      <div class="card" style="background:rgba(225,29,72,.04);border:1.5px solid rgba(225,29,72,.18);">
-        <div style="display:flex;gap:14px;align-items:flex-start;">
-          <div style="font-size:28px;flex-shrink:0;"><i class="fa-solid fa-lock"></i></div>
-          <div>
-            <h3 style="color:#9f1239;margin:0 0 10px;">Safeguarding &amp; PSEAH Commitment</h3>
-            <p style="margin:0 0 12px;">Safeguarding, anti-harassment, and PSEAH (Protection from Sexual Exploitation, Abuse and Harassment) policies apply to all BYC staff, volunteers, and partners. We hold ourselves to the highest standards.</p>
-            <p style="margin:0;font-size:14px;color:var(--ink-70);">All facilitators are trained in do-no-harm principles and survivor-centred approaches before engaging with communities.</p>
-          </div>
-        </div>
-      </div>
+ <footer>
+ <div class="container footer-inner">
+ <div class="footer-top">
+ <div>
+ <div class="footer-brand">
+ <img src="assets/logo.png" alt="BYC Logo" />
+ <div class="footer-brand-text">
+ <strong>Beacon Youth Collective</strong>
+ <span>Bertoua, Cameroon</span>
+ </div>
+ </div>
+ <p class="footer-tagline">Youth-led. Evidence-driven. Community-rooted.</p>
+ <div class="footer-social-row" style="margin-top:20px;">
+ <a href="https://instagram.com/beaconyouthcollective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+ <a href="https://x.com/BeaconYouthBYC" target="_blank" rel="noopener" class="footer-social-icon" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+ <a href="https://linkedin.com/company/beacon-youth-collective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+ <a href="https://facebook.com/BeaconYouthCollective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+ </div>
+ </div>
+ <div>
+ <div class="footer-col-title">Programs</div>
+ <div class="footer-links">
+ <a href="education.html">Education</a>
+ <a href="climate.html">Climate Action</a>
+ <a href="tech.html">Tech for Good</a>
+ <a href="gbv.html">Gender &amp; GBV</a>
+ </div>
+ </div>
+ <div>
+ <div class="footer-col-title">Connect</div>
+ <div class="footer-links">
+ <a href="about.html">About Us</a>
+ <a href="team.html">Our Team</a>
+ <a href="get-involved.html">Get Involved</a>
+ <a href="news.html">News</a>
+ <a href="contact.html">Contact</a>
+ <a href="donate.html">Donate</a>
+ <a href="media.html">Press &amp; Media</a>
+ </div>
+ </div>
+ </div>
+ <hr class="footer-divider" />
+ <div class="footer-bottom">
+ <p class="footer-copyright">© 2025 Beacon Youth Collective · All rights reserved</p>
+ <a href="admin.html" class="btn soft small"><i class="fa-solid fa-lock"></i> Admin</a>
+ </div>
+ </div>
+ </footer>
 
-      <!-- Get involved -->
-      <div style="display:grid;gap:32px;align-items:center;" class="grid-lg-2">
-        <div class="card" style="background:linear-gradient(135deg,rgba(225,29,72,.04),rgba(225,29,72,.08));border:1.5px solid rgba(225,29,72,.18);">
-          <div style="font-size:32px;margin-bottom:12px;color:var(--green-600);"><i class="fa-solid fa-people-group"></i></div>
-          <h3 style="font-size:20px;">Become a Facilitator</h3>
-          <p>We train community members, social workers, and youth leaders to deliver GBV prevention sessions. Join our next cohort.</p>
-          <a class="btn alt" href="get-involved.html" style="margin-top:16px;display:inline-flex;">Apply to Facilitate →</a>
-        </div>
-        <div class="card">
-          <div style="font-size:32px;margin-bottom:12px;color:var(--green-600);"><i class="fa-solid fa-handshake"></i></div>
-          <h3 style="font-size:20px;">Partner with Us</h3>
-          <p>Organizations focused on health, education, or protection — let's co-design programs that keep young people safer.</p>
-          <a class="btn primary" href="contact.html" style="margin-top:16px;display:inline-flex;">Start a Conversation →</a>
-        </div>
-      </div>
-
-    </div>
-  </main>
-
-  <!-- CTA -->
-  <section class="partner-cta" style="background:linear-gradient(135deg,#7f1d1d,#9f1239);">
-    <div class="container">
-      <div class="kicker" style="background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.25);color:#fff;">Make Communities Safer</div>
-      <h2 class="h2">Every young person deserves safety and dignity</h2>
-      <p class="lead">Support BYC's work to end gender-based violence through community education, survivor support, and systemic change.</p>
-      <div class="partner-cta-actions">
-        <a class="btn alt" href="get-involved.html">Get Involved</a>
-        <a class="btn ghost-outline" href="donate.html">Donate to This Program</a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container footer-inner">
-      <div class="footer-top">
-        <div>
-          <div class="footer-brand">
-            <img src="assets/logo.png" alt="BYC Logo" />
-            <div class="footer-brand-text">
-              <strong>Beacon Youth Collective</strong>
-              <span>Bertoua, Cameroon</span>
-            </div>
-          </div>
-          <p class="footer-tagline">"Youth-led. Evidence-driven. Community-rooted."</p>
-          <div class="footer-social-row" style="margin-top:20px;">
-            <a href="https://instagram.com/beaconyouthcollective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://x.com/BeaconYouthBYC" target="_blank" rel="noopener" class="footer-social-icon" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
-            <a href="https://linkedin.com/company/beacon-youth-collective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://facebook.com/BeaconYouthCollective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          </div>
-        </div>
-        <div>
-          <div class="footer-col-title">Programs</div>
-          <div class="footer-links">
-            <a href="education.html"><i class="fa-solid fa-book-open"></i> Education</a>
-            <a href="climate.html"><i class="fa-solid fa-leaf"></i> Climate Action</a>
-            <a href="tech.html"><i class="fa-solid fa-laptop-code"></i> Tech for Good</a>
-            <a href="gbv.html"><i class="fa-solid fa-handshake"></i> Gender &amp; GBV</a>
-          </div>
-        </div>
-        <div>
-          <div class="footer-col-title">Connect</div>
-          <div class="footer-links">
-            <a href="about.html">About Us</a>
-            <a href="team.html">Our Team</a>
-            <a href="get-involved.html">Get Involved</a>
-            <a href="news.html">News</a>
-            <a href="contact.html">Contact</a>
-            <a href="donate.html">Donate</a>
-            <a href="media.html">Press &amp; Media</a>
-          </div>
-        </div>
-      </div>
-      <hr class="footer-divider" />
-      <div class="footer-bottom">
-        <p class="footer-copyright">© 2025 Beacon Youth Collective · All rights reserved</p>
-        <a href="admin.html" class="btn soft small"><i class="fa-solid fa-lock"></i> Admin</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+ <script src="script.js"></script>
 </body>
 </html>
