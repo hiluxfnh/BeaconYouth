@@ -1,20 +1,43 @@
-// Navigation config — update here to change nav everywhere
+// Navigation config — update here to change nav everywhere.
+// Items may include `children` for a simple dropdown.
 const navigationConfig = [
-  { href: "about.html",        text: "About" },
-  { href: "team.html",         text: "Team" },
-  { href: "get-involved.html", text: "Get Involved" },
-  { href: "news.html",         text: "News" },
-  { href: "contact.html",      text: "Contact" },
-  { href: "donate.html",       text: "Donate", cta: true },
+  {
+    text: "Programs",
+    children: [
+      { href: "education.html", text: "Education" },
+      { href: "climate.html", text: "Climate Action" },
+      { href: "tech.html", text: "Tech for Good" },
+      { href: "gbv.html", text: "Gender & GBV" },
+    ],
+  },
+  { href: "about.html", text: "About" },
+  { href: "team.html", text: "Team" },
+  { href: "news.html", text: "News" },
+  { href: "contact.html", text: "Contact" },
+  { href: "donate.html", text: "Donate", cta: true },
 ];
 
+function currentFile() {
+  return window.location.pathname.split("/").pop() || "index.html";
+}
+
 function generateNavigation() {
-  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+  const currentPage = currentFile();
   return navigationConfig
     .map((item) => {
+      if (item.children) {
+        const isActiveGroup = item.children.some((c) => c.href === currentPage);
+        const links = item.children
+          .map((c) => `<a href="${c.href}"${c.href === currentPage ? ' aria-current="page"' : ""}>${c.text}</a>`)
+          .join("");
+        return `<li class="nav-has-dropdown${isActiveGroup ? " active-group" : ""}">
+          <button class="nav-dropdown-toggle" aria-expanded="false">${item.text}</button>
+          <div class="nav-dropdown">${links}</div>
+        </li>`;
+      }
       const isCurrentPage = currentPage === item.href;
-      const ariaCurrent   = isCurrentPage ? ' aria-current="page"' : "";
-      const liClass       = item.cta ? ' class="nav-donate"' : "";
+      const ariaCurrent = isCurrentPage ? ' aria-current="page"' : "";
+      const liClass = item.cta ? ' class="nav-donate"' : "";
       return `<li${liClass}><a href="${item.href}"${ariaCurrent}>${item.text}</a></li>`;
     })
     .join("");
@@ -22,7 +45,19 @@ function generateNavigation() {
 
 function initializeNavigation() {
   const container = document.getElementById("nav-links");
-  if (container) container.innerHTML = generateNavigation();
+  if (!container) return;
+  container.innerHTML = generateNavigation();
+
+  container.querySelectorAll(".nav-dropdown-toggle").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const li = btn.closest(".nav-has-dropdown");
+      const isOpen = li.classList.contains("open");
+      container.querySelectorAll(".nav-has-dropdown.open").forEach((el) => el.classList.remove("open"));
+      li.classList.toggle("open", !isOpen);
+      btn.setAttribute("aria-expanded", String(!isOpen));
+    });
+  });
 }
 
 function toggleMenu() {
@@ -30,90 +65,30 @@ function toggleMenu() {
   nav.classList.toggle("show");
 }
 
-// Close mobile menu when clicking outside
+// Close mobile menu / dropdowns when clicking outside
 document.addEventListener("click", (e) => {
-  const nav    = document.getElementById("nav-links");
+  const nav = document.getElementById("nav-links");
   const toggle = document.querySelector(".menu-toggle");
   if (nav && nav.classList.contains("show") && !nav.contains(e.target) && e.target !== toggle) {
     nav.classList.remove("show");
   }
+  if (nav) {
+    nav.querySelectorAll(".nav-has-dropdown.open").forEach((el) => {
+      if (!el.contains(e.target)) el.classList.remove("open");
+    });
+  }
 });
-
-// Scroll reveal — triggers .reveal elements when they enter the viewport
-function initScrollReveal() {
-  const targets = document.querySelectorAll(".reveal");
-  if (!targets.length) return;
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-  );
-
-  targets.forEach((el) => observer.observe(el));
-}
-
-// Animate stat numbers with a count-up when they enter the viewport
-function initStatCounters() {
-  const stats = document.querySelectorAll(".stat-number");
-  if (!stats.length) return;
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        observer.unobserve(entry.target);
-        const el = entry.target;
-        const raw = el.textContent.trim();
-        const numeric = parseFloat(raw.replace(/[^0-9.]/g, ""));
-        if (isNaN(numeric) || numeric === 0) return;
-        const suffix = raw.replace(/[0-9.]/g, "");
-        const duration = 1400;
-        const start = performance.now();
-        const step = (now) => {
-          const progress = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          el.textContent = Math.round(eased * numeric) + suffix;
-          if (progress < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-      });
-    },
-    { threshold: 0.5 }
-  );
-
-  stats.forEach((el) => observer.observe(el));
-}
-
-// Inject floating WhatsApp button (replace PHONE with actual number)
-function initWhatsApp() {
-  const PHONE = "237XXXXXXXXX"; // replace with BYC WhatsApp number
-  const a = document.createElement("a");
-  a.className = "whatsapp-float";
-  a.href = `https://wa.me/${PHONE}?text=Hi%20Beacon%20Youth%20Collective%2C%20I%27d%20like%20to%20learn%20more%20about%20your%20programs.`;
-  a.target = "_blank";
-  a.rel = "noopener";
-  a.setAttribute("aria-label", "Chat with us on WhatsApp");
-  a.innerHTML = '<i class="fab fa-whatsapp"></i><span class="whatsapp-float-tooltip">Chat on WhatsApp</span>';
-  document.body.appendChild(a);
-}
 
 // Inject back-to-top button
 function initBackToTop() {
   const btn = document.createElement("button");
   btn.className = "back-to-top";
   btn.setAttribute("aria-label", "Back to top");
-  btn.innerHTML = "↑";
+  btn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
   document.body.appendChild(btn);
 
   const onScroll = () => {
-    btn.classList.toggle("visible", window.scrollY > 400);
+    btn.classList.toggle("visible", window.scrollY > 500);
   };
   window.addEventListener("scroll", onScroll, { passive: true });
   btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
@@ -121,8 +96,5 @@ function initBackToTop() {
 
 document.addEventListener("DOMContentLoaded", () => {
   initializeNavigation();
-  initScrollReveal();
-  initStatCounters();
-  initWhatsApp();
   initBackToTop();
 });

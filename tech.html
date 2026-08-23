@@ -1,197 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tech for Good — Beacon Youth Collective</title>
-  <meta name="description" content="BYC's Tech for Good program empowers youth with cyber safety, hackathons, digital rights, and tools for social impact." />
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Tech for Good — Beacon Youth Collective" />
-  <meta property="og:description" content="BYC's Tech for Good program empowers youth with cyber safety, hackathons, digital rights, and tools for social impact." />
-  <meta property="og:image" content="assets/logo.png" />
-  <meta property="og:site_name" content="Beacon Youth Collective" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@BeaconYouthBYC" />
-  <meta name="twitter:title" content="Tech for Good — Beacon Youth Collective" />
-  <meta name="twitter:description" content="BYC's Tech for Good program empowers youth with cyber safety, hackathons, digital rights, and tools for social impact." />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="assets/logo_initials.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Tech for Good — Beacon Youth Collective</title>
+ <meta name="description" content="BYC's Tech for Good program empowers youth with cyber safety, hackathons, digital rights, and tools for social impact." />
+ <meta property="og:type" content="website" />
+ <meta property="og:title" content="Tech for Good — Beacon Youth Collective" />
+ <meta property="og:description" content="BYC's Tech for Good program empowers youth with cyber safety, hackathons, digital rights, and tools for social impact." />
+ <meta property="og:image" content="assets/logo.png" />
+ <meta property="og:site_name" content="Beacon Youth Collective" />
+ <meta name="twitter:card" content="summary_large_image" />
+ <meta name="twitter:site" content="@BeaconYouthBYC" />
+ <link rel="stylesheet" href="styles.css" />
+ <link rel="icon" type="image/png" href="assets/logo_initials.png" />
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+ <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
 <body>
 
-  <header class="navbar">
-    <div class="navbar-inner container">
-      <a class="brand" href="index.html">
-        <img src="assets/logo.png" alt="BYC Logo" />
-        <strong>Beacon Youth Collective</strong>
-      </a>
-      <nav>
-        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">☰</button>
-        <ul class="nav-links" id="nav-links"></ul>
-      </nav>
-    </div>
-  </header>
+ <header class="navbar">
+ <div class="navbar-inner container">
+ <a class="brand" href="index.html">
+ <img src="assets/logo.png" alt="BYC Logo" />
+ <strong>Beacon Youth Collective</strong>
+ </a>
+ <nav>
+ <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+ <ul class="nav-links" id="nav-links"></ul>
+ </nav>
+ </div>
+ </header>
 
-  <!-- Page Hero -->
-  <section class="page-hero" style="--ph-dark:#3b0764;--ph-mid:#7c3aed;">
-    <div class="container">
-      <span class="page-hero-icon"><i class="fa-solid fa-laptop-code"></i></span>
-      <div class="page-hero-eyebrow">Programs</div>
-      <h1 class="page-hero-title">Tech for Good</h1>
-      <p class="page-hero-lead">We help youth use technology safely and creatively to solve real problems in education, health, climate, and community development.</p>
-      <div class="impact-chips">
-        <span class="impact-chip"><i class="fa-solid fa-lock"></i> Cyber Safety</span>
-        <span class="impact-chip"><i class="fa-solid fa-bolt"></i> Hackathons</span>
-        <span class="impact-chip"><i class="fa-solid fa-brain"></i> AI Literacy</span>
-        <span class="impact-chip"><i class="fa-solid fa-unlock"></i> Digital Rights</span>
-      </div>
-    </div>
-  </section>
+ <section class="page-hero">
+ <div class="container">
+ <span class="page-hero-icon"><i class="fa-solid fa-laptop-code"></i></span>
+ <div class="page-hero-eyebrow">Programs</div>
+ <h1 class="page-hero-title">Tech for Good</h1>
+ <p class="page-hero-lead">We help youth use technology safely and creatively to solve real problems in education, health, climate, and community development.</p>
+ </div>
+ </section>
 
-  <!-- Program sub-nav -->
-  <nav class="prog-subnav" aria-label="Programs">
-    <div class="prog-subnav-inner">
-      <a class="prog-subnav-link" href="education.html"><i class="fa-solid fa-book-open"></i> Education</a>
-      <a class="prog-subnav-link" href="climate.html"><i class="fa-solid fa-leaf"></i> Climate Action</a>
-      <a class="prog-subnav-link active" href="tech.html" style="--prog-color:#7c3aed;"><i class="fa-solid fa-laptop-code"></i> Tech for Good</a>
-      <a class="prog-subnav-link" href="gbv.html"><i class="fa-solid fa-handshake"></i> Gender &amp; GBV</a>
-    </div>
-  </nav>
+ <nav class="prog-subnav" aria-label="Programs">
+ <div class="prog-subnav-inner">
+ <a class="prog-subnav-link" href="education.html"><i class="fa-solid fa-book-open"></i> Education</a>
+ <a class="prog-subnav-link" href="climate.html"><i class="fa-solid fa-leaf"></i> Climate Action</a>
+ <a class="prog-subnav-link active" href="tech.html"><i class="fa-solid fa-laptop-code"></i> Tech for Good</a>
+ <a class="prog-subnav-link" href="gbv.html"><i class="fa-solid fa-handshake"></i> Gender &amp; GBV</a>
+ </div>
+ </nav>
 
-  <main class="section">
-    <div class="container stack">
+ <main class="section">
+ <div class="container stack">
 
-      <!-- Core areas -->
-      <div class="grid grid-lg-3">
+ <div class="grid grid-lg-3">
+ <div class="card">
+ <div class="card-icon"><i class="fa-solid fa-lock"></i></div>
+ <h3>Cyber Safety &amp; Digital Rights</h3>
+ <p>Empowering youth with the knowledge to navigate the web safely — from privacy and security to online well-being and digital activism.</p>
+ </div>
+ <div class="card">
+ <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+ <h3>Innovation &amp; Incubation</h3>
+ <p>Hackathons and incubators that turn youth ideas into working prototypes — with mentorship, UI/UX basics, and deployment guidance.</p>
+ </div>
+ <div class="card">
+ <div class="card-icon"><i class="fa-solid fa-toolbox"></i></div>
+ <h3>Open Tools &amp; Data</h3>
+ <p>Low-code and open-source toolkits for community mapping, data collection, and digital storytelling — including free BYC starter templates.</p>
+ </div>
+ </div>
 
-        <div class="card" style="border-top:4px solid #7c3aed;">
-          <div style="font-size:32px;margin-bottom:12px;color:var(--green-600);"><i class="fa-solid fa-lock"></i></div>
-          <h3>Cyber Safety &amp; Digital Rights</h3>
-          <p>Empowering youth with the knowledge to navigate the web safely — from privacy and security to online well-being and digital activism.</p>
-          <ul class="feature-list" style="margin-top:16px;">
-            <li>Online privacy &amp; data protection</li>
-            <li>Recognising scams &amp; misinformation</li>
-            <li>Digital rights &amp; freedom of expression</li>
-            <li>Healthy screen-time habits</li>
-          </ul>
-        </div>
+ <div class="card">
+ <div class="grid grid-lg-2" style="align-items:center; gap:36px;">
+ <div>
+ <div class="card-icon"><i class="fa-solid fa-house"></i></div>
+ <h3>What this looks like in practice</h3>
+ <p>Inspired by real youth-led problem solving, we share case studies — like KamerLark, which tackled student housing pain points in Cameroon — to guide young founders from problem discovery to ethical, scalable solutions.</p>
+ <ul class="feature-list" style="margin-top:16px;">
+ <li>Online privacy &amp; misinformation-recognition training</li>
+ <li>24–48 hour community hackathons &amp; incubation sprints</li>
+ <li>Community data collection &amp; mapping tools</li>
+ <li>AI literacy sessions for social impact</li>
+ </ul>
+ </div>
+ <div style="display:flex; flex-direction:column; gap:12px;">
+ <a class="btn primary" href="get-involved.html">Join a Hackathon</a>
+ <a class="btn secondary" href="contact.html">Propose a Tech Project</a>
+ <a class="btn text" href="donate.html">Fund Tech Programs <i class="fa-solid fa-arrow-right"></i></a>
+ </div>
+ </div>
+ </div>
 
-        <div class="card" style="border-top:4px solid #7c3aed;">
-          <div style="font-size:32px;margin-bottom:12px;color:var(--green-600);"><i class="fa-solid fa-bolt"></i></div>
-          <h3>Innovation &amp; Incubation</h3>
-          <p>Hackathons and incubators that turn youth ideas into working prototypes — with mentorship, UI/UX basics, and deployment guidance.</p>
-          <ul class="feature-list" style="margin-top:16px;">
-            <li>24–48 hr community hackathons</li>
-            <li>Youth startup incubation sprints</li>
-            <li>UI/UX &amp; product design basics</li>
-            <li>Pitching &amp; ethical tech scaling</li>
-          </ul>
-        </div>
+ </div>
+ </main>
 
-        <div class="card" style="border-top:4px solid #7c3aed;">
-          <div style="font-size:32px;margin-bottom:12px;color:var(--green-600);"><i class="fa-solid fa-toolbox"></i></div>
-          <h3>Open Tools &amp; Data</h3>
-          <p>Low-code and open-source toolkits for community mapping, data collection, and digital storytelling — including free BYC starter templates.</p>
-          <ul class="feature-list" style="margin-top:16px;">
-            <li>Community data collection tools</li>
-            <li>Mapping &amp; visualisation platforms</li>
-            <li>AI literacy for social impact</li>
-            <li>Free BYC open-source templates</li>
-          </ul>
-        </div>
+ <section class="cta-band">
+ <div class="container">
+ <div class="kicker">Get Involved</div>
+ <h2 class="h2">Build solutions, not just skills</h2>
+ <p class="lead">Mentors, tech partners, and funders: help us create spaces where youth go from ideas to real, community-driven technology.</p>
+ <div class="cta-actions">
+ <a class="btn primary" href="get-involved.html">Mentor or Partner with Us</a>
+ <a class="btn secondary" href="donate.html">Support a Hackathon</a>
+ </div>
+ </div>
+ </section>
 
-      </div>
+ <footer>
+ <div class="container footer-inner">
+ <div class="footer-top">
+ <div>
+ <div class="footer-brand">
+ <img src="assets/logo.png" alt="BYC Logo" />
+ <div class="footer-brand-text">
+ <strong>Beacon Youth Collective</strong>
+ <span>Bertoua, Cameroon</span>
+ </div>
+ </div>
+ <p class="footer-tagline">Youth-led. Evidence-driven. Community-rooted.</p>
+ <div class="footer-social-row" style="margin-top:20px;">
+ <a href="https://instagram.com/beaconyouthcollective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+ <a href="https://x.com/BeaconYouthBYC" target="_blank" rel="noopener" class="footer-social-icon" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
+ <a href="https://linkedin.com/company/beacon-youth-collective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+ <a href="https://facebook.com/BeaconYouthCollective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+ </div>
+ </div>
+ <div>
+ <div class="footer-col-title">Programs</div>
+ <div class="footer-links">
+ <a href="education.html">Education</a>
+ <a href="climate.html">Climate Action</a>
+ <a href="tech.html">Tech for Good</a>
+ <a href="gbv.html">Gender &amp; GBV</a>
+ </div>
+ </div>
+ <div>
+ <div class="footer-col-title">Connect</div>
+ <div class="footer-links">
+ <a href="about.html">About Us</a>
+ <a href="team.html">Our Team</a>
+ <a href="get-involved.html">Get Involved</a>
+ <a href="news.html">News</a>
+ <a href="contact.html">Contact</a>
+ <a href="donate.html">Donate</a>
+ <a href="media.html">Press &amp; Media</a>
+ </div>
+ </div>
+ </div>
+ <hr class="footer-divider" />
+ <div class="footer-bottom">
+ <p class="footer-copyright">© 2025 Beacon Youth Collective · All rights reserved</p>
+ <a href="admin.html" class="btn soft small"><i class="fa-solid fa-lock"></i> Admin</a>
+ </div>
+ </div>
+ </footer>
 
-      <!-- Case study showcase -->
-      <div class="card" style="background:linear-gradient(135deg,rgba(124,58,237,.04),rgba(124,58,237,.09));border:1.5px solid rgba(124,58,237,.2);">
-        <div style="display:grid;gap:32px;align-items:center;" class="grid-lg-2">
-          <div>
-            <div style="font-size:36px;margin-bottom:12px;color:var(--green-600);"><i class="fa-solid fa-house"></i></div>
-            <h3 style="font-size:22px;">Case Study: KamerLark Student Housing</h3>
-            <p>Inspired by real youth-led problem solving, we share case studies like KamerLark — which tackled student housing pain points in Cameroon — to guide young founders from problem discovery to ethical, scalable solutions.</p>
-            <ul class="feature-list" style="margin-top:16px;">
-              <li>Problem discovery &amp; user research</li>
-              <li>Prototyping with minimal resources</li>
-              <li>Ethical design &amp; data practices</li>
-              <li>Community validation &amp; iteration</li>
-            </ul>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:14px;">
-            <a class="btn alt" href="get-involved.html">Join a Hackathon →</a>
-            <a class="btn primary" href="contact.html">Propose a Tech Project</a>
-            <a class="btn ghost-outline" style="background:transparent;color:var(--purple, #7c3aed);border-color:rgba(124,58,237,.4);" href="donate.html">Fund Tech Programs</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </main>
-
-  <!-- CTA -->
-  <section class="partner-cta">
-    <div class="container">
-      <div class="kicker" style="background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.25);color:#fff;">Get Involved</div>
-      <h2 class="h2">Build solutions, not just skills</h2>
-      <p class="lead">Mentors, tech partners, and funders: help us create spaces where youth go from ideas to real, community-driven technology.</p>
-      <div class="partner-cta-actions">
-        <a class="btn alt" href="get-involved.html">Mentor or Partner with Us</a>
-        <a class="btn ghost-outline" href="donate.html">Support a Hackathon</a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container footer-inner">
-      <div class="footer-top">
-        <div>
-          <div class="footer-brand">
-            <img src="assets/logo.png" alt="BYC Logo" />
-            <div class="footer-brand-text">
-              <strong>Beacon Youth Collective</strong>
-              <span>Bertoua, Cameroon</span>
-            </div>
-          </div>
-          <p class="footer-tagline">"Youth-led. Evidence-driven. Community-rooted."</p>
-          <div class="footer-social-row" style="margin-top:20px;">
-            <a href="https://instagram.com/beaconyouthcollective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://x.com/BeaconYouthBYC" target="_blank" rel="noopener" class="footer-social-icon" aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
-            <a href="https://linkedin.com/company/beacon-youth-collective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://facebook.com/BeaconYouthCollective" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          </div>
-        </div>
-        <div>
-          <div class="footer-col-title">Programs</div>
-          <div class="footer-links">
-            <a href="education.html"><i class="fa-solid fa-book-open"></i> Education</a>
-            <a href="climate.html"><i class="fa-solid fa-leaf"></i> Climate Action</a>
-            <a href="tech.html"><i class="fa-solid fa-laptop-code"></i> Tech for Good</a>
-            <a href="gbv.html"><i class="fa-solid fa-handshake"></i> Gender &amp; GBV</a>
-          </div>
-        </div>
-        <div>
-          <div class="footer-col-title">Connect</div>
-          <div class="footer-links">
-            <a href="about.html">About Us</a>
-            <a href="team.html">Our Team</a>
-            <a href="get-involved.html">Get Involved</a>
-            <a href="news.html">News</a>
-            <a href="contact.html">Contact</a>
-            <a href="donate.html">Donate</a>
-            <a href="media.html">Press &amp; Media</a>
-          </div>
-        </div>
-      </div>
-      <hr class="footer-divider" />
-      <div class="footer-bottom">
-        <p class="footer-copyright">© 2025 Beacon Youth Collective · All rights reserved</p>
-        <a href="admin.html" class="btn soft small"><i class="fa-solid fa-lock"></i> Admin</a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+ <script src="script.js"></script>
 </body>
 </html>
